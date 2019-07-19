@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import API from './apiManager/api'
 import './HairShop.css'
 import NavBar from './navBar/NavBar'
-import ApplicationViews from './ApplicationViews'
+import ApplicationViews from './applicationViews/ApplicationViews'
 
 export default class HairShop extends Component {
   render() {

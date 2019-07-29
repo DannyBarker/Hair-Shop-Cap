@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-import { CLIENT_RENEG_LIMIT } from "tls";
+import StylistNotesModal from "../admin/appointments/StylistNotesModal"
 
 export default class AppointmentCard extends Component {
   state = {
-    saveDisabled: false
+    saveDisabled: false,
+    stylistNotes: "",
   };
+
+  handleFieldChange = evt => {
+    const stateToChange = {};
+    stateToChange[evt.target.id] = evt.target.value;
+    this.setState(stateToChange);
+  }
 
   render() {
     return (
@@ -33,16 +40,45 @@ export default class AppointmentCard extends Component {
             <p>{this.props.appointment.request.request_details}</p>
           </section>
           <button
-            id="appCancel-btn"
+            id={`appNotes-${this.props.appointment.id}`}
+            className="btn btn-success"
+            onClick={() => {
+              this.setState({ saveDisabled: true });
+              this.props.addNotes()
+            }}
+            style={{
+              display:
+                !this.props.appointment.stylistNotes &&
+                !this.props.appointment.completed
+                  ? ""
+                  : "none"
+            }}
+            disabled={this.state.saveDisabled}
+          >
+            Add Stylist Notes
+          </button>
+          <button
+            id={`appCancel-${this.props.appointment.id}`}
             className="btn btn-warning"
             onClick={() => {
               this.setState({ saveDisabled: true });
-              console.log("appCancel-btn pushed");
+              this.props.cancelAppointment(
+                this.props.appointment,
+                this.props.getUser(this.props.appointment.request.userId)
+              )
+                ? this.setState({ saveDisabled: true })
+                : this.setState({ saveDisabled: false });
             }}
-            style={{ display: !this.props.appointment.completed ? "" : "none" }}
+            style={{
+              display:
+                !this.props.appointment.stylistNotes &&
+                !this.props.appointment.completed
+                  ? ""
+                  : "none"
+            }}
             disabled={this.state.saveDisabled}
           >
-            Canel Appointment
+            Cancel Appointment
           </button>
           <button
             className="appDel-btn btn btn-danger"
@@ -50,7 +86,9 @@ export default class AppointmentCard extends Component {
               this.setState({ saveDisabled: true });
               console.log("appDel-btn pushed");
             }}
-            style={{ display: this.props.appointment.completed ? "" : "none" }}
+            style={{
+              display: this.props.appointment.stylistNotes && !this.props.appointment.completed ? "" : "none"
+            }}
             disabled={this.state.saveDisabled}
           >
             Remove Appointment

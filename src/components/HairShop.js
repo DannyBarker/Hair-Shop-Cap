@@ -7,18 +7,32 @@ import ApplicationViews from './applicationViews/ApplicationViews'
 
 export default class HairShop extends Component {
   state = {
-    accessType: ""
+    accessType: sessionStorage.getItem("userType"),
+    userId: sessionStorage.getItem("userId")
   }
 
-  changeNav = (accessType) => {
-    this.setState({accessType: `${accessType}`})
+  setUserId = (accessType, id) => {
+    sessionStorage.setItem("userType", accessType)
+    sessionStorage.setItem("userId", id)
+    this.setState({
+      accessType: accessType,
+      userId: id,
+    })
+  }
+
+  logOut = () => {
+    sessionStorage.clear()
+    this.setState({
+      accessType: sessionStorage.getItem("userType"),
+      userId: sessionStorage.getItem("userId")
+    })
   }
 
   render() {
     return (
       <React.Fragment>
-        <NavBar accessType={this.state.accessType} />
-        <ApplicationViews changeNav={this.changeNav} />
+        <NavBar userAccess={this.state} logOut={this.logOut} />
+        <ApplicationViews userAccess={this.state} setUserId={this.setUserId} />
       </React.Fragment>
     )
   }

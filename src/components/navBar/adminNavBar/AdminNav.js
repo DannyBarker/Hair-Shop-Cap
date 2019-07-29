@@ -4,6 +4,10 @@ import "./AdminNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class NavBar extends Component {
+state = {
+  saveDisabled: false,
+}
+
   render() {
     return (
       <header>
@@ -27,7 +31,11 @@ export default class NavBar extends Component {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                onClick={() => console.log("logout")}
+                onClick={() => {
+                  this.setState({ saveDisabled: true });
+                  this.props.logOut();
+                }}
+                disabled={this.state.saveDisabled}
                 to="/"
               >
                 Log Out

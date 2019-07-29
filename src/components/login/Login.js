@@ -17,7 +17,6 @@ export default class Login extends Component {
 
   // Simplistic handler for login submit
   handleLogin = event => {
-    console.log(this.state);
     event.preventDefault();
     let type = ""
 
@@ -35,8 +34,7 @@ export default class Login extends Component {
     });
 
     if (findUser) {
-      sessionStorage.setItem("userId",findUser.id)
-      this.props.changeNav(type)
+      this.props.setUserId(type, findUser.id)
       this.props.history.push("/")
     } else {
       alert("Email and Password do not match, please try again.");

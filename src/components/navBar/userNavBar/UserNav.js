@@ -4,8 +4,11 @@ import "./UserNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class NavBar extends Component {
+  state = {
+    saveDisabled: false
+  };
   showUserProf = () => {
-    if (this.props.accessType === "user") {
+    if (this.props.userAccess.accessType === "user") {
       return (
         <li className="nav-item">
           <Link className="nav-link" to="/user/:userId(\d+)/profile">
@@ -45,7 +48,9 @@ export default class NavBar extends Component {
             </li>
             <li
               className="nav-item"
-              style={{ display: this.props.accessType === "" ? "" : "none" }}
+              style={{
+                display: this.props.userAccess.userId === null ? "" : "none"
+              }}
             >
               <Link className="nav-link" to="/login">
                 Login
@@ -53,7 +58,9 @@ export default class NavBar extends Component {
             </li>
             <li
               className="nav-item"
-              style={{ display: this.props.accessType === "" ? "" : "none" }}
+              style={{
+                display: this.props.userAccess.userId === null ? "" : "none"
+              }}
             >
               <Link className="nav-link" to="/create">
                 Create
@@ -62,9 +69,19 @@ export default class NavBar extends Component {
             {this.showUserProf()}
             <li
               className="nav-item"
-              style={{ display: this.props.accessType === "user" ? "" : "none" }}
+              style={{
+                display: this.props.userAccess.userId !== null ? "" : "none"
+              }}
             >
-              <Link className="nav-link" onClick={() => console.log("logout")} to="/">
+              <Link
+                className="nav-link"
+                onClick={() => {
+                  this.setState({ saveDisabled: true });
+                  this.props.logOut();
+                }}
+                disabled={this.state.saveDisabled}
+                to="/"
+              >
                 Log Out
               </Link>
             </li>

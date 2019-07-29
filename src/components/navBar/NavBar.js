@@ -8,11 +8,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 export default class NavBar extends Component {
 
 renderNav = () => {
-  console.log(this.props.accessType);
-  if (this.props.accessType === "admin") {
-    return <AdminNav />
+  if (this.props.userAccess.accessType === "admin") {
+    return <AdminNav userAccess={this.props.userAccess} logOut={this.props.logOut} />
   } else {
-    return <UserNav accessType={this.props.accessType} />
+    return <UserNav userAccess={this.props.userAccess} logOut={this.props.logOut} />
   }
 }
 

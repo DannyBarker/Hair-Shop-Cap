@@ -23,6 +23,9 @@ class ApplicationViews extends Component {
     API.getExpand("users", "accessType")
       .then(users => this.setState({users: users}))
   }
+
+  isAuthenticated = () => this.props.userAccess.userId !== null;
+
   render() {
     return (
       <React.Fragment>
@@ -42,10 +45,18 @@ class ApplicationViews extends Component {
           return <RequestAppointment />
         }} />
         <Route exact path="/login" render={(props) => {
-          return <Login  {...props} changeNav={this.props.changeNav} users={this.state.users} />
+          if (!this.isAuthenticated()) {
+            return <Login  {...props} setUserId={this.props.setUserId} users={this.state.users} />
+          } else {
+            return <Home />
+          }
         }} />
         <Route exact path="/create" render={(props) => {
+          if (!this.isAuthenticated()) {
           return <CreateUser />
+          } else {
+            return <Home />
+          }
         }} />
         <Route exact path="/admin" render={(props) => {
           return <Admin />

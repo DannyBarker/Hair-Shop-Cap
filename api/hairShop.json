@@ -105,14 +105,6 @@
       "service_details": "Ask Shannon"
     }
   ],
-  "appointments": [
-    {
-      "id": 1,
-      "requestId": 2,
-      "completed": false,
-      "stylistNotes": ""
-    }
-  ],
   "statusMessages": [
     {
       "id": 1,
@@ -175,7 +167,7 @@
       "request_details": "Make me look pretty!"
     },
     {
-      "id": 1,
+      "id": 2,
       "userId": 2,
       "serviceId": 10,
       "statusMessageId": 2,
@@ -184,7 +176,7 @@
       "request_details": "Give me the new Do!"
     },
     {
-      "id": 1,
+      "id": 3,
       "userId": 2,
       "serviceId": 9,
       "statusMessageId": 6,
@@ -193,7 +185,7 @@
       "request_details": "Keep me lookin fire!"
     },
     {
-      "id": 1,
+      "id": 4,
       "userId": 3,
       "serviceId": 6,
       "statusMessageId": 1,
@@ -202,7 +194,7 @@
       "request_details": "Need that cut!"
     },
     {
-      "id": 1,
+      "id": 5,
       "userId": 3,
       "serviceId": 8,
       "statusMessageId": 2,
@@ -211,7 +203,7 @@
       "request_details": "It's me again!"
     },
     {
-      "id": 1,
+      "id": 6,
       "userId": 3,
       "serviceId": 1,
       "statusMessageId": 4,
@@ -220,7 +212,7 @@
       "request_details": "Give me the new Do!"
     },
     {
-      "id": 1,
+      "id": 7,
       "userId": 4,
       "serviceId": 1,
       "statusMessageId": 1,
@@ -229,7 +221,7 @@
       "request_details": "It's your fav daughter!"
     },
     {
-      "id": 1,
+      "id": 8,
       "userId": 4,
       "serviceId": 9,
       "statusMessageId": 2,
@@ -238,13 +230,33 @@
       "request_details": "I'm starting my new job!"
     },
     {
-      "id": 1,
+      "id": 9,
       "userId": 4,
       "serviceId": 10,
       "statusMessageId": 5,
       "day": "2019-10-15",
       "time": "12:30 p.m.",
       "request_details": "Give me the new Do!"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "requestId": 7,
+      "completed": false,
+      "stylistNotes": ""
+    },
+    {
+      "id": 2,
+      "requestId": 1,
+      "completed": false,
+      "stylistNotes": ""
+    },
+    {
+      "id": 3,
+      "requestId": 4,
+      "completed": false,
+      "stylistNotes": ""
     }
   ]
 }

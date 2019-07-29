@@ -13,6 +13,16 @@ import Services from '../services/Services'
 import User from '../user/User'
 
 export default class ApplicationViews extends Component {
+  state = {
+    appointments: [],
+    requests: [],
+    users: []
+  }
+
+  // componentDidMount() {
+  //   API.getAll(appointments)
+  //     .then(appointments => this.setState({appointments: appointments}))
+  // }
   render() {
     return (
       <React.Fragment>

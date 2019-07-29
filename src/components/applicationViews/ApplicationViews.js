@@ -12,17 +12,17 @@ import RequestAppointment from '../request-appointment/RequestAppointment'
 import Services from '../services/Services'
 import User from '../user/User'
 
-export default class ApplicationViews extends Component {
+class ApplicationViews extends Component {
   state = {
     appointments: [],
     requests: [],
     users: []
   }
 
-  // componentDidMount() {
-  //   API.getAll(appointments)
-  //     .then(appointments => this.setState({appointments: appointments}))
-  // }
+  componentDidMount() {
+    API.getExpand("users", "accessType")
+      .then(users => this.setState({users: users}))
+  }
   render() {
     return (
       <React.Fragment>
@@ -42,7 +42,7 @@ export default class ApplicationViews extends Component {
           return <RequestAppointment />
         }} />
         <Route exact path="/login" render={(props) => {
-          return <Login />
+          return <Login  {...props} changeNav={this.props.changeNav} users={this.state.users} />
         }} />
         <Route exact path="/create" render={(props) => {
           return <CreateUser />
@@ -57,3 +57,5 @@ export default class ApplicationViews extends Component {
     )
   }
 }
+
+export default withRouter(ApplicationViews)

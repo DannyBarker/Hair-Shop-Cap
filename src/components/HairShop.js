@@ -6,11 +6,33 @@ import NavBar from './navBar/NavBar'
 import ApplicationViews from './applicationViews/ApplicationViews'
 
 export default class HairShop extends Component {
+  state = {
+    accessType: sessionStorage.getItem("userType"),
+    userId: sessionStorage.getItem("userId")
+  }
+
+  setUserId = (accessType, id) => {
+    sessionStorage.setItem("userType", accessType)
+    sessionStorage.setItem("userId", id)
+    this.setState({
+      accessType: accessType,
+      userId: id,
+    })
+  }
+
+  logOut = () => {
+    sessionStorage.clear()
+    this.setState({
+      accessType: sessionStorage.getItem("userType"),
+      userId: sessionStorage.getItem("userId")
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
-        <NavBar />
-        <ApplicationViews />
+        <NavBar userAccess={this.state} logOut={this.logOut} />
+        <ApplicationViews userAccess={this.state} setUserId={this.setUserId} />
       </React.Fragment>
     )
   }

@@ -27,10 +27,25 @@ class ApplicationViews extends Component {
     API.getExpand("users", "accessType")
       .then(users => this.setState({ users: users }))
       .then(() => API.getExpand("appointments", "request"))
-      .then(appointments => this.setState({ appointments: appointments }))
+      .then(appointments => {
+        let sortedAppointments = this.sortAppointments(appointments)
+        this.setState({ appointments: sortedAppointments })
+    })
       .then(() => API.getAll("services"))
-      .then(services => this.setState({ services: services }));
+      .then(services => this.setState({ services: services }))
+      .then(() => API.getAll("requests"))
+      .then(requests => {
+        let sortedRequests = this.sortRequests(requests)
+        this.setState({requests: sortedRequests})
+      })
   }
+
+  sortRequests = arr => {
+    return arr.sort((a, b) => Date.parse(a.day) - Date.parse(b.day));
+  };
+  sortAppointments = arr => {
+    return arr.sort((a, b) => Date.parse(a.request.day) - Date.parse(b.request.day));
+  };
 
   getUser = userId => {
     let user = "";
@@ -177,7 +192,7 @@ class ApplicationViews extends Component {
           path="/admin/requests"
           render={props => {
             if (this.isAuthenticated && this.isAdmin) {
-              return <AdminRequests />;
+              return <AdminRequests requests={this.state.requests} getUser={this.getUser} getService={this.getService} />;
             } else {
               return <Redirect to="/" />;
             }

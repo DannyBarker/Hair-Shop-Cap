@@ -1,0 +1,250 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "accessTypeId": 1,
+      "firstName": "Shannon",
+      "lastName": "Gamble",
+      "email": "admin@email.com",
+      "password": "password123"
+    },
+    {
+      "id": 2,
+      "accessTypeId": 2,
+      "firstName": "Olivia",
+      "lastName": "Gamble",
+      "email": "Olivia@email.com",
+      "password": "pass123"
+    },
+    {
+      "id": 3,
+      "accessTypeId": 2,
+      "firstName": "Is",
+      "lastName": "Gamble",
+      "email": "Is@email.com",
+      "password": "pass123"
+    },
+    {
+      "id": 4,
+      "accessTypeId": 2,
+      "firstName": "Mattie",
+      "lastName": "Gamble",
+      "email": "Mattie@email.com",
+      "password": "pass123"
+    }
+  ],
+  "accessTypes": [
+   {
+     "id": 1,
+     "accessType": "admin"
+   },
+   {
+     "id": 2,
+     "accessType": "user"
+   }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "type": "Haircuts (Women)",
+      "price": "50.00",
+      "service_details": "Baic woman's haircut"
+    },
+    {
+      "id": 2,
+      "type": "Haircuts (Men)",
+      "price": "40.00",
+      "service_details": "Basic man's haircut"
+    },
+    {
+      "id": 3,
+      "type": "Wet Cut (Children under 12 years)",
+      "price": "15.00",
+      "service_details": "Basic woman's haircut"
+    },
+    {
+      "id": 4,
+      "type": "Blow-Out with Cut (Children under 12 years)",
+      "price": "20.00",
+      "service_details": "Ask Shannon"
+    },
+    {
+      "id": 5,
+      "type": "One Color Highlight with Cut",
+      "price": "130.00",
+      "service_details": "Ask Shannon"
+    },
+    {
+      "id": 6,
+      "type": "Two Color Highlights with Cut",
+      "price": "140.00",
+      "service_details": "Ask Shannon"
+    },
+    {
+      "id": 7,
+      "type": "One Color Highlight with Base Color",
+      "price": "150.00",
+      "service_details": "Ask Shannon"
+    },
+    {
+      "id": 8,
+      "type": "All Over Color, First Time, with Cut",
+      "price": "130.00",
+      "service_details": "Ask Shannon"
+    },
+    {
+      "id": 9,
+      "type": "All Over Color, Touchup 1 in. or less, with Cut",
+      "price": "90.00",
+      "service_details": "Ask Shannon"
+    },
+    {
+      "id": 10,
+      "type": "All Over Color, Touchup, over 1 in., with Cut",
+      "price": "100.00",
+      "service_details": "Ask Shannon"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "requestId": 2,
+      "completed": false,
+      "stylistNotes": ""
+    }
+  ],
+  "statusMessages": [
+    {
+      "id": 1,
+      "statusId": 1,
+      "message": ""
+    },
+    {
+      "id": 2,
+      "statusId": 2,
+      "message": ""
+    },
+    {
+      "id": 3,
+      "statusId": 3,
+      "message": "Closed that day."
+    },
+    {
+      "id": 4,
+      "statusId": 3,
+      "message": "Time slot taken"
+    },
+    {
+      "id": 5,
+      "statusId": 3,
+      "message": "Service not available"
+    },
+    {
+      "id": 6,
+      "statusId": 3,
+      "message": "I am on vacation!"
+    },
+    {
+      "id": 7,
+      "statusId": 3,
+      "message": "Other"
+    }
+  ],
+  "statuss": [
+    {
+      "id": 1,
+      "statusType": "Accepted"
+    },
+    {
+      "id": 2,
+      "statusType": "Pending"
+    },
+    {
+      "id": 3,
+      "statusType": "Denied"
+    }
+  ],
+  "requests": [
+    {
+      "id": 1,
+      "userId": 2,
+      "serviceId": 1,
+      "statusMessageId": 1,
+      "day": "2019-08-13",
+      "time": "12:30 p.m.",
+      "request_details": "Make me look pretty!"
+    },
+    {
+      "id": 1,
+      "userId": 2,
+      "serviceId": 10,
+      "statusMessageId": 2,
+      "day": "2019-09-13",
+      "time": "12:30 p.m.",
+      "request_details": "Give me the new Do!"
+    },
+    {
+      "id": 1,
+      "userId": 2,
+      "serviceId": 9,
+      "statusMessageId": 6,
+      "day": "2019-10-13",
+      "time": "12:30 p.m.",
+      "request_details": "Keep me lookin fire!"
+    },
+    {
+      "id": 1,
+      "userId": 3,
+      "serviceId": 6,
+      "statusMessageId": 1,
+      "day": "2019-08-14",
+      "time": "12:30 p.m.",
+      "request_details": "Need that cut!"
+    },
+    {
+      "id": 1,
+      "userId": 3,
+      "serviceId": 8,
+      "statusMessageId": 2,
+      "day": "2019-09-14",
+      "time": "12:30 p.m.",
+      "request_details": "It's me again!"
+    },
+    {
+      "id": 1,
+      "userId": 3,
+      "serviceId": 1,
+      "statusMessageId": 4,
+      "day": "2019-10-14",
+      "time": "12:30 p.m.",
+      "request_details": "Give me the new Do!"
+    },
+    {
+      "id": 1,
+      "userId": 4,
+      "serviceId": 1,
+      "statusMessageId": 1,
+      "day": "2019-08-15",
+      "time": "12:30 p.m.",
+      "request_details": "It's your fav daughter!"
+    },
+    {
+      "id": 1,
+      "userId": 4,
+      "serviceId": 9,
+      "statusMessageId": 2,
+      "day": "2019-09-15",
+      "time": "12:30 p.m.",
+      "request_details": "I'm starting my new job!"
+    },
+    {
+      "id": 1,
+      "userId": 4,
+      "serviceId": 10,
+      "statusMessageId": 5,
+      "day": "2019-10-15",
+      "time": "12:30 p.m.",
+      "request_details": "Give me the new Do!"
+    }
+  ]
+}

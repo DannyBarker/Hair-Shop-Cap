@@ -35,7 +35,11 @@ export default class Login extends Component {
 
     if (findUser) {
       this.props.setUserId(type, findUser.id)
-      this.props.history.push("/")
+      if (findUser.accessType.accessType === "user") {
+        this.props.history.push("/")
+      } else {
+        this.props.history.push("/admin")
+      }
     } else {
       alert("Email and Password do not match, please try again.");
     }

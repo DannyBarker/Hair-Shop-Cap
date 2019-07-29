@@ -14,17 +14,22 @@ state = {
         <nav>
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/appointments">
+              <Link className="nav-link" to="/admin">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/admin/appointments">
                 Appointments
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/users">
+              <Link className="nav-link" to="/admin/users">
                 Users
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/requests">
+              <Link className="nav-link" to="/admin/requests">
                 Requests
               </Link>
             </li>

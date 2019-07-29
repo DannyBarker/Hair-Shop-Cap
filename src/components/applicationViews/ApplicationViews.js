@@ -4,6 +4,9 @@ import API from '../apiManager/api'
 import './ApplicationViews.css'
 import About from '../about/About'
 import Admin from '../admin/Admin'
+import AdminAppointments from '../admin/appointments/Appointments'
+import AdminUsers from '../admin/users/Users'
+import AdminRequests from '../admin/requests/Requests'
 import Contact from '../contact/Contact'
 import CreateUser from '../createUser/CreateUser'
 import Home from '../home/Home'
@@ -16,15 +19,42 @@ class ApplicationViews extends Component {
   state = {
     appointments: [],
     requests: [],
-    users: []
+    users: [],
+    services: []
   }
 
   componentDidMount() {
     API.getExpand("users", "accessType")
       .then(users => this.setState({users: users}))
+      .then(() => API.getExpand("appointments", "request"))
+      .then(appointments => this.setState({appointments: appointments}))
+      .then(() => API.getAll("services"))
+      .then(services => this.setState({services: services}))
+  }
+
+  getUser = (userId) => {
+    let user = ""
+    this.state.users.forEach( userApp => {
+      if (userApp.id === userId) {
+        user = userApp
+      }
+    })
+    let userName = `${user.firstName} ${user.lastName}`
+    return userName
+  }
+
+  getService = (serviceId) => {
+    let service = ""
+    this.state.services.forEach( serviceApp => {
+      if (serviceApp.id === serviceId) {
+        service = serviceApp
+      }
+    })
+    return service
   }
 
   isAuthenticated = () => this.props.userAccess.userId !== null;
+  isAdmin = () => this.props.userAccess.accessType === "admin";
 
   render() {
     return (
@@ -42,27 +72,56 @@ class ApplicationViews extends Component {
           return <Contact />
         }} />
         <Route exact path="/new" render={(props) => {
+          if (this.isAuthenticated()) {
           return <RequestAppointment />
+          } else {
+            return <Redirect to="/" />
+          }
         }} />
         <Route exact path="/login" render={(props) => {
           if (!this.isAuthenticated()) {
             return <Login  {...props} setUserId={this.props.setUserId} users={this.state.users} />
           } else {
-            return <Home />
+            return <Redirect to="/" />
           }
         }} />
         <Route exact path="/create" render={(props) => {
           if (!this.isAuthenticated()) {
           return <CreateUser />
           } else {
-            return <Home />
+            return <Redirect to="/" />
           }
-        }} />
-        <Route exact path="/admin" render={(props) => {
-          return <Admin />
         }} />
         <Route exact path="/profile" render={(props) => {
           return <User />
+        }} />
+        <Route exact path="/admin" render={(props) => {
+          if (this.isAuthenticated && this.isAdmin) {
+            return <Admin />
+          } else {
+            return <Redirect to="/" />
+          }
+        }} />
+        <Route exact path="/admin/appointments" render={(props) => {
+          if (this.isAuthenticated && this.isAdmin) {
+            return <AdminAppointments appointments={this.state.appointments} getUser={this.getUser} getService={this.getService} />
+          } else {
+            return <Redirect to="/" />
+          }
+        }} />
+        <Route exact path="/admin/users" render={(props) => {
+          if (this.isAuthenticated && this.isAdmin) {
+            return <AdminUsers />
+          } else {
+            return <Redirect to="/" />
+          }
+        }} />
+        <Route exact path="/admin/requests" render={(props) => {
+          if (this.isAuthenticated && this.isAdmin) {
+            return <AdminRequests />
+          } else {
+            return <Redirect to="/" />
+          }
         }} />
       </React.Fragment>
     )

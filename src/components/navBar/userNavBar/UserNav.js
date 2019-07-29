@@ -11,7 +11,7 @@ export default class NavBar extends Component {
     if (this.props.userAccess.accessType === "user") {
       return (
         <li className="nav-item">
-          <Link className="nav-link" to="/user/:userId(\d+)/profile">
+          <Link className="nav-link" to="/user/profile">
             Profile
           </Link>
         </li>

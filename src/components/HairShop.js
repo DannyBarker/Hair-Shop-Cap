@@ -5,7 +5,7 @@ import './HairShop.css'
 import NavBar from './navBar/NavBar'
 import ApplicationViews from './applicationViews/ApplicationViews'
 
-export default class HairShop extends Component {
+class HairShop extends Component {
   state = {
     accessType: sessionStorage.getItem("userType"),
     userId: sessionStorage.getItem("userId")
@@ -37,3 +37,5 @@ export default class HairShop extends Component {
     )
   }
 }
+
+export default withRouter(HairShop)

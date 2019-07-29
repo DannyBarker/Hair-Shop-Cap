@@ -7,6 +7,7 @@ import Admin from "../admin/Admin";
 import AdminAppointments from "../admin/appointments/Appointments";
 import AdminUsers from "../admin/users/Users";
 import AdminRequests from "../admin/requests/Requests";
+import StylistNotesModal from "../admin/appointments/StylistNotesModal"
 import Contact from "../contact/Contact";
 import CreateUser from "../createUser/CreateUser";
 import Home from "../home/Home";
@@ -29,15 +30,13 @@ class ApplicationViews extends Component {
       .then(() => API.getExpand("appointments", "request"))
       .then(appointments => {
         let sortedAppointments = this.sortAppointments(appointments)
-        this.setState({ appointments: sortedAppointments })
-    })
+        this.setState({ appointments: sortedAppointments })})
       .then(() => API.getAll("services"))
       .then(services => this.setState({ services: services }))
       .then(() => API.getAll("requests"))
       .then(requests => {
         let sortedRequests = this.sortRequests(requests)
-        this.setState({requests: sortedRequests})
-      })
+        this.setState({requests: sortedRequests})})
   }
 
   sortRequests = arr => {
@@ -67,6 +66,27 @@ class ApplicationViews extends Component {
     });
     return service;
   };
+
+  cancelAppointment = (resource, name) => {
+    let button = false
+    if (window.confirm(`Are you sure you'd like to cancel ${name}'s appointment?`)) {
+      let newObj = {
+        id: resource.id,
+        requestId: resource.requestId,
+        completed: true,
+        stylistNotes: "No Show."
+      }
+      API.put("appointments", newObj)
+        .then(() => API.getExpand("appointments", "request"))
+        .then(appointments => {
+          let sortedAppointments = this.sortAppointments(appointments)
+          this.setState({ appointments: sortedAppointments })})
+          .then(() => {
+            button = true
+          })
+    }
+    return button
+  }
 
   isAuthenticated = () => this.props.userAccess.userId !== null;
   isAdmin = () => this.props.userAccess.accessType === "admin";
@@ -148,27 +168,28 @@ class ApplicationViews extends Component {
             return <User />;
           }}
         />
-        <Route
+        {/* <Route
           exact
           path="/admin"
           render={props => {
-            if (this.isAuthenticated && this.isAdmin) {
+            if (this.isAuthenticated() && this.isAdmin()) {
               return <Admin />;
             } else {
               return <Redirect to="/" />;
             }
           }}
-        />
+        /> */}
         <Route
           exact
           path="/admin/appointments"
           render={props => {
-            if (this.isAuthenticated && this.isAdmin) {
+            if (this.isAuthenticated() && this.isAdmin()) {
               return (
                 <AdminAppointments
                   appointments={this.state.appointments}
                   getUser={this.getUser}
                   getService={this.getService}
+                  cancelAppointment={this.cancelAppointment}
                 />
               );
             } else {
@@ -176,11 +197,24 @@ class ApplicationViews extends Component {
             }
           }}
         />
+        {/* <Route
+          exact
+          path="/admin/stylistNotes"
+          render={props => {
+            if (this.isAuthenticated() && this.isAdmin()) {
+              return (
+                <StylistNotesModal {...props} />
+              );
+            } else {
+              return <Redirect to="/" />;
+            }
+          }}
+        /> */}
         <Route
           exact
           path="/admin/users"
           render={props => {
-            if (this.isAuthenticated && this.isAdmin) {
+            if (this.isAuthenticated() && this.isAdmin()) {
               return <AdminUsers users={this.state.users} />;
             } else {
               return <Redirect to="/" />;
@@ -191,7 +225,7 @@ class ApplicationViews extends Component {
           exact
           path="/admin/requests"
           render={props => {
-            if (this.isAuthenticated && this.isAdmin) {
+            if (this.isAuthenticated() && this.isAdmin()) {
               return <AdminRequests requests={this.state.requests} getUser={this.getUser} getService={this.getService} />;
             } else {
               return <Redirect to="/" />;

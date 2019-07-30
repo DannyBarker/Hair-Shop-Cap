@@ -114,7 +114,7 @@ class ApplicationViews extends Component {
       });
   };
 
-  acceptRequest = (resource, fnctn) => {
+  acceptRequest = (resource) => {
     let newAppointment = {
       requestId: resource.id,
       completed: false,

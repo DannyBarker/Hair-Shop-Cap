@@ -24,7 +24,7 @@ export default class StylistNotesModal extends Component {
           <ModalHeader toggle={this.props.toggle}>Stylist's Notes</ModalHeader>
           <ModalBody>
             <Input
-              id="styleNotes-input"
+              id={`styleNotes-input-${this.props.appointment.id}`}
               type="textarea"
               placeholder="Add Stylist Notes"
               row={10}
@@ -36,7 +36,7 @@ export default class StylistNotesModal extends Component {
                 this.props.appointment.id
               } btn btn-success`}
               onClick={() => {
-                this.props.addStylistNotes(this.props.appointment, "styleNotes-input")
+                this.props.addStylistNotes(this.props.appointment, `styleNotes-input-${this.props.appointment.id}`)
                 this.props.toggle()
               }}
             //   style={{

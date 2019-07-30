@@ -1,11 +1,17 @@
 import React, { Component } from "react";
+import DenyModule from "../admin/requests/DenyModule"
 
 export default class RequestCard extends Component {
   state = {
-    saveDisabled: false
+    saveDisabled: false,
+    modal: false
   };
 
-
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  };
   render() {
     return (
       <div key={this.props.request.id} className="request-card">
@@ -20,7 +26,7 @@ export default class RequestCard extends Component {
         <p className="request-details">Details: {" "}{this.props.request.request_details}</p>
         <button
           id="acceptRequest-btn"
-          className="btn btn-warning"
+          className="accRequest-btn btn btn-success"
           onClick={() => {
             !this.props.acceptRequest(this.props.request) ? this.setState({ saveDisabled: false }) : this.setState({ saveDisabled: true })
           }}
@@ -29,17 +35,20 @@ export default class RequestCard extends Component {
           Accept
         </button>
         <button
-          className="denyRequest-btn btn btn-danger"
-          onClick={() =>
-            this.setState(
-              { saveDisabled: true },
-              console.log("denyRequest-btn clicked")
-            )
-          }
-          disabled={this.state.saveDisabled}
-        >
-          Deny
-        </button>
+            id="adminDenyRequest-btn"
+            className="denyRequest-btn btn btn-warning"
+            onClick={() => {
+              this.toggle();
+            }}
+          >
+            <DenyModule
+            modal={this.state.modal}
+            toggle={this.toggle}
+            status={this.props.status}
+            request={this.props.request}
+            denyRequests={this.props.denyRequests}
+          />
+          </button>
       </div>
     );
   }

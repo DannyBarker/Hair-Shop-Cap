@@ -20,7 +20,8 @@ class ApplicationViews extends Component {
     appointments: [],
     requests: [],
     users: [],
-    services: []
+    services: [],
+    statusMessages: [],
   };
 
   componentDidMount() {
@@ -37,7 +38,9 @@ class ApplicationViews extends Component {
       .then(requests => {
         let sortedRequests = this.sortRequests(requests);
         this.setState({ requests: sortedRequests });
-      });
+      })
+      .then(() => API.getAll("statusMessages"))
+      .then(statusMessage => this.setState({statusMessages: statusMessage}))
   }
 
   sortRequests = arr => {
@@ -203,6 +206,24 @@ class ApplicationViews extends Component {
     return requests;
   };
 
+  denyRequests = (resource, id) => {
+      let editRequest = {
+        id: resource.id,
+        userId: resource.userId,
+        serviceId: resource.serviceId,
+        statusMessageId: id,
+        day: resource.day,
+        time: resource.time,
+        request_details: resource.request_details
+      };
+      API.put("requests", editRequest)
+        .then(() => API.getAll("requests"))
+        .then(requests => {
+          let sortedRequests = this.sortRequests(requests);
+          this.setState({ requests: sortedRequests });
+        })
+  }
+
   isAuthenticated = () => this.props.userAccess.userId !== null;
   isAdmin = () => this.props.userAccess.accessType === "admin";
 
@@ -364,9 +385,11 @@ class ApplicationViews extends Component {
               return (
                 <AdminRequests
                   requests={this.state.requests}
+                  status={this.state.statusMessages}
                   getUser={this.getUser}
                   getService={this.getService}
                   acceptRequest={this.acceptRequest}
+                  denyRequests={this.denyRequests}
                 />
               );
             } else {

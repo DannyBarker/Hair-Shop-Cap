@@ -166,7 +166,7 @@
       "id": 2,
       "userId": 2,
       "serviceId": 10,
-      "statusMessageId": 1,
+      "statusMessageId": 2,
       "day": "2019-09-13",
       "time": "12:30",
       "request_details": "Give me the new Do!"

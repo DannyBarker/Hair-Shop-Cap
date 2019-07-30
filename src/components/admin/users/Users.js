@@ -69,10 +69,20 @@ state = {
                 <UserCard
                   key={user.id}
                   user={user}
+                  appointments={this.props.appointments}
+                  requests={this.props.requests}
                   services={this.props.services}
                   getAppointment={this.props.getAppointment}
                   getRequests={this.props.getRequests}
                   addStylistNotes={this.props.addStylistNotes}
+                  getUser={this.props.getUser}
+                  getService={this.props.getService}
+                  cancelAppointment={this.props.cancelAppointment}
+                  checkAppointment={this.props.checkAppointment}
+                  removeAppointment={this.props.removeAppointment}
+                  acceptRequest={this.props.acceptRequest}
+                  denyRequests={this.props.denyRequests}
+                  status={this.props.status}
                 />
               ) : (
                 ""

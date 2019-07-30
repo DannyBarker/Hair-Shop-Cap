@@ -20,6 +20,19 @@ export default class NavBar extends Component {
       return "";
     }
   };
+  showRequestApp = () => {
+    if (this.props.userAccess.accessType === "user") {
+      return (
+        <li className="nav-item">
+          <Link className="nav-link" to="/user/request/new">
+            Request Appointment
+          </Link>
+        </li>
+      );
+    } else {
+      return "";
+    }
+  };
 
   render() {
     return (
@@ -66,6 +79,7 @@ export default class NavBar extends Component {
                 Create
               </Link>
             </li>
+            {this.showRequestApp()}
             {this.showUserProf()}
             <li
               className="nav-item"

@@ -133,6 +133,13 @@ class ApplicationViews extends Component {
         this.setState({ appointments: sortedAppointments })})
   }
 
+  // sortAppointmentTime = (resource) => {
+  //   let daySplit = resource.day.split("-")
+  //   let timeSplit = resource.time.split(":")
+  //   let newDate = new Date(daySplit[0], daySplit[1], daySplit[2], timeSplit[0], timeSplit[1], 0, 0)
+  //   return newDate
+  // }
+
   isAuthenticated = () => this.props.userAccess.userId !== null;
   isAdmin = () => this.props.userAccess.accessType === "admin";
 

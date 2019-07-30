@@ -159,7 +159,7 @@
       "serviceId": 1,
       "statusMessageId": 1,
       "day": "2019-08-13",
-      "time": "12:30 p.m.",
+      "time": "12:30",
       "request_details": "Make me look pretty!"
     },
     {
@@ -168,7 +168,7 @@
       "serviceId": 10,
       "statusMessageId": 2,
       "day": "2019-09-13",
-      "time": "12:30 p.m.",
+      "time": "12:30",
       "request_details": "Give me the new Do!"
     },
     {
@@ -177,7 +177,7 @@
       "serviceId": 9,
       "statusMessageId": 6,
       "day": "2019-10-13",
-      "time": "12:30 p.m.",
+      "time": "12:30",
       "request_details": "Keep me lookin fire!"
     },
     {
@@ -186,7 +186,7 @@
       "serviceId": 6,
       "statusMessageId": 1,
       "day": "2019-08-14",
-      "time": "12:30 p.m.",
+      "time": "12:30",
       "request_details": "Need that cut!"
     },
     {
@@ -195,7 +195,7 @@
       "serviceId": 8,
       "statusMessageId": 2,
       "day": "2019-09-14",
-      "time": "12:30 p.m.",
+      "time": "12:30",
       "request_details": "It's me again!"
     },
     {
@@ -204,7 +204,7 @@
       "serviceId": 1,
       "statusMessageId": 4,
       "day": "2019-10-14",
-      "time": "12:30 p.m.",
+      "time": "12:30",
       "request_details": "Give me the new Do!"
     },
     {
@@ -213,7 +213,7 @@
       "serviceId": 1,
       "statusMessageId": 1,
       "day": "2019-08-15",
-      "time": "12:30 p.m.",
+      "time": "12:30",
       "request_details": "It's your fav daughter!"
     },
     {
@@ -222,7 +222,7 @@
       "serviceId": 9,
       "statusMessageId": 2,
       "day": "2019-09-15",
-      "time": "12:30 p.m.",
+      "time": "12:30",
       "request_details": "I'm starting my new job!"
     },
     {
@@ -231,7 +231,7 @@
       "serviceId": 10,
       "statusMessageId": 5,
       "day": "2019-10-15",
-      "time": "12:30 p.m.",
+      "time": "12:30",
       "request_details": "Give me the new Do!"
     }
   ],

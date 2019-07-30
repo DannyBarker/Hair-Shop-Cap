@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StylistNotesModal from "../admin/appointments/StylistNotesModal";
+import { CLIENT_RENEG_LIMIT } from "tls";
 
 export default class AppointmentCard extends Component {
   state = {
@@ -35,6 +36,13 @@ export default class AppointmentCard extends Component {
           }
         >
           <input
+            style={{
+              display:
+                this.props.appointment.checked &&
+                this.props.appointment.stylistNotes
+                  ? "none"
+                  : ""
+            }}
             id="completedAppointment"
             type="checkbox"
             onChange={this.handleCheck}
@@ -69,11 +77,32 @@ export default class AppointmentCard extends Component {
               this.props.addNotes();
             }}
             style={{
-              display: this.props.appointment.checked ? "" : "none"
+              display:
+                this.props.appointment.checked &&
+                !this.props.appointment.stylistNotes
+                  ? ""
+                  : "none"
             }}
             disabled={this.state.saveDisabled}
           >
             Add Stylist Notes
+          </button>
+          <button
+            id={`editNotes-${this.props.appointment.id}`}
+            className="btn btn-success"
+            onClick={() => {
+              console.log("edit stylist notes clicked.");
+            }}
+            style={{
+              display:
+                this.props.appointment.checked &&
+                this.props.appointment.stylistNotes
+                  ? ""
+                  : "none"
+            }}
+            disabled={this.state.saveDisabled}
+          >
+            Edit Stylist Notes
           </button>
           <button
             id={`appCancel-${this.props.appointment.id}`}
@@ -107,6 +136,7 @@ export default class AppointmentCard extends Component {
             }}
             style={{
               display:
+                this.props.appointment.checked &&
                 this.props.appointment.stylistNotes &&
                 !this.props.appointment.completed
                   ? ""

@@ -7,49 +7,41 @@ import {
   ModalBody,
   ModalFooter
 } from "reactstrap";
-import { thisExpression } from "@babel/types";
 
 export default class StylistNotesModal extends Component {
-
   render() {
     return (
       <div>
-      Add Stylist's Notes
+        Edit Stylist's Notes
         <Modal
           isOpen={this.props.modal}
           toggle={this.props.toggle}
           className={this.props.className}
-          unmountOnClose={!this.props.appointment.checked}
+          unmountOnClose={this.props.appointment.checked}
         >
           <ModalHeader toggle={this.props.toggle}>Stylist's Notes</ModalHeader>
           <ModalBody>
             <Input
-              id="styleNotes-input"
+              id="styleNotes-edit"
               type="textarea"
-              placeholder="Add Stylist Notes"
+              defaultValue={this.props.appointment.stylistNotes}
               row={10}
             />
           </ModalBody>
           <ModalFooter>
             <Button
-              className={`addNotes-${
+              className={`editNotes-${
                 this.props.appointment.id
               } btn btn-success`}
               onClick={() => {
-                this.props.addStylistNotes(this.props.appointment, "styleNotes-input")
-                this.props.toggle()
+                this.props.addStylistNotes(this.props.appointment, "styleNotes-edit");
+                this.props.toggle();
               }}
-            //   style={{
-            //   display:
-            //     this.state.button
-            //       ? ""
-            //       : "none"
-            // }}
             >
               Add Notes
             </Button>{" "}
             <Button
-              className={`canceelNotes-${
+              className={`canceelEditNotes-${
                 this.props.appointment.id
               } btn btn-warning`}
               onClick={this.props.toggle}

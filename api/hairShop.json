@@ -233,13 +233,22 @@
       "day": "2019-10-15",
       "time": "12:30",
       "request_details": "Give me the new Do!"
+    },
+    {
+      "id": 10,
+      "userId": 2,
+      "serviceId": 9,
+      "statusMessageId": 2,
+      "day": "2019-12-13",
+      "time": "12:30",
+      "request_details": "Hair is too long!"
     }
   ],
   "appointments": [
     {
       "id": 1,
       "requestId": 7,
-      "completed": false,
+      "completed": true,
       "checked": false,
       "stylistNotes": ""
     },

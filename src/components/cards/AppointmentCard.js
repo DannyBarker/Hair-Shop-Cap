@@ -1,18 +1,22 @@
 import React, { Component } from "react";
 import StylistNotesModal from "../admin/appointments/StylistNotesModal";
-import { CLIENT_RENEG_LIMIT } from "tls";
+import EditStylistNotesModal from "../admin/appointments/EditStylistNotesModal";
 
 export default class AppointmentCard extends Component {
   state = {
     saveDisabled: false,
-    stylistNotes: ""
+    modal: false
   };
 
-  // handleFieldChange = evt => {
-  //   const stateToChange = {};
-  //   stateToChange[evt.target.id] = evt.target.value;
-  //   this.setState(stateToChange);
-  // };
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  };
+
+  disableButton = () => {
+    this.setState({ saveDisabled: true });
+  };
 
   handleCheck = event => {
     if (this.props.appointment.checked === false) {
@@ -53,62 +57,68 @@ export default class AppointmentCard extends Component {
           </section>
 
           <section className="appointment-time">
-            <p>{this.props.appointment.request.day}</p>
-            <p>{this.props.appointment.request.time}</p>
+            <p>{this.props.appointment.completed ? "Date: " : ""}{this.props.appointment.request.day}</p>
+            <p>{this.props.appointment.completed ? "Time: " : ""}{this.props.appointment.request.time}</p>
           </section>
 
           <section className="appointment-service">
-            <p>
+            <p>{this.props.appointment.completed ? "Service: " : ""}
               {
                 this.props.getService(this.props.appointment.request.serviceId)
                   .type
               }
             </p>
           </section>
-
           <section className="appointment-detail">
-            <p>{this.props.appointment.request.request_details}</p>
+            <p>{this.props.appointment.completed ? "Details: " : ""}{this.props.appointment.request.request_details}</p>
           </section>
-          <button
-            id={`appNotes-${this.props.appointment.id}`}
-            className="btn btn-success"
-            onClick={() => {
-              this.setState({ saveDisabled: true });
-              this.props.addNotes();
-            }}
-            style={{
-              display:
-                this.props.appointment.checked &&
-                !this.props.appointment.stylistNotes
-                  ? ""
-                  : "none"
-            }}
-            disabled={this.state.saveDisabled}
-          >
-            Add Stylist Notes
-          </button>
-          <button
+          {
+            this.props.appointment.stylistNotes ?
+              <section className="appointment-stylistNotes">
+                <p>Stylist's Notes: {" "}{this.props.appointment.stylistNotes}</p>
+              </section> : ""
+          }
+          {
+            !this.props.appointment.stylistNotes && this.props.appointment.checked ?
+            <button
+          id={`appNotes-${this.props.appointment.id}`}
+          className="addStylistNotes-btn btn btn-success"
+          onClick={() => {
+            this.toggle();
+          }}
+        >
+          <StylistNotesModal
+            appointment={this.props.appointment}
+            addStylistNotes={this.props.addStylistNotes}
+            modal={this.state.modal}
+            toggle={this.toggle}
+          />
+        </button>
+        : ""
+          }
+          {
+            this.props.appointment.stylistNotes && this.props.appointment.checked ?
+            <button
             id={`editNotes-${this.props.appointment.id}`}
-            className="btn btn-success"
+            className="editStylistNotes-btn btn btn-success"
             onClick={() => {
-              console.log("edit stylist notes clicked.");
+              this.toggle();
             }}
-            style={{
-              display:
-                this.props.appointment.checked &&
-                this.props.appointment.stylistNotes
-                  ? ""
-                  : "none"
-            }}
-            disabled={this.state.saveDisabled}
           >
-            Edit Stylist Notes
+            <EditStylistNotesModal
+            appointment={this.props.appointment}
+            addStylistNotes={this.props.addStylistNotes}
+            modal={this.state.modal}
+            toggle={this.toggle}
+          />
           </button>
+            : ""
+          }
           <button
             id={`appCancel-${this.props.appointment.id}`}
             className="btn btn-warning"
             onClick={() => {
-              this.setState({ saveDisabled: true });
+              this.disableButton();
               this.props.cancelAppointment(
                 this.props.appointment,
                 this.props.getUser(this.props.appointment.request.userId)
@@ -131,8 +141,8 @@ export default class AppointmentCard extends Component {
           <button
             className="appDel-btn btn btn-danger"
             onClick={() => {
-              this.setState({ saveDisabled: true });
-              console.log("appDel-btn pushed");
+              this.disableButton();
+              this.props.removeAppointment(this.props.appointment);
             }}
             style={{
               display:

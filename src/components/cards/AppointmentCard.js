@@ -1,23 +1,36 @@
 import React, { Component } from "react";
-import StylistNotesModal from "../admin/appointments/StylistNotesModal"
+import StylistNotesModal from "../admin/appointments/StylistNotesModal";
 
 export default class AppointmentCard extends Component {
   state = {
     saveDisabled: false,
     stylistNotes: "",
+    isCompleted: false
   };
 
-  handleFieldChange = evt => {
-    const stateToChange = {};
-    stateToChange[evt.target.id] = evt.target.value;
-    this.setState(stateToChange);
-  }
+  // handleFieldChange = evt => {
+  //   const stateToChange = {};
+  //   stateToChange[evt.target.id] = evt.target.value;
+  //   this.setState(stateToChange);
+  // };
+
+  handleCheck = event => {
+    if (this.state.isCompleted === false) {
+      this.setState({isCompleted: true})
+    } else {
+      this.setState({isCompleted: false})
+    }
+  };
 
   render() {
     return (
       <React.Fragment>
-        <div key={this.props.appointment.id} className="appointment-card">
-          <input type="checkbox" value="completed" />
+        <div key={this.props.appointment.id} className={this.state.isCompleted ? "appointment-card strike" : "appointment-card"}>
+          <input
+            id="completedAppointment"
+            type="checkbox"
+            onChange={this.handleCheck}
+          />
           <section className="appointment-name">
             <p>{this.props.getUser(this.props.appointment.request.userId)}</p>
           </section>
@@ -44,12 +57,11 @@ export default class AppointmentCard extends Component {
             className="btn btn-success"
             onClick={() => {
               this.setState({ saveDisabled: true });
-              this.props.addNotes()
+              this.props.addNotes();
             }}
             style={{
               display:
-                !this.props.appointment.stylistNotes &&
-                !this.props.appointment.completed
+                this.state.isCompleted
                   ? ""
                   : "none"
             }}
@@ -71,8 +83,7 @@ export default class AppointmentCard extends Component {
             }}
             style={{
               display:
-                !this.props.appointment.stylistNotes &&
-                !this.props.appointment.completed
+                !this.state.isCompleted
                   ? ""
                   : "none"
             }}
@@ -87,7 +98,11 @@ export default class AppointmentCard extends Component {
               console.log("appDel-btn pushed");
             }}
             style={{
-              display: this.props.appointment.stylistNotes && !this.props.appointment.completed ? "" : "none"
+              display:
+                this.props.appointment.stylistNotes &&
+                !this.props.appointment.completed
+                  ? ""
+                  : "none"
             }}
             disabled={this.state.saveDisabled}
           >

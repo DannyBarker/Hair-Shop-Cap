@@ -166,7 +166,7 @@
       "id": 2,
       "userId": 2,
       "serviceId": 10,
-      "statusMessageId": 2,
+      "statusMessageId": 1,
       "day": "2019-09-13",
       "time": "12:30",
       "request_details": "Give me the new Do!"
@@ -233,6 +233,15 @@
       "day": "2019-10-15",
       "time": "12:30",
       "request_details": "Give me the new Do!"
+    },
+    {
+      "id": 10,
+      "userId": 2,
+      "serviceId": 9,
+      "statusMessageId": 2,
+      "day": "2019-12-13",
+      "time": "12:30",
+      "request_details": "Hair is too long!"
     }
   ],
   "appointments": [

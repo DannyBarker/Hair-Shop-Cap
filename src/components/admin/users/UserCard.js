@@ -35,6 +35,8 @@ export default class UserCard extends Component {
             cancelAppointment={this.props.cancelAppointment}
             checkAppointment={this.props.checkAppointment}
             removeAppointment={this.props.removeAppointment}
+            requests={this.props.requests}
+            acceptRequest={this.props.acceptRequest}
           />
         </button>
       </div>

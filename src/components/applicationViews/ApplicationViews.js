@@ -111,7 +111,7 @@ class ApplicationViews extends Component {
       });
   };
 
-  acceptRequest = resource => {
+  acceptRequest = (resource, fnctn) => {
     let newAppointment = {
       requestId: resource.id,
       completed: false,
@@ -127,19 +127,22 @@ class ApplicationViews extends Component {
       time: resource.time,
       request_details: resource.request_details
     };
-
-    API.put("requests", editRequest)
-      .then(() => API.getAll("requests"))
-      .then(requests => {
-        let sortedRequests = this.sortRequests(requests);
-        this.setState({ requests: sortedRequests });
-      })
-      .then(() => API.post("appointments", newAppointment))
-      .then(() => API.getExpand("appointments", "request"))
-      .then(appointments => {
-        let sortedAppointments = this.sortAppointments(appointments);
-        this.setState({ appointments: sortedAppointments });
-      });
+    if (window.confirm(`Would you like to accept this request for ${resource.day} at ${resource.time}?`)) {
+      API.put("requests", editRequest)
+        .then(() => API.getAll("requests"))
+        .then(requests => {
+          let sortedRequests = this.sortRequests(requests);
+          this.setState({ requests: sortedRequests });
+        })
+        .then(() => API.post("appointments", newAppointment))
+        .then(() => API.getExpand("appointments", "request"))
+        .then(appointments => {
+          let sortedAppointments = this.sortAppointments(appointments);
+          this.setState({ appointments: sortedAppointments });
+        });
+    } else {
+      return false
+    }
   };
 
   addStylistNotes = (resource, id) => {
@@ -335,6 +338,7 @@ class ApplicationViews extends Component {
                   {...props}
                   users={this.state.users}
                   services={this.state.services}
+                  requests={this.state.requests}
                   getAppointment={this.getAppointment}
                   getRequests={this.getRequests}
                   addStylistNotes={this.addStylistNotes}
@@ -343,6 +347,8 @@ class ApplicationViews extends Component {
                   cancelAppointment={this.cancelAppointment}
                   checkAppointment={this.checkAppointment}
                   removeAppointment={this.removeAppointment}
+                  acceptRequest={this.acceptRequest}
+
                 />
               );
             } else {

@@ -53,6 +53,7 @@ state = {
                   cancelAppointment={this.props.cancelAppointment}
                   checkAppointment={this.props.checkAppointment}
                   removeAppointment={this.props.removeAppointment}
+                  acceptRequest={this.props.acceptRequest}
                 />
               ) : (
                 ""

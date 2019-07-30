@@ -57,12 +57,12 @@ export default class AppointmentCard extends Component {
           </section>
 
           <section className="appointment-time">
-            <p>{this.props.appointment.request.day}</p>
-            <p>{this.props.appointment.request.time}</p>
+            <p>{this.props.appointment.completed ? "Date: " : ""}{this.props.appointment.request.day}</p>
+            <p>{this.props.appointment.completed ? "Time: " : ""}{this.props.appointment.request.time}</p>
           </section>
 
           <section className="appointment-service">
-            <p>
+            <p>{this.props.appointment.completed ? "Service: " : ""}
               {
                 this.props.getService(this.props.appointment.request.serviceId)
                   .type
@@ -70,8 +70,14 @@ export default class AppointmentCard extends Component {
             </p>
           </section>
           <section className="appointment-detail">
-            <p>{this.props.appointment.request.request_details}</p>
+            <p>{this.props.appointment.completed ? "Details: " : ""}{this.props.appointment.request.request_details}</p>
           </section>
+          {
+            this.props.appointment.stylistNotes ?
+              <section className="appointment-stylistNotes">
+                <p>Stylist's Notes: {" "}{this.props.appointment.stylistNotes}</p>
+              </section> : ""
+          }
           {
             !this.props.appointment.stylistNotes && this.props.appointment.checked ?
             <button

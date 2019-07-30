@@ -4,8 +4,7 @@ import StylistNotesModal from "../admin/appointments/StylistNotesModal";
 export default class AppointmentCard extends Component {
   state = {
     saveDisabled: false,
-    stylistNotes: "",
-    isCompleted: false
+    stylistNotes: ""
   };
 
   // handleFieldChange = evt => {
@@ -15,21 +14,31 @@ export default class AppointmentCard extends Component {
   // };
 
   handleCheck = event => {
-    if (this.state.isCompleted === false) {
-      this.setState({isCompleted: true})
+    if (this.props.appointment.checked === false) {
+      this.setState({ isCompleted: true });
+      this.props.checkAppointment(this.props.appointment, true);
     } else {
-      this.setState({isCompleted: false})
+      this.setState({ isCompleted: false });
+      this.props.checkAppointment(this.props.appointment, false);
     }
   };
 
   render() {
     return (
       <React.Fragment>
-        <div key={this.props.appointment.id} className={this.state.isCompleted ? "appointment-card strike" : "appointment-card"}>
+        <div
+          key={this.props.appointment.id}
+          className={
+            this.props.appointment.checked
+              ? "appointment-card strike"
+              : "appointment-card"
+          }
+        >
           <input
             id="completedAppointment"
             type="checkbox"
             onChange={this.handleCheck}
+            checked={this.props.appointment.checked}
           />
           <section className="appointment-name">
             <p>{this.props.getUser(this.props.appointment.request.userId)}</p>
@@ -60,10 +69,7 @@ export default class AppointmentCard extends Component {
               this.props.addNotes();
             }}
             style={{
-              display:
-                this.state.isCompleted
-                  ? ""
-                  : "none"
+              display: this.props.appointment.checked ? "" : "none"
             }}
             disabled={this.state.saveDisabled}
           >
@@ -83,7 +89,9 @@ export default class AppointmentCard extends Component {
             }}
             style={{
               display:
-                !this.state.isCompleted
+                !this.props.appointment.completed &&
+                !this.props.appointment.stylistNotes &&
+                !this.props.appointment.checked
                   ? ""
                   : "none"
             }}

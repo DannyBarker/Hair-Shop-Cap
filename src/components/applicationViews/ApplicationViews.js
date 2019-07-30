@@ -53,8 +53,8 @@ class ApplicationViews extends Component {
         user = userApp;
       }
     });
-    let userName = `${user.firstName} ${user.lastName}`;
-    return userName;
+
+    return user.name
   };
 
   getService = serviceId => {

@@ -5,7 +5,6 @@ import EditStylistNotesModal from "../admin/appointments/EditStylistNotesModal";
 export default class AppointmentCard extends Component {
   state = {
     saveDisabled: false,
-    stylistNotes: "",
     modal: false
   };
 

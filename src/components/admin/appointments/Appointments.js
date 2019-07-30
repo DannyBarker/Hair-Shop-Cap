@@ -5,15 +5,12 @@ import "./Appointments.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Appointments extends Component {
-  addNotes = () => {
-    this.props.history.push("/admin/stylistNotes")
-  }
 
   render() {
     return (
       <React.Fragment>
         <h1>Appointments:</h1>
-        <ul>
+        <ul className="adminApp-ul">
           <li>Name:</li>
           <li>Time:</li>
           <li>Service</li>
@@ -31,7 +28,6 @@ class Appointments extends Component {
                 getService={this.props.getService}
                 cancelAppointment={this.props.cancelAppointment}
                 checkAppointment={this.props.checkAppointment}
-                addNotes={this.addNotes}
                 addStylistNotes={this.props.addStylistNotes}
                 removeAppointment={this.props.removeAppointment}
               />

@@ -28,21 +28,25 @@ class ApplicationViews extends Component {
       .then(users => this.setState({ users: users }))
       .then(() => API.getExpand("appointments", "request"))
       .then(appointments => {
-        let sortedAppointments = this.sortAppointments(appointments)
-        this.setState({ appointments: sortedAppointments })})
+        let sortedAppointments = this.sortAppointments(appointments);
+        this.setState({ appointments: sortedAppointments });
+      })
       .then(() => API.getAll("services"))
       .then(services => this.setState({ services: services }))
       .then(() => API.getAll("requests"))
       .then(requests => {
-        let sortedRequests = this.sortRequests(requests)
-        this.setState({requests: sortedRequests})})
+        let sortedRequests = this.sortRequests(requests);
+        this.setState({ requests: sortedRequests });
+      });
   }
 
   sortRequests = arr => {
     return arr.sort((a, b) => Date.parse(a.day) - Date.parse(b.day));
   };
   sortAppointments = arr => {
-    return arr.sort((a, b) => Date.parse(a.request.day) - Date.parse(b.request.day));
+    return arr.sort(
+      (a, b) => Date.parse(a.request.day) - Date.parse(b.request.day)
+    );
   };
 
   getUser = userId => {
@@ -53,7 +57,7 @@ class ApplicationViews extends Component {
       }
     });
 
-    return user.name
+    return user.name;
   };
 
   getService = serviceId => {
@@ -67,26 +71,29 @@ class ApplicationViews extends Component {
   };
 
   cancelAppointment = (resource, name) => {
-    let button = false
-    if (window.confirm(`Are you sure you'd like to cancel ${name}'s appointment?`)) {
+    let button = false;
+    if (
+      window.confirm(`Are you sure you'd like to cancel ${name}'s appointment?`)
+    ) {
       let newObj = {
         id: resource.id,
         requestId: resource.requestId,
         completed: true,
         checked: resource.checked,
         stylistNotes: "Appointment Canceled."
-      }
+      };
       API.put("appointments", newObj)
         .then(() => API.getExpand("appointments", "request"))
         .then(appointments => {
-          let sortedAppointments = this.sortAppointments(appointments)
-          this.setState({ appointments: sortedAppointments })})
-          .then(() => {
-            button = true
-          })
+          let sortedAppointments = this.sortAppointments(appointments);
+          this.setState({ appointments: sortedAppointments });
+        })
+        .then(() => {
+          button = true;
+        });
     }
-    return button
-  }
+    return button;
+  };
 
   checkAppointment = (resource, TF) => {
     let newObj = {
@@ -95,21 +102,22 @@ class ApplicationViews extends Component {
       completed: resource.completed,
       checked: TF,
       stylistNotes: resource.stylistNotes
-      }
+    };
     API.put("appointments", newObj)
       .then(() => API.getExpand("appointments", "request"))
       .then(appointments => {
-        let sortedAppointments = this.sortAppointments(appointments)
-        this.setState({ appointments: sortedAppointments })})
-  }
+        let sortedAppointments = this.sortAppointments(appointments);
+        this.setState({ appointments: sortedAppointments });
+      });
+  };
 
-  acceptRequest = (resource) => {
+  acceptRequest = resource => {
     let newAppointment = {
       requestId: resource.id,
       completed: false,
       checked: false,
       stylistNotes: ""
-    }
+    };
     let editRequest = {
       id: resource.id,
       userId: resource.userId,
@@ -118,36 +126,38 @@ class ApplicationViews extends Component {
       day: resource.day,
       time: resource.time,
       request_details: resource.request_details
-    }
+    };
 
     API.put("requests", editRequest)
-    .then(() => API.getAll("requests"))
+      .then(() => API.getAll("requests"))
       .then(requests => {
-        let sortedRequests = this.sortRequests(requests)
-        this.setState({requests: sortedRequests})})
+        let sortedRequests = this.sortRequests(requests);
+        this.setState({ requests: sortedRequests });
+      })
       .then(() => API.post("appointments", newAppointment))
       .then(() => API.getExpand("appointments", "request"))
       .then(appointments => {
-        let sortedAppointments = this.sortAppointments(appointments)
-        this.setState({ appointments: sortedAppointments })})
-  }
-
+        let sortedAppointments = this.sortAppointments(appointments);
+        this.setState({ appointments: sortedAppointments });
+      });
+  };
 
   addStylistNotes = (resource, id) => {
-    let input = document.getElementById(id).value
+    let input = document.getElementById(id).value;
     let newObj = {
       id: resource.id,
       requestId: resource.requestId,
       completed: resource.completed,
       checked: resource.checked,
       stylistNotes: input
-      }
+    };
     API.put("appointments", newObj)
       .then(() => API.getExpand("appointments", "request"))
       .then(appointments => {
-        let sortedAppointments = this.sortAppointments(appointments)
-        this.setState({ appointments: sortedAppointments })})
-  }
+        let sortedAppointments = this.sortAppointments(appointments);
+        this.setState({ appointments: sortedAppointments });
+      });
+  };
   // sortAppointmentTime = (resource) => {
   //   let daySplit = resource.day.split("-")
   //   let timeSplit = resource.time.split(":")
@@ -155,20 +165,40 @@ class ApplicationViews extends Component {
   //   return newDate
   // }
 
-  removeAppointment = (resource) => {
+  removeAppointment = resource => {
     let newObj = {
       id: resource.id,
       requestId: resource.requestId,
       completed: true,
       checked: resource.checked,
       stylistNotes: resource.stylistNotes
-      }
+    };
     API.put("appointments", newObj)
       .then(() => API.getExpand("appointments", "request"))
       .then(appointments => {
-        let sortedAppointments = this.sortAppointments(appointments)
-        this.setState({ appointments: sortedAppointments })})
-  }
+        let sortedAppointments = this.sortAppointments(appointments);
+        this.setState({ appointments: sortedAppointments });
+      });
+  };
+
+  getAppointment = userId => {
+    let appointments = this.state.appointments.filter(appointment => {
+      if (appointment.request.userId === userId) {
+        return appointment;
+      }
+    });
+
+    return appointments;
+  };
+  getRequests = userId => {
+    let requests = this.state.requests.filter(request => {
+      if (request.userId === userId) {
+        return request;
+      }
+    });
+
+    return requests;
+  };
 
   isAuthenticated = () => this.props.userAccess.userId !== null;
   isAdmin = () => this.props.userAccess.accessType === "admin";
@@ -300,7 +330,21 @@ class ApplicationViews extends Component {
           path="/admin/users"
           render={props => {
             if (this.isAuthenticated() && this.isAdmin()) {
-              return <AdminUsers {...props} users={this.state.users} />;
+              return (
+                <AdminUsers
+                  {...props}
+                  users={this.state.users}
+                  services={this.state.services}
+                  getAppointment={this.getAppointment}
+                  getRequests={this.getRequests}
+                  addStylistNotes={this.addStylistNotes}
+                  getUser={this.getUser}
+                  getService={this.getService}
+                  cancelAppointment={this.cancelAppointment}
+                  checkAppointment={this.checkAppointment}
+                  removeAppointment={this.removeAppointment}
+                />
+              );
             } else {
               return <Redirect to="/" />;
             }
@@ -311,7 +355,14 @@ class ApplicationViews extends Component {
           path="/admin/requests"
           render={props => {
             if (this.isAuthenticated() && this.isAdmin()) {
-              return <AdminRequests requests={this.state.requests} getUser={this.getUser} getService={this.getService} acceptRequest={this.acceptRequest} />;
+              return (
+                <AdminRequests
+                  requests={this.state.requests}
+                  getUser={this.getUser}
+                  getService={this.getService}
+                  acceptRequest={this.acceptRequest}
+                />
+              );
             } else {
               return <Redirect to="/" />;
             }

@@ -10,7 +10,7 @@ export default class Requests extends Component {
         <h1>Requests:</h1>
         <div className="adminRequests-Div">
           {
-            this.props.requests.map( request => request.statusMessageId === 2 ? <RequestCard key={request.id} request={request} getUser={this.props.getUser} getService={this.props.getService} /> : "")
+            this.props.requests.map( request => request.statusMessageId === 2 ? <RequestCard key={request.id} request={request} getUser={this.props.getUser} getService={this.props.getService} acceptRequest={this.props.acceptRequest} /> : "")
           }
         </div>
       </React.Fragment>

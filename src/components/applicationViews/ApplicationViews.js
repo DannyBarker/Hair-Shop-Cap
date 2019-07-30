@@ -75,7 +75,7 @@ class ApplicationViews extends Component {
         requestId: resource.requestId,
         completed: true,
         checked: resource.checked,
-        stylistNotes: "No Show."
+        stylistNotes: "Appointment Canceled."
       }
       API.put("appointments", newObj)
         .then(() => API.getExpand("appointments", "request"))
@@ -98,6 +98,35 @@ class ApplicationViews extends Component {
       stylistNotes: resource.stylistNotes
       }
     API.put("appointments", newObj)
+      .then(() => API.getExpand("appointments", "request"))
+      .then(appointments => {
+        let sortedAppointments = this.sortAppointments(appointments)
+        this.setState({ appointments: sortedAppointments })})
+  }
+
+  acceptRequest = (resource) => {
+    let newAppointment = {
+      requestId: resource.id,
+      completed: false,
+      checked: false,
+      stylistNotes: ""
+    }
+    let editRequest = {
+      id: resource.id,
+      userId: resource.userId,
+      serviceId: resource.serviceId,
+      statusMessageId: 1,
+      day: resource.day,
+      time: resource.time,
+      request_details: resource.request_details
+    }
+
+    API.put("requests", editRequest)
+    .then(() => API.getAll("requests"))
+      .then(requests => {
+        let sortedRequests = this.sortRequests(requests)
+        this.setState({requests: sortedRequests})})
+      .then(() => API.post("appointments", newAppointment))
       .then(() => API.getExpand("appointments", "request"))
       .then(appointments => {
         let sortedAppointments = this.sortAppointments(appointments)
@@ -243,7 +272,7 @@ class ApplicationViews extends Component {
           path="/admin/requests"
           render={props => {
             if (this.isAuthenticated() && this.isAdmin()) {
-              return <AdminRequests requests={this.state.requests} getUser={this.getUser} getService={this.getService} />;
+              return <AdminRequests requests={this.state.requests} getUser={this.getUser} getService={this.getService} acceptRequest={this.acceptRequest} />;
             } else {
               return <Redirect to="/" />;
             }

@@ -19,12 +19,10 @@ export default class RequestCard extends Component {
         <button
           id="acceptRequest-btn"
           className="btn btn-warning"
-          onClick={() =>
-            this.setState(
-              { saveDisabled: true },
-              console.log("denyRequest-btn clicked")
-            )
-          }
+          onClick={() => {
+            this.setState({ saveDisabled: true })
+            this.props.acceptRequest(this.props.request)
+          }}
           disabled={this.state.saveDisabled}
         >
           Accept

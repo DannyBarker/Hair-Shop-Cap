@@ -3,32 +3,28 @@
     {
       "id": 1,
       "accessTypeId": 1,
-      "firstName": "Shannon",
-      "lastName": "Gamble",
+      "name": "Shannon Gamble",
       "email": "admin@email.com",
       "password": "password123"
     },
     {
       "id": 2,
       "accessTypeId": 2,
-      "firstName": "Olivia",
-      "lastName": "Gamble",
+      "name": "Olivia Gamble",
       "email": "Olivia@email.com",
       "password": "pass123"
     },
     {
       "id": 3,
       "accessTypeId": 2,
-      "firstName": "Is",
-      "lastName": "Gamble",
+      "name": "Is Gamble",
       "email": "Is@email.com",
       "password": "pass123"
     },
     {
       "id": 4,
       "accessTypeId": 2,
-      "firstName": "Mattie",
-      "lastName": "Gamble",
+      "name": "Mattie Gamble",
       "email": "Mattie@email.com",
       "password": "pass123"
     }

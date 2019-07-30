@@ -133,8 +133,8 @@ class ApplicationViews extends Component {
   }
 
 
-  addStylistNotes = resource => {
-    let input = document.getElementById("styleNotes-input").value
+  addStylistNotes = (resource, id) => {
+    let input = document.getElementById(id).value
     let newObj = {
       id: resource.id,
       requestId: resource.requestId,
@@ -155,14 +155,13 @@ class ApplicationViews extends Component {
   //   return newDate
   // }
 
-  editStylistNotes = (resource) => {
-    let input = document.getElementById("styleNotes-edit").value
+  removeAppointment = (resource) => {
     let newObj = {
       id: resource.id,
       requestId: resource.requestId,
-      completed: resource.completed,
+      completed: true,
       checked: resource.checked,
-      stylistNotes: input
+      stylistNotes: resource.stylistNotes
       }
     API.put("appointments", newObj)
       .then(() => API.getExpand("appointments", "request"))
@@ -275,7 +274,7 @@ class ApplicationViews extends Component {
                   cancelAppointment={this.cancelAppointment}
                   checkAppointment={this.checkAppointment}
                   addStylistNotes={this.addStylistNotes}
-                  editStylistNotes={this.editStylistNotes}
+                  removeAppointment={this.removeAppointment}
                 />
               );
             } else {

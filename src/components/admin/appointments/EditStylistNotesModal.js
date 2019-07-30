@@ -34,7 +34,7 @@ export default class StylistNotesModal extends Component {
                 this.props.appointment.id
               } btn btn-success`}
               onClick={() => {
-                this.props.editStylistNotes(this.props.appointment);
+                this.props.addStylistNotes(this.props.appointment, "styleNotes-edit");
                 this.props.toggle();
               }}
             >

@@ -102,7 +102,7 @@ export default class AppointmentCard extends Component {
           >
             <EditStylistNotesModal
             appointment={this.props.appointment}
-            editStylistNotes={this.props.editStylistNotes}
+            addStylistNotes={this.props.addStylistNotes}
             modal={this.state.modal}
             toggle={this.toggle}
           />
@@ -137,7 +137,7 @@ export default class AppointmentCard extends Component {
             className="appDel-btn btn btn-danger"
             onClick={() => {
               this.disableButton();
-              console.log("appDel-btn pushed");
+              this.props.removeAppointment(this.props.appointment);
             }}
             style={{
               display:

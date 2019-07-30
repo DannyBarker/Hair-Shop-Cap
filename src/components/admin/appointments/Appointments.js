@@ -21,7 +21,7 @@ class Appointments extends Component {
         </ul>
         <div className="appointments-div">
           {this.props.appointments.map(appointment =>
-            appointment.completed && appointment.stylistNotes ? (
+            appointment.completed ? (
               ""
             ) : (
               <AppointmentCard
@@ -33,7 +33,7 @@ class Appointments extends Component {
                 checkAppointment={this.props.checkAppointment}
                 addNotes={this.addNotes}
                 addStylistNotes={this.props.addStylistNotes}
-                editStylistNotes={this.props.editStylistNotes}
+                removeAppointment={this.props.removeAppointment}
               />
             )
           )}

@@ -88,6 +88,21 @@ class ApplicationViews extends Component {
     return button
   }
 
+  checkAppointment = (resource, TF) => {
+    let newObj = {
+      id: resource.id,
+      requestId: resource.requestId,
+      completed: resource.completed,
+      checked: TF,
+      stylistNotes: resource.stylistNotes
+      }
+    API.put("appointments", newObj)
+      .then(() => API.getExpand("appointments", "request"))
+      .then(appointments => {
+        let sortedAppointments = this.sortAppointments(appointments)
+        this.setState({ appointments: sortedAppointments })})
+  }
+
   isAuthenticated = () => this.props.userAccess.userId !== null;
   isAdmin = () => this.props.userAccess.accessType === "admin";
 
@@ -190,6 +205,7 @@ class ApplicationViews extends Component {
                   getUser={this.getUser}
                   getService={this.getService}
                   cancelAppointment={this.cancelAppointment}
+                  checkAppointment={this.checkAppointment}
                 />
               );
             } else {

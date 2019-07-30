@@ -30,6 +30,7 @@ class Appointments extends Component {
                 getUser={this.props.getUser}
                 getService={this.props.getService}
                 cancelAppointment={this.props.cancelAppointment}
+                checkAppointment={this.props.checkAppointment}
                 addNotes={this.addNotes}
               />
             )

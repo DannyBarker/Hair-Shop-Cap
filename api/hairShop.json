@@ -30,14 +30,14 @@
     }
   ],
   "accessTypes": [
-   {
-     "id": 1,
-     "accessType": "admin"
-   },
-   {
-     "id": 2,
-     "accessType": "user"
-   }
+    {
+      "id": 1,
+      "accessType": "admin"
+    },
+    {
+      "id": 2,
+      "accessType": "user"
+    }
   ],
   "services": [
     {
@@ -240,18 +240,21 @@
       "id": 1,
       "requestId": 7,
       "completed": false,
+      "checked": false,
       "stylistNotes": ""
     },
     {
       "id": 2,
       "requestId": 1,
       "completed": false,
+      "checked": false,
       "stylistNotes": ""
     },
     {
       "id": 3,
       "requestId": 4,
       "completed": false,
+      "checked": false,
       "stylistNotes": ""
     }
   ]

@@ -75,6 +75,8 @@ export default class UserDetailModal extends Component {
                     getUser={this.props.getUser}
                     getService={this.props.getService}
                     acceptRequest={this.props.acceptRequest}
+                    denyRequests={this.props.denyRequests}
+                    status={this.props.status}
                   />
                 ) : (
                   ""

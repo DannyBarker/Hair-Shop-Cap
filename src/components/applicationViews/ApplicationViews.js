@@ -369,7 +369,8 @@ class ApplicationViews extends Component {
                   checkAppointment={this.checkAppointment}
                   removeAppointment={this.removeAppointment}
                   acceptRequest={this.acceptRequest}
-
+                  denyRequests={this.denyRequests}
+                  status={this.state.statusMessages}
                 />
               );
             } else {

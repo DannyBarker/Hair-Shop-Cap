@@ -74,6 +74,7 @@ class ApplicationViews extends Component {
         id: resource.id,
         requestId: resource.requestId,
         completed: true,
+        checked: resource.checked,
         stylistNotes: "No Show."
       }
       API.put("appointments", newObj)

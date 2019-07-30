@@ -215,7 +215,7 @@ class ApplicationViews extends Component {
           path="/admin/users"
           render={props => {
             if (this.isAuthenticated() && this.isAdmin()) {
-              return <AdminUsers users={this.state.users} />;
+              return <AdminUsers {...props} users={this.state.users} />;
             } else {
               return <Redirect to="/" />;
             }

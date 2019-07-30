@@ -1,4 +1,4 @@
-import { Route, withRouter, Redirect } from 'react-router-dom'
+// import { Route, withRouter, Redirect } from 'react-router-dom'
 import React, { Component } from 'react'
 import './Admin.css'
 import Appointments from './appointments/Appointments'

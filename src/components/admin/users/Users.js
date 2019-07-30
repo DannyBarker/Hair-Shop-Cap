@@ -11,7 +11,6 @@ state = {
 
 
   inputEvent = event => {
-    const newState = {};
     if (event.key === "Enter") {
       let input = document.getElementById("searchUsers").value;
       console.log();

@@ -7,7 +7,6 @@ import Admin from "../admin/Admin";
 import AdminAppointments from "../admin/appointments/Appointments";
 import AdminUsers from "../admin/users/Users";
 import AdminRequests from "../admin/requests/Requests";
-import StylistNotesModal from "../admin/appointments/StylistNotesModal"
 import Contact from "../contact/Contact";
 import CreateUser from "../createUser/CreateUser";
 import Home from "../home/Home";
@@ -133,12 +132,44 @@ class ApplicationViews extends Component {
         this.setState({ appointments: sortedAppointments })})
   }
 
+
+  addStylistNotes = resource => {
+    let input = document.getElementById("styleNotes-input").value
+    let newObj = {
+      id: resource.id,
+      requestId: resource.requestId,
+      completed: resource.completed,
+      checked: resource.checked,
+      stylistNotes: input
+      }
+    API.put("appointments", newObj)
+      .then(() => API.getExpand("appointments", "request"))
+      .then(appointments => {
+        let sortedAppointments = this.sortAppointments(appointments)
+        this.setState({ appointments: sortedAppointments })})
+  }
   // sortAppointmentTime = (resource) => {
   //   let daySplit = resource.day.split("-")
   //   let timeSplit = resource.time.split(":")
   //   let newDate = new Date(daySplit[0], daySplit[1], daySplit[2], timeSplit[0], timeSplit[1], 0, 0)
   //   return newDate
   // }
+
+  editStylistNotes = (resource) => {
+    let input = document.getElementById("styleNotes-edit").value
+    let newObj = {
+      id: resource.id,
+      requestId: resource.requestId,
+      completed: resource.completed,
+      checked: resource.checked,
+      stylistNotes: input
+      }
+    API.put("appointments", newObj)
+      .then(() => API.getExpand("appointments", "request"))
+      .then(appointments => {
+        let sortedAppointments = this.sortAppointments(appointments)
+        this.setState({ appointments: sortedAppointments })})
+  }
 
   isAuthenticated = () => this.props.userAccess.userId !== null;
   isAdmin = () => this.props.userAccess.accessType === "admin";
@@ -243,6 +274,8 @@ class ApplicationViews extends Component {
                   getService={this.getService}
                   cancelAppointment={this.cancelAppointment}
                   checkAppointment={this.checkAppointment}
+                  addStylistNotes={this.addStylistNotes}
+                  editStylistNotes={this.editStylistNotes}
                 />
               );
             } else {

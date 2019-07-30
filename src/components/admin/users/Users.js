@@ -4,6 +4,11 @@ import './Users.css'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 export default class Users extends Component {
+
+  userDetails = (id) => {
+    this.props.history.push(`/admin/user/${id}/details`)
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -13,7 +18,7 @@ export default class Users extends Component {
       </header>
       <div className="adminUsers-Div">
         {
-          this.props.users.map( user => user.accessTypeId === 2 ? <UserCard key={user.id} user={user} /> : "")
+          this.props.users.map( user => user.accessTypeId === 2 ? <UserCard key={user.id} user={user} userDetails={this.userDetails} /> : "")
         }
       </div>
 

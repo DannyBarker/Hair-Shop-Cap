@@ -55,7 +55,6 @@ export default class Profile extends Component {
                         addStylistNotes={this.props.addStylistNotes}
                         removeAppointment={this.props.removeAppointment}
                         isAdmin={this.props.isAdmin}
-                        sortAppointmentTime={this.props.sortAppointmentTime}
                         giveDate={this.props.giveDate}
                       />
                     ) : (

@@ -191,7 +191,7 @@ class ApplicationViews extends Component {
     if (endingDay < sortDay) {
       result = "future"
     }
-    console.log(result);
+    return result
   }
 
   giveDate = resource => {
@@ -366,7 +366,6 @@ class ApplicationViews extends Component {
                   acceptRequest={this.acceptRequest}
                   denyRequests={this.denyRequests}
                   status={this.state.statusMessages}
-                  sortAppointmentTime={this.sortAppointmentTime}
                   giveDate={this.giveDate}
                 />
               );
@@ -433,7 +432,6 @@ class ApplicationViews extends Component {
                   denyRequests={this.denyRequests}
                   status={this.state.statusMessages}
                   isAdmin={this.isAdmin}
-                  sortAppointmentTime={this.sortAppointmentTime}
                   giveDate={this.giveDate}
                 />
               );
@@ -456,7 +454,6 @@ class ApplicationViews extends Component {
                   acceptRequest={this.acceptRequest}
                   denyRequests={this.denyRequests}
                   isAdmin={this.isAdmin}
-                  sortAppointmentTime={this.sortAppointmentTime}
                   giveDate={this.giveDate}
                 />
               );

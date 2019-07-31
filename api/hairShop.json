@@ -262,7 +262,7 @@
       "id": 12,
       "userId": 5,
       "serviceId": 2,
-      "statusMessageId": 6,
+      "statusMessageId": 2,
       "dateTime": "Sun Sep 15 2019 12:00:00 GMT-0500",
       "request_details": "Checkup"
     }
@@ -293,7 +293,7 @@
       "id": 4,
       "requestId": 11,
       "completed": false,
-      "checked": true,
+      "checked": false,
       "stylistNotes": ""
     }
   ]

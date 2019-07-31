@@ -11,9 +11,9 @@ import Contact from "../contact/Contact";
 import CreateUser from "../createUser/CreateUser";
 import Home from "../home/Home";
 import Login from "../login/Login";
-import RequestAppointment from "../request-appointment/RequestAppointment";
 import Services from "../services/Services";
 import Profile from "../user/profile/Profile";
+import RequestAppointment from "../user/requestAppointment/RequestAppointment";
 
 class ApplicationViews extends Component {
   state = {
@@ -44,7 +44,7 @@ class ApplicationViews extends Component {
   }
 
   sortRequests = arr => {
-    return arr.sort((a, b) => Date.parse(a.dateTime) - Date.parse(b.dateTime));
+    return arr.sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
   };
   sortAppointments = arr => {
     return arr.sort(
@@ -177,8 +177,7 @@ class ApplicationViews extends Component {
     let currDay = currDate.getDate()
     let currYear = currDate.getFullYear()
     let appDay = `${currYear}/${currMonth}/${currDay}`
-    let newDate = new Date(resource.dateTime)
-    let sortDay = Date.parse(newDate)
+    let sortDay = Date.parse(resource.dateTime)
     let beginningDay = Date.parse(appDay)
     let endingDay = beginningDay + 86400000
 
@@ -266,6 +265,23 @@ class ApplicationViews extends Component {
       });
   };
 
+  requestSubmit = obj => {
+    let dateTime = document.getElementById("dayRequest").value
+    let service = document.getElementById("serviceIdRequest").value
+    let details = document.getElementById("request_detailsRequest").value
+    if (dateTime && service && details) {
+      API.post("requests", obj)
+      .then(() => API.getAll("requests"))
+      .then(requests => {
+        let sortedRequests = this.sortRequests(requests);
+        this.setState({ requests: sortedRequests });
+        this.props.history.push("/user/profile")
+      })
+    } else {
+      alert("Please fill out all fields.")
+    }
+  }
+
   isAuthenticated = () => this.props.userAccess.userId;
   isUser = () => this.props.userAccess.accessType === "user";
   isAdmin = () => this.props.userAccess.accessType === "admin";
@@ -303,17 +319,6 @@ class ApplicationViews extends Component {
         />
         <Route
           exact
-          path="/new"
-          render={props => {
-            if (this.isAuthenticated()) {
-              return <RequestAppointment />;
-            } else {
-              return <Redirect to="/" />;
-            }
-          }}
-        />
-        <Route
-          exact
           path="/login"
           render={props => {
             if (!this.isAuthenticated()) {
@@ -335,6 +340,17 @@ class ApplicationViews extends Component {
           render={props => {
             if (!this.isAuthenticated()) {
               return <CreateUser />;
+            } else {
+              return <Redirect to="/" />;
+            }
+          }}
+        />
+        <Route
+          exact
+          path="/user/request/new"
+          render={props => {
+            if (this.isAuthenticated() && this.isUser()) {
+              return <RequestAppointment {...props} requestSubmit={this.requestSubmit} userAccess={this.props.userAccess}  services={this.state.services} />;
             } else {
               return <Redirect to="/" />;
             }

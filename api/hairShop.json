@@ -159,7 +159,8 @@
       "serviceId": 1,
       "statusMessageId": 1,
       "dateTime": "Fri Sep 13 2019 12:30:00 GMT-0500",
-      "request_details": "Make me look pretty!"
+      "request_details": "Make me look pretty!",
+      "timestamp": 1564588630164
     },
     {
       "id": 2,
@@ -167,7 +168,8 @@
       "serviceId": 10,
       "statusMessageId": 2,
       "dateTime": "Sun Oct 13 2019 12:30:00 GMT-0500",
-      "request_details": "Give me the new Do!"
+      "request_details": "Give me the new Do!",
+      "timestamp": 1564584067320
     },
     {
       "id": 3,
@@ -175,7 +177,8 @@
       "serviceId": 9,
       "statusMessageId": 3,
       "dateTime": "Wed Nov 13 2019 12:30:00 GMT-0600",
-      "request_details": "Keep me lookin fire!"
+      "request_details": "Keep me lookin fire!",
+      "timestamp": 1564582104396
     },
     {
       "id": 4,
@@ -183,15 +186,17 @@
       "serviceId": 6,
       "statusMessageId": 1,
       "dateTime": "Sat Sep 14 2019 12:30:00 GMT-0500",
-      "request_details": "Need that cut!"
+      "request_details": "Need that cut!",
+      "timestamp": 1564586792056
     },
     {
       "id": 5,
       "userId": 3,
       "serviceId": 8,
       "statusMessageId": 2,
-      "dateTime":"Mon Oct 14 2019 12:30:00 GMT-0500",
-      "request_details": "It's me again!"
+      "dateTime": "Mon Oct 14 2019 12:30:00 GMT-0500",
+      "request_details": "It's me again!",
+      "timestamp": 1564584029584
     },
     {
       "id": 6,
@@ -199,7 +204,8 @@
       "serviceId": 1,
       "statusMessageId": 4,
       "dateTime": "Thu Nov 14 2019 12:30:00 GMT-0600",
-      "request_details": "Give me the new Do!"
+      "request_details": "Give me the new Do!",
+      "timestamp": 15645870392854
     },
     {
       "id": 7,
@@ -207,7 +213,8 @@
       "serviceId": 1,
       "statusMessageId": 1,
       "dateTime": "Sun Sep 15 2019 12:30:00 GMT-0500",
-      "request_details": "It's your fav daughter!"
+      "request_details": "It's your fav daughter!",
+      "timestamp": 1564588092364
     },
     {
       "id": 8,
@@ -215,7 +222,8 @@
       "serviceId": 9,
       "statusMessageId": 2,
       "dateTime": "Tue Oct 15 2019 12:30:00 GMT-0500",
-      "request_details": "I'm starting my new job!"
+      "request_details": "I'm starting my new job!",
+      "timestamp": 1564587039164
     },
     {
       "id": 9,
@@ -223,7 +231,8 @@
       "serviceId": 10,
       "statusMessageId": 5,
       "dateTime": "Fri Nov 15 2019 12:30:00 GMT-0600",
-      "request_details": "Give me the new Do!"
+      "request_details": "Give me the new Do!",
+      "timestamp": 1564586327483
     },
     {
       "id": 10,
@@ -231,7 +240,8 @@
       "serviceId": 9,
       "statusMessageId": 2,
       "dateTime": "Mon Jan 13 2020 12:30:00 GMT-0600",
-      "request_details": "Hair is too long!"
+      "request_details": "Hair is too long!",
+      "timestamp": 1564587808484
     }
   ],
   "appointments": [

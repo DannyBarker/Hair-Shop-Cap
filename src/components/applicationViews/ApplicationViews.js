@@ -336,7 +336,7 @@ class ApplicationViews extends Component {
         />
         <Route
           exact
-          path="/create"
+          path="/create/user"
           render={props => {
             if (!this.isAuthenticated()) {
               return <CreateUser />;
@@ -349,11 +349,7 @@ class ApplicationViews extends Component {
           exact
           path="/user/request/new"
           render={props => {
-            if (this.isAuthenticated() && this.isUser()) {
-              return <RequestAppointment {...props} requestSubmit={this.requestSubmit} userAccess={this.props.userAccess}  services={this.state.services} />;
-            } else {
-              return <Redirect to="/" />;
-            }
+            return <RequestAppointment {...props} isAuthenticated={this.isAuthenticated} isUser={this.isUser} requestSubmit={this.requestSubmit} userAccess={this.props.userAccess}  services={this.state.services} />;
           }}
         />
         <Route

@@ -39,30 +39,37 @@ export default class AppointmentCard extends Component {
               : "appointment-card"
           }
         >
-          <input
-            style={{
-              display:
-                this.props.appointment.checked &&
-                this.props.appointment.stylistNotes
-                  ? "none"
-                  : ""
-            }}
-            id="completedAppointment"
-            type="checkbox"
-            onChange={this.handleCheck}
-            checked={this.props.appointment.checked}
-          />
+          {this.props.isAdmin() && this.props.sortAppointmentTime(this.props.appointment.request) === "current" ? (
+            <input
+              style={{
+                display:
+                  this.props.appointment.checked &&
+                  this.props.appointment.stylistNotes
+                    ? "none"
+                    : ""
+              }}
+              id="completedAppointment"
+              type="checkbox"
+              onChange={this.handleCheck}
+              checked={this.props.appointment.checked}
+            />
+          ) : (
+            ""
+          )}
           <section className="appointment-name">
             <p>{this.props.getUser(this.props.appointment.request.userId)}</p>
           </section>
 
           <section className="appointment-time">
-            <p>{this.props.appointment.completed ? "Date: " : ""}{this.props.appointment.request.day}</p>
-            <p>{this.props.appointment.completed ? "Time: " : ""}{this.props.appointment.request.time}</p>
+            <p>
+              {this.props.appointment.completed ? "Date: " : ""}
+              {this.props.giveDate(this.props.appointment.request)}
+            </p>
           </section>
 
           <section className="appointment-service">
-            <p>{this.props.appointment.completed ? "Service: " : ""}
+            <p>
+              {this.props.appointment.completed ? "Service: " : ""}
               {
                 this.props.getService(this.props.appointment.request.serviceId)
                   .type
@@ -70,50 +77,58 @@ export default class AppointmentCard extends Component {
             </p>
           </section>
           <section className="appointment-detail">
-            <p>{this.props.appointment.completed ? "Details: " : ""}{this.props.appointment.request.request_details}</p>
+            <p>
+              {this.props.appointment.completed ? "Details: " : ""}
+              {this.props.appointment.request.request_details}
+            </p>
           </section>
-          {
-            this.props.appointment.stylistNotes ?
-              <section className="appointment-stylistNotes">
-                <p>Stylist's Notes: {" "}{this.props.appointment.stylistNotes}</p>
-              </section> : ""
-          }
-          {
-            !this.props.appointment.stylistNotes && this.props.appointment.checked ?
+          {this.props.appointment.stylistNotes ? (
+            <section className="appointment-stylistNotes">
+              <p>Stylist's Notes: {this.props.appointment.stylistNotes}</p>
+            </section>
+          ) : (
+            ""
+          )}
+          {!this.props.appointment.stylistNotes &&
+          this.props.appointment.checked &&
+          this.props.isAdmin() ? (
             <button
-          id={`appNotes-${this.props.appointment.id}`}
-          className="addStylistNotes-btn btn btn-success"
-          onClick={() => {
-            this.toggle();
-          }}
-        >
-          <StylistNotesModal
-            appointment={this.props.appointment}
-            addStylistNotes={this.props.addStylistNotes}
-            modal={this.state.modal}
-            toggle={this.toggle}
-          />
-        </button>
-        : ""
-          }
-          {
-            this.props.appointment.stylistNotes && this.props.appointment.checked ?
+              id={`appNotes-${this.props.appointment.id}`}
+              className="addStylistNotes-btn btn btn-success"
+              onClick={() => {
+                this.toggle();
+              }}
+            >
+              <StylistNotesModal
+                appointment={this.props.appointment}
+                addStylistNotes={this.props.addStylistNotes}
+                modal={this.state.modal}
+                toggle={this.toggle}
+              />
+            </button>
+          ) : (
+            ""
+          )}
+          {this.props.appointment.stylistNotes &&
+          this.props.appointment.checked &&
+          this.props.isAdmin() ? (
             <button
-            id={`editNotes-${this.props.appointment.id}`}
-            className="editStylistNotes-btn btn btn-success"
-            onClick={() => {
-              this.toggle();
-            }}
-          >
-            <EditStylistNotesModal
-            appointment={this.props.appointment}
-            addStylistNotes={this.props.addStylistNotes}
-            modal={this.state.modal}
-            toggle={this.toggle}
-          />
-          </button>
-            : ""
-          }
+              id={`editNotes-${this.props.appointment.id}`}
+              className="editStylistNotes-btn btn btn-success"
+              onClick={() => {
+                this.toggle();
+              }}
+            >
+              <EditStylistNotesModal
+                appointment={this.props.appointment}
+                addStylistNotes={this.props.addStylistNotes}
+                modal={this.state.modal}
+                toggle={this.toggle}
+              />
+            </button>
+          ) : (
+            ""
+          )}
           <button
             id={`appCancel-${this.props.appointment.id}`}
             className="btn btn-warning"
@@ -130,7 +145,8 @@ export default class AppointmentCard extends Component {
               display:
                 !this.props.appointment.completed &&
                 !this.props.appointment.stylistNotes &&
-                !this.props.appointment.checked
+                !this.props.appointment.checked &&
+                this.props.isAdmin()
                   ? ""
                   : "none"
             }}
@@ -148,7 +164,8 @@ export default class AppointmentCard extends Component {
               display:
                 this.props.appointment.checked &&
                 this.props.appointment.stylistNotes &&
-                !this.props.appointment.completed
+                !this.props.appointment.completed &&
+                this.props.isAdmin()
                   ? ""
                   : "none"
             }}

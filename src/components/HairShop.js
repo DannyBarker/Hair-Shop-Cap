@@ -7,7 +7,7 @@ import ApplicationViews from './applicationViews/ApplicationViews'
 class HairShop extends Component {
   state = {
     accessType: sessionStorage.getItem("userType"),
-    userId: sessionStorage.getItem("userId")
+    userId: +sessionStorage.getItem("userId"),
   }
 
   setUserId = (accessType, id) => {

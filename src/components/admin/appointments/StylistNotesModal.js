@@ -7,7 +7,6 @@ import {
   ModalBody,
   ModalFooter
 } from "reactstrap";
-import { thisExpression } from "@babel/types";
 
 export default class StylistNotesModal extends Component {
 

@@ -56,6 +56,10 @@ state = {
                   acceptRequest={this.props.acceptRequest}
                   denyRequests={this.props.denyRequests}
                   status={this.props.status}
+                  isAdmin={this.props.isAdmin}
+                  isUser={this.props.isUser}
+                  sortAppointmentTime={this.props.sortAppointmentTime}
+                  giveDate={this.props.giveDate}
                 />
               ) : (
                 ""
@@ -83,6 +87,10 @@ state = {
                   acceptRequest={this.props.acceptRequest}
                   denyRequests={this.props.denyRequests}
                   status={this.props.status}
+                  isAdmin={this.props.isAdmin}
+                  sortAppointmentTime={this.props.sortAppointmentTime}
+                  giveDate={this.props.giveDate}
+                  isUser={this.props.isUser}
                 />
               ) : (
                 ""

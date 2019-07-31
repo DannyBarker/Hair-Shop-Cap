@@ -19,6 +19,9 @@ export default class Requests extends Component {
                 acceptRequest={this.props.acceptRequest}
                 status={this.props.status}
                 denyRequests={this.props.denyRequests}
+                isAdmin={this.props.isAdmin}
+                giveDate={this.props.giveDate}
+                isUser={this.props.isUser}
               />
             ) : (
               ""

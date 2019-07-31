@@ -27,6 +27,13 @@
       "name": "Mattie Gamble",
       "email": "Mattie@email.com",
       "password": "pass123"
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Danny Barker",
+      "email": "barkerdanny17@yahoo.com",
+      "password": "pass123",
+      "id": 5
     }
   ],
   "accessTypes": [
@@ -158,90 +165,106 @@
       "userId": 2,
       "serviceId": 1,
       "statusMessageId": 1,
-      "day": "2019-08-13",
-      "time": "12:30",
-      "request_details": "Make me look pretty!"
+      "dateTime": "Fri Sep 13 2019 12:30:00 GMT-0500",
+      "request_details": "Make me look pretty!",
+      "timestamp": 1564588630164
     },
     {
       "id": 2,
       "userId": 2,
       "serviceId": 10,
       "statusMessageId": 2,
-      "day": "2019-09-13",
-      "time": "12:30",
-      "request_details": "Give me the new Do!"
+      "dateTime": "Sun Oct 13 2019 12:30:00 GMT-0500",
+      "request_details": "Give me the new Do!",
+      "timestamp": 1564584067320
     },
     {
       "id": 3,
       "userId": 2,
-      "serviceId": 9,
-      "statusMessageId": 6,
-      "day": "2019-10-13",
-      "time": "12:30",
-      "request_details": "Keep me lookin fire!"
+      "serviceId": 10,
+      "statusMessageId": 2,
+      "dateTime": "Wed Nov 13 2019 12:30:00 GMT-0600",
+      "request_details": "Keep me lookin fire!",
+      "timestamp": 1564607432346
     },
     {
       "id": 4,
       "userId": 3,
       "serviceId": 6,
       "statusMessageId": 1,
-      "day": "2019-08-14",
-      "time": "12:30",
-      "request_details": "Need that cut!"
+      "dateTime": "Sat Sep 14 2019 12:30:00 GMT-0500",
+      "request_details": "Need that cut!",
+      "timestamp": 1564586792056
     },
     {
       "id": 5,
       "userId": 3,
       "serviceId": 8,
       "statusMessageId": 2,
-      "day": "2019-09-14",
-      "time": "12:30",
-      "request_details": "It's me again!"
+      "dateTime": "Mon Oct 14 2019 12:30:00 GMT-0500",
+      "request_details": "It's me again!",
+      "timestamp": 1564584029584
     },
     {
       "id": 6,
       "userId": 3,
       "serviceId": 1,
       "statusMessageId": 4,
-      "day": "2019-10-14",
-      "time": "12:30",
-      "request_details": "Give me the new Do!"
+      "dateTime": "Thu Nov 14 2019 12:30:00 GMT-0600",
+      "request_details": "Give me the new Do!",
+      "timestamp": 15645870392854
     },
     {
       "id": 7,
       "userId": 4,
       "serviceId": 1,
       "statusMessageId": 1,
-      "day": "2019-08-15",
-      "time": "12:30",
-      "request_details": "It's your fav daughter!"
+      "dateTime": "Sun Sep 15 2019 12:30:00 GMT-0500",
+      "request_details": "It's your fav daughter!",
+      "timestamp": 1564588092364
     },
     {
       "id": 8,
       "userId": 4,
       "serviceId": 9,
       "statusMessageId": 2,
-      "day": "2019-09-15",
-      "time": "12:30",
-      "request_details": "I'm starting my new job!"
+      "dateTime": "Tue Oct 15 2019 12:30:00 GMT-0500",
+      "request_details": "I'm starting my new job!",
+      "timestamp": 1564587039164
     },
     {
       "id": 9,
       "userId": 4,
       "serviceId": 10,
       "statusMessageId": 5,
-      "day": "2019-10-15",
-      "time": "12:30",
-      "request_details": "Give me the new Do!"
+      "dateTime": "Fri Nov 15 2019 12:30:00 GMT-0600",
+      "request_details": "Give me the new Do!",
+      "timestamp": 1564586327483
     },
     {
       "id": 10,
       "userId": 2,
       "serviceId": 9,
       "statusMessageId": 2,
-      "day": "2019-12-13",
-      "time": "12:30",
-      "request_details": "Hair is too long!"
+      "dateTime": "Mon Jan 13 2020 12:30:00 GMT-0600",
+      "request_details": "Hair is too long!",
+      "timestamp": 1564587808484
+    },
+    {
+      "id": 11,
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Wed Jul 31 2019 13:30:00 GMT-0500",
+      "request_details": "Hair is too long"
+    },
+    {
+      "id": 12,
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 6,
+      "dateTime": "Sun Sep 15 2019 12:00:00 GMT-0500",
+      "request_details": "Checkup"
     }
   ],
   "appointments": [
@@ -264,6 +287,13 @@
       "requestId": 4,
       "completed": false,
       "checked": false,
+      "stylistNotes": ""
+    },
+    {
+      "id": 4,
+      "requestId": 11,
+      "completed": false,
+      "checked": true,
       "stylistNotes": ""
     }
   ]

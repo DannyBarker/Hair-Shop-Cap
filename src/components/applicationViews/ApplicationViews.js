@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import API from "../apiManager/api";
 import "./ApplicationViews.css";
 import About from "../about/About";
-import Admin from "../admin/Admin";
+// import Admin from "../admin/Admin";
 import AdminAppointments from "../admin/appointments/Appointments";
 import AdminUsers from "../admin/users/Users";
 import AdminRequests from "../admin/requests/Requests";
@@ -11,9 +11,9 @@ import Contact from "../contact/Contact";
 import CreateUser from "../createUser/CreateUser";
 import Home from "../home/Home";
 import Login from "../login/Login";
-import RequestAppointment from "../request-appointment/RequestAppointment";
 import Services from "../services/Services";
-import User from "../user/User";
+import Profile from "../user/profile/Profile";
+import RequestAppointment from "../user/requestAppointment/RequestAppointment";
 
 class ApplicationViews extends Component {
   state = {
@@ -21,7 +21,7 @@ class ApplicationViews extends Component {
     requests: [],
     users: [],
     services: [],
-    statusMessages: [],
+    statusMessages: []
   };
 
   componentDidMount() {
@@ -40,15 +40,15 @@ class ApplicationViews extends Component {
         this.setState({ requests: sortedRequests });
       })
       .then(() => API.getAll("statusMessages"))
-      .then(statusMessage => this.setState({statusMessages: statusMessage}))
+      .then(statusMessage => this.setState({ statusMessages: statusMessage }));
   }
 
   sortRequests = arr => {
-    return arr.sort((a, b) => Date.parse(a.day) - Date.parse(b.day));
+    return arr.sort((a, b) => Date.parse(a.timestamp) - Date.parse(b.timestamp));
   };
   sortAppointments = arr => {
     return arr.sort(
-      (a, b) => Date.parse(a.request.day) - Date.parse(b.request.day)
+      (a, b) => Date.parse(a.request.dateTime) - Date.parse(b.request.dateTime)
     );
   };
 
@@ -114,7 +114,7 @@ class ApplicationViews extends Component {
       });
   };
 
-  acceptRequest = (resource) => {
+  acceptRequest = resource => {
     let newAppointment = {
       requestId: resource.id,
       completed: false,
@@ -126,11 +126,14 @@ class ApplicationViews extends Component {
       userId: resource.userId,
       serviceId: resource.serviceId,
       statusMessageId: 1,
-      day: resource.day,
-      time: resource.time,
+      dateTime: resource.dateTime,
       request_details: resource.request_details
     };
-    if (window.confirm(`Would you like to accept this request for ${resource.day} at ${resource.time}?`)) {
+    if (
+      window.confirm(
+        `Would you like to accept this request for ${this.giveDate(resource)}?`
+      )
+    ) {
       API.put("requests", editRequest)
         .then(() => API.getAll("requests"))
         .then(requests => {
@@ -144,7 +147,7 @@ class ApplicationViews extends Component {
           this.setState({ appointments: sortedAppointments });
         });
     } else {
-      return false
+      return false;
     }
   };
 
@@ -164,12 +167,47 @@ class ApplicationViews extends Component {
         this.setState({ appointments: sortedAppointments });
       });
   };
-  // sortAppointmentTime = (resource) => {
-  //   let daySplit = resource.day.split("-")
-  //   let timeSplit = resource.time.split(":")
-  //   let newDate = new Date(daySplit[0], daySplit[1], daySplit[2], timeSplit[0], timeSplit[1], 0, 0)
-  //   return newDate
-  // }
+  sortAppointmentTime = (resource) => {
+    let result = ""
+    let currDate = new Date()
+    let currMonth = currDate.getMonth() + 1
+    let currDay = currDate.getDate()
+    let currYear = currDate.getFullYear()
+    let appDay = `${currYear}/${currMonth}/${currDay}`
+    let sortDay = Date.parse(resource.dateTime)
+    let beginningDay = Date.parse(appDay)
+    let endingDay = beginningDay + 86400000
+
+    if (beginningDay <= sortDay <= endingDay) {
+      result = "current"
+    }
+    if (sortDay < beginningDay) {
+      result = "past"
+    }
+    if (endingDay < sortDay) {
+      result = "future"
+    }
+    return result
+  }
+
+  giveDate = resource => {
+    let splitDay = resource.dateTime.split(" ")
+    let time = ""
+    let splitTime = splitDay[4].split(":")
+    if (+splitTime[0] > 12) {
+      let pmTime = +splitTime[0] - 12
+      time = `${pmTime}:${splitTime[1]} p.m.`
+    }
+    if (+splitTime[0] === 12) {
+      time = `${splitTime[0]}:${splitTime[1]} p.m.`
+    }
+    if (+splitTime[0] < 12) {
+      time = `${splitTime[0]}:${splitTime[1]} a.m.`
+    }
+    let newStr = `${splitDay[0]}, ${splitDay[1]} ${splitDay[2]}. At ${time} `
+    return newStr
+
+  }
 
   removeAppointment = resource => {
     let newObj = {
@@ -191,6 +229,8 @@ class ApplicationViews extends Component {
     let appointments = this.state.appointments.filter(appointment => {
       if (appointment.request.userId === userId) {
         return appointment;
+      } else {
+        return ""
       }
     });
 
@@ -200,6 +240,8 @@ class ApplicationViews extends Component {
     let requests = this.state.requests.filter(request => {
       if (request.userId === userId) {
         return request;
+      } else {
+        return ""
       }
     });
 
@@ -207,24 +249,100 @@ class ApplicationViews extends Component {
   };
 
   denyRequests = (resource, id) => {
-      let editRequest = {
-        id: resource.id,
-        userId: resource.userId,
-        serviceId: resource.serviceId,
-        statusMessageId: id,
-        day: resource.day,
-        time: resource.time,
-        request_details: resource.request_details
-      };
-      API.put("requests", editRequest)
-        .then(() => API.getAll("requests"))
-        .then(requests => {
-          let sortedRequests = this.sortRequests(requests);
-          this.setState({ requests: sortedRequests });
-        })
+    let editRequest = {
+      id: resource.id,
+      userId: resource.userId,
+      serviceId: resource.serviceId,
+      statusMessageId: id,
+      dateTime: resource.dateTime,
+      request_details: resource.request_details
+    };
+    API.put("requests", editRequest)
+      .then(() => API.getAll("requests"))
+      .then(requests => {
+        let sortedRequests = this.sortRequests(requests);
+        this.setState({ requests: sortedRequests });
+      });
+  };
+
+  requestSubmit = (obj) => {
+    let dateTime = document.getElementById("dayRequest").value
+    let service = document.getElementById("serviceIdRequest").value
+    let details = document.getElementById("request_detailsRequest").value
+    if (dateTime && service && details) {
+      API.post("requests", obj)
+      .then(() => API.getAll("requests"))
+      .then(requests => {
+        let sortedRequests = this.sortRequests(requests);
+        this.setState({ requests: sortedRequests });
+        this.props.history.push("/user/profile")
+      })
+    } else {
+      alert("Please fill out all fields.")
+    }
+  }
+  requestEditSubmit = (obj) => {
+    let dateTimeEdit = document.getElementById("dayRequestEdit").value
+    let serviceEdit = document.getElementById("serviceIdRequestEdit").value
+    let detailsEdit = document.getElementById("request_detailsRequestEdit").value
+    if (dateTimeEdit && serviceEdit && detailsEdit) {
+      API.put("requests", obj)
+      .then(() => API.getAll("requests"))
+      .then(requests => {
+        let sortedRequests = this.sortRequests(requests);
+        this.setState({ requests: sortedRequests });
+        this.props.history.push("/user/profile")
+      })
+    } else {
+      alert("Please fill out all fields.")
+    }
   }
 
-  isAuthenticated = () => this.props.userAccess.userId !== null;
+  userCreate = obj => {
+    let verify = true
+    this.state.users.forEach(user => {
+      if (user.email.toLowerCase() === obj.email.toLowerCase()) {
+        verify = false
+      } else {
+        return ""
+      }
+    })
+    if (verify) {
+      API.post("users", obj)
+        .then(() => API.getExpand("users", "accessType"))
+        .then(users => this.setState({ users: users }))
+        .then(() => {
+          this.state.users.forEach(user => {
+            if (user.email === obj.email) {
+              this.props.setUserId(user.accessType.accessType, user.id)
+              this.props.history.push("/user/profile")
+            }
+          })
+        })
+    } else {
+      alert("Email already taken!")
+    }
+  }
+
+  verifyCreateFields = (fnctn) => {
+    let firstName = document.getElementById("firstNameCreate").value
+    let lastName = document.getElementById("lastNameCreate").value
+    let email = document.getElementById("emailCreate").value
+    let passOne = document.getElementById("passOneCreate").value
+    let passTwo = document.getElementById("passTwoCreate").value
+    if (firstName && lastName && email && passOne && passTwo) {
+      if (passOne === passTwo) {
+        fnctn()
+      } else {
+        alert("Passwords don't match!")
+      }
+    } else {
+      alert("Please fill out all fields!")
+    }
+  }
+
+  isAuthenticated = () => this.props.userAccess.userId;
+  isUser = () => this.props.userAccess.accessType === "user";
   isAdmin = () => this.props.userAccess.accessType === "admin";
 
   render() {
@@ -260,17 +378,6 @@ class ApplicationViews extends Component {
         />
         <Route
           exact
-          path="/new"
-          render={props => {
-            if (this.isAuthenticated()) {
-              return <RequestAppointment />;
-            } else {
-              return <Redirect to="/" />;
-            }
-          }}
-        />
-        <Route
-          exact
           path="/login"
           render={props => {
             if (!this.isAuthenticated()) {
@@ -288,10 +395,10 @@ class ApplicationViews extends Component {
         />
         <Route
           exact
-          path="/create"
+          path="/create/user"
           render={props => {
             if (!this.isAuthenticated()) {
-              return <CreateUser />;
+              return <CreateUser {...props} verifyCreateFields={this.verifyCreateFields} userCreate={this.userCreate} />;
             } else {
               return <Redirect to="/" />;
             }
@@ -299,9 +406,45 @@ class ApplicationViews extends Component {
         />
         <Route
           exact
-          path="/profile"
+          path="/user/request/new"
           render={props => {
-            return <User />;
+            return <RequestAppointment {...props} isAuthenticated={this.isAuthenticated} isUser={this.isUser} requestSubmit={this.requestSubmit} userAccess={this.props.userAccess}  services={this.state.services} />;
+          }}
+        />
+        <Route
+          exact
+          path="/user/profile"
+          render={props => {
+            if (this.isAuthenticated() && this.isUser()) {
+              return (
+                <Profile
+                  isUser={this.isUser}
+                  isAdmin={this.isAdmin}
+                  isAuthenticated={this.isAuthenticated}
+                  userAccess={this.props.userAccess}
+                  {...props}
+                  users={this.state.users}
+                  services={this.state.services}
+                  requests={this.state.requests}
+                  getAppointment={this.getAppointment}
+                  getRequests={this.getRequests}
+                  addStylistNotes={this.addStylistNotes}
+                  getUser={this.getUser}
+                  getService={this.getService}
+                  cancelAppointment={this.cancelAppointment}
+                  checkAppointment={this.checkAppointment}
+                  removeAppointment={this.removeAppointment}
+                  acceptRequest={this.acceptRequest}
+                  denyRequests={this.denyRequests}
+                  status={this.state.statusMessages}
+                  giveDate={this.giveDate}
+                  sortAppointmentTime={this.sortAppointmentTime}
+                  requestEditSubmit={this.requestEditSubmit}
+                />
+              );
+            } else {
+              return <Redirect to="/" />;
+            }
           }}
         />
         {/* <Route
@@ -329,6 +472,9 @@ class ApplicationViews extends Component {
                   checkAppointment={this.checkAppointment}
                   addStylistNotes={this.addStylistNotes}
                   removeAppointment={this.removeAppointment}
+                  isAdmin={this.isAdmin}
+                  sortAppointmentTime={this.sortAppointmentTime}
+                  giveDate={this.giveDate}
                 />
               );
             } else {
@@ -336,19 +482,6 @@ class ApplicationViews extends Component {
             }
           }}
         />
-        {/* <Route
-          exact
-          path="/admin/stylistNotes"
-          render={props => {
-            if (this.isAuthenticated() && this.isAdmin()) {
-              return (
-                <StylistNotesModal {...props} />
-              );
-            } else {
-              return <Redirect to="/" />;
-            }
-          }}
-        /> */}
         <Route
           exact
           path="/admin/users"
@@ -371,6 +504,10 @@ class ApplicationViews extends Component {
                   acceptRequest={this.acceptRequest}
                   denyRequests={this.denyRequests}
                   status={this.state.statusMessages}
+                  isAdmin={this.isAdmin}
+                  isUser={this.isUser}
+                  giveDate={this.giveDate}
+                  sortAppointmentTime={this.sortAppointmentTime}
                 />
               );
             } else {
@@ -391,6 +528,9 @@ class ApplicationViews extends Component {
                   getService={this.getService}
                   acceptRequest={this.acceptRequest}
                   denyRequests={this.denyRequests}
+                  isAdmin={this.isAdmin}
+                  giveDate={this.giveDate}
+                  isUser={this.isUser}
                 />
               );
             } else {

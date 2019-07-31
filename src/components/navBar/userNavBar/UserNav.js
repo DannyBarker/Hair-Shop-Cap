@@ -8,7 +8,7 @@ export default class NavBar extends Component {
     saveDisabled: false
   };
   showUserProf = () => {
-    if (this.props.userAccess.accessType === "user") {
+    if (this.props.userAccess.accessType === "user" && this.props.userAccess.userId !== null) {
       return (
         <li className="nav-item">
           <Link className="nav-link" to="/user/profile">
@@ -21,13 +21,58 @@ export default class NavBar extends Component {
     }
   };
   showRequestApp = () => {
-    if (this.props.userAccess.accessType === "user") {
+    if (this.props.userAccess.accessType === "user" && this.props.userAccess.userId) {
       return (
         <li className="nav-item">
           <Link className="nav-link" to="/user/request/new">
             Request Appointment
           </Link>
         </li>
+      );
+    } else {
+      return "";
+    }
+  };
+  showLogOut = () => {
+    if (this.props.userAccess.accessType === "user" && this.props.userAccess.userId) {
+      return (
+        <li className="nav-item">
+          <Link
+            className="nav-link"
+            onClick={() => {
+              this.setState({ saveDisabled: true });
+              this.props.logOut();
+            }}
+            disabled={this.state.saveDisabled}
+            to="/"
+          >
+            Log Out
+          </Link>
+        </li>
+      );
+    } else {
+      return "";
+    }
+  };
+  showNonUser = () => {
+    if (!this.props.userAccess.accessType && !this.props.userAccess.userId) {
+      return (
+        <React.Fragment>
+          <li
+              className="nav-item"
+            >
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+            </li>
+            <li
+              className="nav-item"
+            >
+              <Link className="nav-link" to="/create">
+                Create
+              </Link>
+            </li>
+        </React.Fragment>
       );
     } else {
       return "";
@@ -59,46 +104,10 @@ export default class NavBar extends Component {
                 Contact
               </Link>
             </li>
-            <li
-              className="nav-item"
-              style={{
-                display: this.props.userAccess.userId === null ? "" : "none"
-              }}
-            >
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li>
-            <li
-              className="nav-item"
-              style={{
-                display: this.props.userAccess.userId === null ? "" : "none"
-              }}
-            >
-              <Link className="nav-link" to="/create">
-                Create
-              </Link>
-            </li>
+            {this.showNonUser()}
             {this.showRequestApp()}
             {this.showUserProf()}
-            <li
-              className="nav-item"
-              style={{
-                display: this.props.userAccess.userId !== null ? "" : "none"
-              }}
-            >
-              <Link
-                className="nav-link"
-                onClick={() => {
-                  this.setState({ saveDisabled: true });
-                  this.props.logOut();
-                }}
-                disabled={this.state.saveDisabled}
-                to="/"
-              >
-                Log Out
-              </Link>
-            </li>
+            {this.showLogOut()}
           </ul>
         </nav>
       </header>

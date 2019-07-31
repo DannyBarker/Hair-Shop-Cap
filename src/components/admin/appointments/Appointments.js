@@ -30,6 +30,7 @@ class Appointments extends Component {
                 checkAppointment={this.props.checkAppointment}
                 addStylistNotes={this.props.addStylistNotes}
                 removeAppointment={this.props.removeAppointment}
+                isAdmin={this.props.isAdmin}
               />
             )
           )}

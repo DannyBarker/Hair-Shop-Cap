@@ -24,6 +24,9 @@ export default class RequestCard extends Component {
           Service: {" "}{this.props.getService(this.props.request.serviceId).type}
         </p>
         <p className="request-details">Details: {" "}{this.props.request.request_details}</p>
+        {
+          this.props.isAdmin() ?
+          <React.Fragment>
         <button
           id="acceptRequest-btn"
           className="accRequest-btn btn btn-success"
@@ -49,6 +52,10 @@ export default class RequestCard extends Component {
             denyRequests={this.props.denyRequests}
           />
           </button>
+          </React.Fragment>
+          : ""
+        }
+
       </div>
     );
   }

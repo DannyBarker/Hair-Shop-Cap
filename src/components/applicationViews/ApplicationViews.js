@@ -13,7 +13,7 @@ import Home from "../home/Home";
 import Login from "../login/Login";
 import RequestAppointment from "../request-appointment/RequestAppointment";
 import Services from "../services/Services";
-import User from "../user/User";
+import Profile from "../user/profile/Profile";
 
 class ApplicationViews extends Component {
   state = {
@@ -21,7 +21,7 @@ class ApplicationViews extends Component {
     requests: [],
     users: [],
     services: [],
-    statusMessages: [],
+    statusMessages: []
   };
 
   componentDidMount() {
@@ -40,7 +40,7 @@ class ApplicationViews extends Component {
         this.setState({ requests: sortedRequests });
       })
       .then(() => API.getAll("statusMessages"))
-      .then(statusMessage => this.setState({statusMessages: statusMessage}))
+      .then(statusMessage => this.setState({ statusMessages: statusMessage }));
   }
 
   sortRequests = arr => {
@@ -114,7 +114,7 @@ class ApplicationViews extends Component {
       });
   };
 
-  acceptRequest = (resource) => {
+  acceptRequest = resource => {
     let newAppointment = {
       requestId: resource.id,
       completed: false,
@@ -130,7 +130,13 @@ class ApplicationViews extends Component {
       time: resource.time,
       request_details: resource.request_details
     };
-    if (window.confirm(`Would you like to accept this request for ${resource.day} at ${resource.time}?`)) {
+    if (
+      window.confirm(
+        `Would you like to accept this request for ${resource.day} at ${
+          resource.time
+        }?`
+      )
+    ) {
       API.put("requests", editRequest)
         .then(() => API.getAll("requests"))
         .then(requests => {
@@ -144,7 +150,7 @@ class ApplicationViews extends Component {
           this.setState({ appointments: sortedAppointments });
         });
     } else {
-      return false
+      return false;
     }
   };
 
@@ -207,24 +213,25 @@ class ApplicationViews extends Component {
   };
 
   denyRequests = (resource, id) => {
-      let editRequest = {
-        id: resource.id,
-        userId: resource.userId,
-        serviceId: resource.serviceId,
-        statusMessageId: id,
-        day: resource.day,
-        time: resource.time,
-        request_details: resource.request_details
-      };
-      API.put("requests", editRequest)
-        .then(() => API.getAll("requests"))
-        .then(requests => {
-          let sortedRequests = this.sortRequests(requests);
-          this.setState({ requests: sortedRequests });
-        })
-  }
+    let editRequest = {
+      id: resource.id,
+      userId: resource.userId,
+      serviceId: resource.serviceId,
+      statusMessageId: id,
+      day: resource.day,
+      time: resource.time,
+      request_details: resource.request_details
+    };
+    API.put("requests", editRequest)
+      .then(() => API.getAll("requests"))
+      .then(requests => {
+        let sortedRequests = this.sortRequests(requests);
+        this.setState({ requests: sortedRequests });
+      });
+  };
 
-  isAuthenticated = () => this.props.userAccess.userId !== null;
+  isAuthenticated = () => this.props.userAccess.userId;
+  isUser = () => this.props.userAccess.accessType === "user";
   isAdmin = () => this.props.userAccess.accessType === "admin";
 
   render() {
@@ -299,9 +306,35 @@ class ApplicationViews extends Component {
         />
         <Route
           exact
-          path="/profile"
+          path="/user/profile"
           render={props => {
-            return <User />;
+            if (this.isAuthenticated() && this.isUser()) {
+              return (
+                <Profile
+                  isUser={this.isUser}
+                  isAdmin={this.isAdmin}
+                  isAuthenticated={this.isAuthenticated}
+                  userAccess={this.props.userAccess}
+                  {...props}
+                  users={this.state.users}
+                  services={this.state.services}
+                  requests={this.state.requests}
+                  getAppointment={this.getAppointment}
+                  getRequests={this.getRequests}
+                  addStylistNotes={this.addStylistNotes}
+                  getUser={this.getUser}
+                  getService={this.getService}
+                  cancelAppointment={this.cancelAppointment}
+                  checkAppointment={this.checkAppointment}
+                  removeAppointment={this.removeAppointment}
+                  acceptRequest={this.acceptRequest}
+                  denyRequests={this.denyRequests}
+                  status={this.state.statusMessages}
+                />
+              );
+            } else {
+              return <Redirect to="/" />;
+            }
           }}
         />
         {/* <Route
@@ -329,6 +362,7 @@ class ApplicationViews extends Component {
                   checkAppointment={this.checkAppointment}
                   addStylistNotes={this.addStylistNotes}
                   removeAppointment={this.removeAppointment}
+                  isAdmin={this.isAdmin}
                 />
               );
             } else {
@@ -371,6 +405,7 @@ class ApplicationViews extends Component {
                   acceptRequest={this.acceptRequest}
                   denyRequests={this.denyRequests}
                   status={this.state.statusMessages}
+                  isAdmin={this.isAdmin}
                 />
               );
             } else {
@@ -391,6 +426,7 @@ class ApplicationViews extends Component {
                   getService={this.getService}
                   acceptRequest={this.acceptRequest}
                   denyRequests={this.denyRequests}
+                  isAdmin={this.isAdmin}
                 />
               );
             } else {

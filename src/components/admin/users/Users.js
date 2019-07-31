@@ -56,6 +56,7 @@ state = {
                   acceptRequest={this.props.acceptRequest}
                   denyRequests={this.props.denyRequests}
                   status={this.props.status}
+                  isAdmin={this.props.isAdmin}
                 />
               ) : (
                 ""
@@ -83,6 +84,7 @@ state = {
                   acceptRequest={this.props.acceptRequest}
                   denyRequests={this.props.denyRequests}
                   status={this.props.status}
+                  isAdmin={this.props.isAdmin}
                 />
               ) : (
                 ""

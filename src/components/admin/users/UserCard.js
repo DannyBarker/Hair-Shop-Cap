@@ -39,6 +39,7 @@ export default class UserCard extends Component {
             acceptRequest={this.props.acceptRequest}
             denyRequests={this.props.denyRequests}
             status={this.props.status}
+            isAdmin={this.props.isAdmin}
           />
         </button>
       </div>

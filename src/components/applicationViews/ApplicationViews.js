@@ -14,6 +14,7 @@ import Login from "../login/Login";
 import Services from "../services/Services";
 import Profile from "../user/profile/Profile";
 import RequestAppointment from "../user/requestAppointment/RequestAppointment";
+import { functionTypeAnnotation } from "@babel/types";
 
 class ApplicationViews extends Component {
   state = {
@@ -265,7 +266,7 @@ class ApplicationViews extends Component {
       });
   };
 
-  requestSubmit = obj => {
+  requestSubmit = (obj) => {
     let dateTime = document.getElementById("dayRequest").value
     let service = document.getElementById("serviceIdRequest").value
     let details = document.getElementById("request_detailsRequest").value
@@ -279,6 +280,37 @@ class ApplicationViews extends Component {
       })
     } else {
       alert("Please fill out all fields.")
+    }
+  }
+
+  userCreate = obj => {
+    API.post("users", obj)
+      .then(() => API.getExpand("users", "accessType"))
+      .then(users => this.setState({ users: users }))
+      .then(() => {
+        this.state.users.forEach(user => {
+          if (user.email === obj.email) {
+            this.props.setUserId(user.accessType.accessType, user.id)
+            this.props.history.push("/user/profile")
+          }
+        })
+      })
+  }
+
+  verifyCreateFields = (fnctn) => {
+    let firstName = document.getElementById("firstNameCreate").value
+    let lastName = document.getElementById("lastNameCreate").value
+    let email = document.getElementById("emailCreate").value
+    let passOne = document.getElementById("passOneCreate").value
+    let passTwo = document.getElementById("passTwoCreate").value
+    if (firstName && lastName && email && passOne && passTwo) {
+      if (passOne === passTwo) {
+        fnctn()
+      } else {
+        alert("Passwords don't match!")
+      }
+    } else {
+      alert("Please fill out all fields!")
     }
   }
 
@@ -339,7 +371,7 @@ class ApplicationViews extends Component {
           path="/create/user"
           render={props => {
             if (!this.isAuthenticated()) {
-              return <CreateUser />;
+              return <CreateUser {...props} verifyCreateFields={this.verifyCreateFields} userCreate={this.userCreate} />;
             } else {
               return <Redirect to="/" />;
             }

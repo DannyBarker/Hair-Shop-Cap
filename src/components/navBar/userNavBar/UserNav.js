@@ -58,7 +58,7 @@ export default class NavBar extends Component {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/create/user">
-              Create
+              Create Profile
             </Link>
           </li>
         </React.Fragment>

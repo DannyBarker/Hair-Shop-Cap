@@ -1,11 +1,92 @@
-import React, {Component} from 'react';
-import './CreateUser.css'
-import "bootstrap/dist/css/bootstrap.min.css"
+import React, { Component } from "react";
 
 export default class CreateUser extends Component {
+  state = {
+      firstNameCreate: "",
+      lastNameCreate: "",
+      emailCreate: "",
+      passOneCreate: "",
+      passTwoCreate: ""
+  };
+
+  handleFieldChange = evt => {
+    const stateToChange = {};
+    stateToChange[evt.target.id] = evt.target.value;
+    this.setState(stateToChange);
+  };
+
+  createReqObj = () => {
+    let firstName = this.state.firstNameCreate.charAt(0).toLocaleUpperCase() + this.state.firstNameCreate.slice(1)
+    let lastName = this.state.lastNameCreate.charAt(0).toLocaleUpperCase() + this.state.lastNameCreate.slice(1)
+    let newName = `${firstName} ${lastName}`
+    let newUser = {
+        accessTypeId: 2,
+        name: newName,
+        email: this.state.emailCreate,
+        password: this.state.passOneCreate
+    }
+    this.props.userCreate(newUser)
+  };
+
   render() {
     return (
-      <p>Create User</p>
+          <div>
+            <h1>Create Profile</h1>
+            <form
+              onSubmit={evt => {
+                evt.preventDefault();
+                this.props.verifyCreateFields(this.createReqObj)
+              }}
+            >
+              <div className="form-group">
+                <label htmlFor="firstNameCreate">First Name: </label>
+                <input
+                  onChange={this.handleFieldChange}
+                  type="text"
+                  id="firstNameCreate"
+                  placeholder="First Name"
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="lastNameCreate">Last Name: </label>
+                <input
+                  onChange={this.handleFieldChange}
+                  type="text"
+                  id="lastNameCreate"
+                  placeholder="Last Name"
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="emailCreate">Email: </label>
+                <input
+                  onChange={this.handleFieldChange}
+                  type="text"
+                  id="emailCreate"
+                  placeholder="Email"
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="passOneCreate">Password: </label>
+                <input
+                  onChange={this.handleFieldChange}
+                  type="text"
+                  id="passOneCreate"
+                  placeholder="Password"
+                  className="form-control"
+                />
+                <input
+                  onChange={this.handleFieldChange}
+                  type="text"
+                  id="passTwoCreate"
+                  placeholder="Confirm Password"
+                  className="form-control"
+                />
+              </div>
+              <button type="submit">Sign in</button>
+            </form>
+          </div>
     )
-  }
-}
+}}

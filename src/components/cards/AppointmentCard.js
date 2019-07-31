@@ -63,11 +63,7 @@ export default class AppointmentCard extends Component {
           <section className="appointment-time">
             <p>
               {this.props.appointment.completed ? "Date: " : ""}
-              {this.props.appointment.request.day}
-            </p>
-            <p>
-              {this.props.appointment.completed ? "Time: " : ""}
-              {this.props.appointment.request.time}
+              {this.props.giveDate(this.props.appointment.request)}
             </p>
           </section>
 

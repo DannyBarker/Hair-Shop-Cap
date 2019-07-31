@@ -44,11 +44,11 @@ class ApplicationViews extends Component {
   }
 
   sortRequests = arr => {
-    return arr.sort((a, b) => Date.parse(a.day) - Date.parse(b.day));
+    return arr.sort((a, b) => Date.parse(a.dateTime) - Date.parse(b.dateTime));
   };
   sortAppointments = arr => {
     return arr.sort(
-      (a, b) => Date.parse(a.request.day) - Date.parse(b.request.day)
+      (a, b) => Date.parse(a.request.dateTime) - Date.parse(b.request.dateTime)
     );
   };
 
@@ -170,12 +170,48 @@ class ApplicationViews extends Component {
         this.setState({ appointments: sortedAppointments });
       });
   };
-  // sortAppointmentTime = (resource) => {
-  //   let daySplit = resource.day.split("-")
-  //   let timeSplit = resource.time.split(":")
-  //   let newDate = new Date(daySplit[0], daySplit[1], daySplit[2], timeSplit[0], timeSplit[1], 0, 0)
-  //   return newDate
-  // }
+  sortAppointmentTime = (resource) => {
+    let result = ""
+    let currDate = new Date()
+    let currMonth = currDate.getMonth() + 1
+    let currDay = currDate.getDate()
+    let currYear = currDate.getFullYear()
+    let appDay = `${currYear}/${currMonth}/${currDay}`
+    let newDate = new Date(resource.dateTime)
+    let sortDay = Date.parse(newDate)
+    let beginningDay = Date.parse(appDay)
+    let endingDay = beginningDay + 86400000
+
+    if (beginningDay <= sortDay < endingDay) {
+      result = "current"
+    }
+    if (sortDay < beginningDay) {
+      result = "past"
+    }
+    if (endingDay < sortDay) {
+      result = "future"
+    }
+    console.log(result);
+  }
+
+  giveDate = resource => {
+    let splitDay = resource.dateTime.split(" ")
+    let time = ""
+    let splitTime = splitDay[4].split(":")
+    if (+splitTime[0] > 12) {
+      let pmTime = +splitTime[0] - 12
+      time = `${pmTime}:${splitTime[1]} p.m.`
+    }
+    if (+splitTime[0] === 12) {
+      time = `${splitTime[0]}:${splitTime[1]} p.m.`
+    }
+    if (+splitTime[0] < 12) {
+      time = `${splitTime[0]}:${splitTime[1]} a.m.`
+    }
+    let newStr = `${splitDay[0]}, ${splitDay[1]} ${splitDay[2]}. At ${time} `
+    return newStr
+
+  }
 
   removeAppointment = resource => {
     let newObj = {
@@ -330,6 +366,8 @@ class ApplicationViews extends Component {
                   acceptRequest={this.acceptRequest}
                   denyRequests={this.denyRequests}
                   status={this.state.statusMessages}
+                  sortAppointmentTime={this.sortAppointmentTime}
+                  giveDate={this.giveDate}
                 />
               );
             } else {
@@ -363,6 +401,8 @@ class ApplicationViews extends Component {
                   addStylistNotes={this.addStylistNotes}
                   removeAppointment={this.removeAppointment}
                   isAdmin={this.isAdmin}
+                  sortAppointmentTime={this.sortAppointmentTime}
+                  giveDate={this.giveDate}
                 />
               );
             } else {
@@ -370,19 +410,6 @@ class ApplicationViews extends Component {
             }
           }}
         />
-        {/* <Route
-          exact
-          path="/admin/stylistNotes"
-          render={props => {
-            if (this.isAuthenticated() && this.isAdmin()) {
-              return (
-                <StylistNotesModal {...props} />
-              );
-            } else {
-              return <Redirect to="/" />;
-            }
-          }}
-        /> */}
         <Route
           exact
           path="/admin/users"
@@ -406,6 +433,8 @@ class ApplicationViews extends Component {
                   denyRequests={this.denyRequests}
                   status={this.state.statusMessages}
                   isAdmin={this.isAdmin}
+                  sortAppointmentTime={this.sortAppointmentTime}
+                  giveDate={this.giveDate}
                 />
               );
             } else {
@@ -427,6 +456,8 @@ class ApplicationViews extends Component {
                   acceptRequest={this.acceptRequest}
                   denyRequests={this.denyRequests}
                   isAdmin={this.isAdmin}
+                  sortAppointmentTime={this.sortAppointmentTime}
+                  giveDate={this.giveDate}
                 />
               );
             } else {

@@ -40,6 +40,8 @@ export default class UserCard extends Component {
             denyRequests={this.props.denyRequests}
             status={this.props.status}
             isAdmin={this.props.isAdmin}
+            sortAppointmentTime={this.props.sortAppointmentTime}
+            giveDate={this.props.giveDate}
           />
         </button>
       </div>

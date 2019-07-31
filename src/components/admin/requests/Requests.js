@@ -20,6 +20,8 @@ export default class Requests extends Component {
                 status={this.props.status}
                 denyRequests={this.props.denyRequests}
                 isAdmin={this.props.isAdmin}
+                sortAppointmentTime={this.props.sortAppointmentTime}
+                giveDate={this.props.giveDate}
               />
             ) : (
               ""

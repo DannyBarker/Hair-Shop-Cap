@@ -26,7 +26,7 @@ export default class HaircutCard extends Component {
     return (
       <React.Fragment>
         <div className="haircut-card">
-          <p>Date: {this.props.haircut.request.day}</p>
+          <p>Date: {this.props.giveDate(this.props.haircut.request)}</p>
           <p>
             Service:{" "}
             {this.getService(this.props.haircut.request.serviceId).type}

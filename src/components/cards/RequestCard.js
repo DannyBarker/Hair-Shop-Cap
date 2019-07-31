@@ -18,8 +18,7 @@ export default class RequestCard extends Component {
         <p className="requestUser-Name">
           {this.props.getUser(this.props.request.userId)}
         </p>
-        <p className="request-day">Day: {" "}{this.props.request.day}</p>
-        <p className="request-time">Time: {" "}{this.props.request.time}</p>
+        <p className="request-dateTime">Date: {" "}{this.props.giveDate(this.props.request)}</p>
         <p className="request-service">
           Service: {" "}{this.props.getService(this.props.request.serviceId).type}
         </p>

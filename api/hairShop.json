@@ -158,8 +158,7 @@
       "userId": 2,
       "serviceId": 1,
       "statusMessageId": 1,
-      "day": "2019-08-13",
-      "time": "12:30",
+      "dateTime": "Fri Sep 13 2019 12:30:00 GMT-0500",
       "request_details": "Make me look pretty!"
     },
     {
@@ -167,17 +166,15 @@
       "userId": 2,
       "serviceId": 10,
       "statusMessageId": 2,
-      "day": "2019-09-13",
-      "time": "12:30",
+      "dateTime": "Sun Oct 13 2019 12:30:00 GMT-0500",
       "request_details": "Give me the new Do!"
     },
     {
       "id": 3,
       "userId": 2,
       "serviceId": 9,
-      "statusMessageId": 6,
-      "day": "2019-10-13",
-      "time": "12:30",
+      "statusMessageId": 3,
+      "dateTime": "Wed Nov 13 2019 12:30:00 GMT-0600",
       "request_details": "Keep me lookin fire!"
     },
     {
@@ -185,8 +182,7 @@
       "userId": 3,
       "serviceId": 6,
       "statusMessageId": 1,
-      "day": "2019-08-14",
-      "time": "12:30",
+      "dateTime": "Sat Sep 14 2019 12:30:00 GMT-0500",
       "request_details": "Need that cut!"
     },
     {
@@ -194,8 +190,7 @@
       "userId": 3,
       "serviceId": 8,
       "statusMessageId": 2,
-      "day": "2019-09-14",
-      "time": "12:30",
+      "dateTime":"Mon Oct 14 2019 12:30:00 GMT-0500",
       "request_details": "It's me again!"
     },
     {
@@ -203,8 +198,7 @@
       "userId": 3,
       "serviceId": 1,
       "statusMessageId": 4,
-      "day": "2019-10-14",
-      "time": "12:30",
+      "dateTime": "Thu Nov 14 2019 12:30:00 GMT-0600",
       "request_details": "Give me the new Do!"
     },
     {
@@ -212,8 +206,7 @@
       "userId": 4,
       "serviceId": 1,
       "statusMessageId": 1,
-      "day": "2019-08-15",
-      "time": "12:30",
+      "dateTime": "Sun Sep 15 2019 12:30:00 GMT-0500",
       "request_details": "It's your fav daughter!"
     },
     {
@@ -221,8 +214,7 @@
       "userId": 4,
       "serviceId": 9,
       "statusMessageId": 2,
-      "day": "2019-09-15",
-      "time": "12:30",
+      "dateTime": "Tue Oct 15 2019 12:30:00 GMT-0500",
       "request_details": "I'm starting my new job!"
     },
     {
@@ -230,8 +222,7 @@
       "userId": 4,
       "serviceId": 10,
       "statusMessageId": 5,
-      "day": "2019-10-15",
-      "time": "12:30",
+      "dateTime": "Fri Nov 15 2019 12:30:00 GMT-0600",
       "request_details": "Give me the new Do!"
     },
     {
@@ -239,8 +230,7 @@
       "userId": 2,
       "serviceId": 9,
       "statusMessageId": 2,
-      "day": "2019-12-13",
-      "time": "12:30",
+      "dateTime": "Mon Jan 13 2020 12:30:00 GMT-0600",
       "request_details": "Hair is too long!"
     }
   ],

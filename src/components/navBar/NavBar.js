@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Link } from "react-router-dom"
 import AdminNav from "./adminNavBar/AdminNav"
 import UserNav from "./userNavBar/UserNav"
 import './NavBar.css'

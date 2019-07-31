@@ -27,6 +27,13 @@
       "name": "Mattie Gamble",
       "email": "Mattie@email.com",
       "password": "pass123"
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Danny Barker",
+      "email": "barkerdanny17@yahoo.com",
+      "password": "pass123",
+      "id": 5
     }
   ],
   "accessTypes": [
@@ -174,11 +181,11 @@
     {
       "id": 3,
       "userId": 2,
-      "serviceId": 9,
-      "statusMessageId": 3,
+      "serviceId": 10,
+      "statusMessageId": 2,
       "dateTime": "Wed Nov 13 2019 12:30:00 GMT-0600",
       "request_details": "Keep me lookin fire!",
-      "timestamp": 1564582104396
+      "timestamp": 1564607432346
     },
     {
       "id": 4,
@@ -242,6 +249,22 @@
       "dateTime": "Mon Jan 13 2020 12:30:00 GMT-0600",
       "request_details": "Hair is too long!",
       "timestamp": 1564587808484
+    },
+    {
+      "id": 11,
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Wed Jul 31 2019 13:30:00 GMT-0500",
+      "request_details": "Hair is too long"
+    },
+    {
+      "id": 12,
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 6,
+      "dateTime": "Sun Sep 15 2019 12:00:00 GMT-0500",
+      "request_details": "Checkup"
     }
   ],
   "appointments": [
@@ -264,6 +287,13 @@
       "requestId": 4,
       "completed": false,
       "checked": false,
+      "stylistNotes": ""
+    },
+    {
+      "id": 4,
+      "requestId": 11,
+      "completed": false,
+      "checked": true,
       "stylistNotes": ""
     }
   ]

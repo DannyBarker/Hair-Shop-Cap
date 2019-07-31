@@ -3,7 +3,6 @@ import {
   Button,
   Modal,
   ModalHeader,
-  Input,
   ModalBody,
   ModalFooter
 } from "reactstrap";

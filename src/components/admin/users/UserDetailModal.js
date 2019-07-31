@@ -42,7 +42,7 @@ export default class UserDetailModal extends Component {
                       giveDate={this.props.giveDate}
                     />
                   ) : (
-                    <p key={cut.id}>No past haircuts.</p>
+                    ""
                   )
                 )}
             </div>
@@ -63,9 +63,10 @@ export default class UserDetailModal extends Component {
                       removeAppointment={this.props.removeAppointment}
                       isAdmin={this.props.isAdmin}
                       giveDate={this.props.giveDate}
+                      sortAppointmentTime={this.props.sortAppointmentTime}
                     />
                   ) : (
-                    <p key={cut.id}>No Upcoming Appointments.</p>
+                    ""
                   )
                 )}
             </div>
@@ -83,6 +84,7 @@ export default class UserDetailModal extends Component {
                     status={this.props.status}
                     isAdmin={this.props.isAdmin}
                     giveDate={this.props.giveDate}
+                    isUser={this.props.isUser}
                   />
                 ) : (
                   ""

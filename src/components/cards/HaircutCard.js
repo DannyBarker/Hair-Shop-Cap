@@ -33,7 +33,7 @@ export default class HaircutCard extends Component {
           </p>
           <p>Details: {this.props.haircut.request.request_details} </p>
           <p>Stylist's Notes: {this.props.haircut.stylistNotes}</p>
-          {!this.props.isAdmin() ? (
+          {this.props.isAdmin() ? (
             <button
               id="editNotes"
               className="editNotes-btn btn btn-success"

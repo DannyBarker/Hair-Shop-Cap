@@ -11,7 +11,7 @@ export default class Login extends Component {
   // Update state whenever an input field is edited
   handleFieldChange = evt => {
     const stateToChange = {};
-    stateToChange[evt.target.id] = evt.target.value.toLowerCase();
+    stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
 
@@ -25,7 +25,7 @@ export default class Login extends Component {
     this.props.users.forEach(user => {
       let email = user.email.toLowerCase()
       if (
-        email === this.state.email &&
+        email === this.state.email.toLowerCase() &&
         user.password === this.state.password
       ) {
         type = user.accessType.accessType
@@ -57,6 +57,7 @@ export default class Login extends Component {
             id="email"
             placeholder="Email"
             className="form-control"
+            autoComplete="username"
           />
           <input
             onChange={this.handleFieldChange}
@@ -64,6 +65,7 @@ export default class Login extends Component {
             id="password"
             placeholder="Password"
             className="form-control"
+            autoComplete="current-password"
           />
           <button type="submit">Sign in</button>
           {/* <label htmlFor="Remember Me">

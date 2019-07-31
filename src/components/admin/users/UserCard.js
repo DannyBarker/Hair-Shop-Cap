@@ -42,6 +42,7 @@ export default class UserCard extends Component {
             isAdmin={this.props.isAdmin}
             sortAppointmentTime={this.props.sortAppointmentTime}
             giveDate={this.props.giveDate}
+            isUser={this.props.isUser}
           />
         </button>
       </div>

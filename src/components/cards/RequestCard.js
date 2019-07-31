@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DenyModule from "../admin/requests/DenyModule"
+import EditModule from "../user/requestAppointment/EditModule"
 
 export default class RequestCard extends Component {
   state = {
@@ -49,9 +50,35 @@ export default class RequestCard extends Component {
             status={this.props.status}
             request={this.props.request}
             denyRequests={this.props.denyRequests}
+            userAccess={this.props.userAccess}
+            requestEditSubmit={this.props.requestEditSubmit}
           />
           </button>
           </React.Fragment>
+          : ""
+        }
+        {
+          this.props.isUser() && this.props.request.statusMessageId > 2 ?
+          <button
+            id="userEditRequest-btn"
+            className="editRequest-btn btn btn-warning"
+            onClick={() => {
+              this.toggle();
+            }}
+          >
+            <EditModule
+            modal={this.state.modal}
+            toggle={this.toggle}
+            status={this.props.status}
+            request={this.props.request}
+            isAdmin={this.props.isAdmin}
+            isAuthenticated={this.props.isAuthenticated}
+            isUser={this.props.isUser}
+            services={this.props.services}
+            userAccess={this.props.userAccess}
+            requestEditSubmit={this.props.requestEditSubmit}
+          />
+          </button>
           : ""
         }
 

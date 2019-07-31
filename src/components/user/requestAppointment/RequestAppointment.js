@@ -100,15 +100,15 @@ export default class RequestAppointment extends Component {
                   cols={5}
                 />
               </div>
-              <button type="submit">Sign in</button>
+              <button type="submit" className="submitReq-btn btn btn-primary">Submit Request</button>
             </form>
           </div>
         ) : (
           <p>
-            <a onClick={() => this.props.history.push("/login")}>Log</a> In or{" "}
-            <a onClick={() => this.props.history.push("/create/user")}>
+            <button style={{background: "transparent", border: "none"}} onClick={() => this.props.history.push("/login")}>Log</button> In or{" "}
+            <button style={{background: "transparent", border: "none"}} onClick={() => this.props.history.push("/create/user")}>
               Create a Profile
-            </a>{" "}
+            </button>{" "}
             to request an appointment!
           </p>
         )}

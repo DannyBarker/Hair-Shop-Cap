@@ -18,6 +18,8 @@ class Appointments extends Component {
         this.props.sortAppointmentTime(appointment.request) === "past"
       ) {
         return appointment;
+      } else {
+        return ""
       }
     });
     return pastApps;
@@ -29,6 +31,8 @@ class Appointments extends Component {
         this.props.sortAppointmentTime(appointment.request) === day
       ) {
         return appointment;
+      } else {
+        return ""
       }
     });
     return appsArr;
@@ -159,6 +163,7 @@ class Appointments extends Component {
                         removeAppointment={this.props.removeAppointment}
                         isAdmin={this.props.isAdmin}
                         giveDate={this.props.giveDate}
+                        sortAppointmentTime={this.props.sortAppointmentTime}
                       />
                     );
                   })
@@ -189,6 +194,7 @@ class Appointments extends Component {
                         removeAppointment={this.props.removeAppointment}
                         isAdmin={this.props.isAdmin}
                         giveDate={this.props.giveDate}
+                        sortAppointmentTime={this.props.sortAppointmentTime}
                       />
                     );
                   })
@@ -219,6 +225,7 @@ class Appointments extends Component {
                         removeAppointment={this.props.removeAppointment}
                         isAdmin={this.props.isAdmin}
                         giveDate={this.props.giveDate}
+                        sortAppointmentTime={this.props.sortAppointmentTime}
                       />
                     );
                   })

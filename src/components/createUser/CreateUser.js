@@ -66,26 +66,29 @@ export default class CreateUser extends Component {
                   id="emailCreate"
                   placeholder="Email"
                   className="form-control"
+                  autoComplete="username"
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="passOneCreate">Password: </label>
                 <input
                   onChange={this.handleFieldChange}
-                  type="text"
+                  type="password"
                   id="passOneCreate"
                   placeholder="Password"
                   className="form-control"
+                  autoComplete="new-password"
                 />
                 <input
                   onChange={this.handleFieldChange}
-                  type="text"
+                  type="password"
                   id="passTwoCreate"
                   placeholder="Confirm Password"
                   className="form-control"
+                  autoComplete="new-password"
                 />
               </div>
-              <button type="submit">Sign in</button>
+              <button className="createUser-btn btn btn-success" type="submit">Sign in</button>
             </form>
           </div>
     )

@@ -31,7 +31,7 @@ export default class Profile extends Component {
                         giveDate={this.props.giveDate}
                       />
                     ) : (
-                      <p key={cut.id}>No past haircuts.</p>
+                      ""
                     )
                   )}
               </div>
@@ -56,9 +56,10 @@ export default class Profile extends Component {
                         removeAppointment={this.props.removeAppointment}
                         isAdmin={this.props.isAdmin}
                         giveDate={this.props.giveDate}
+                        sortAppointmentTime={this.props.sortAppointmentTime}
                       />
                     ) : (
-                      <p key={cut.id}>No Upcoming Appointments.</p>
+                      ""
                     )
                   )}
               </div>
@@ -80,6 +81,38 @@ export default class Profile extends Component {
                       isAdmin={this.props.isAdmin}
                       sortAppointmentTime={this.props.sortAppointmentTime}
                       giveDate={this.props.giveDate}
+                      isAuthenticated={this.props.isAuthenticated}
+                      isUser={this.props.isUser}
+                      services={this.props.services}
+                      userAccess={this.props.userAccess}
+                      requestEditSubmit={this.props.requestEditSubmit}
+                    />
+                  ) : (
+                    ""
+                  )
+                )}
+                <h6>
+                  <strong>Denied Requests: </strong>
+                </h6>
+                {this.props.requests.map(request =>
+                  request.statusMessageId > 2 &&
+                  request.userId === this.props.userAccess.userId ? (
+                    <RequestCard
+                      key={request.id}
+                      request={request}
+                      getUser={this.props.getUser}
+                      getService={this.props.getService}
+                      acceptRequest={this.props.acceptRequest}
+                      denyRequests={this.props.denyRequests}
+                      status={this.props.status}
+                      sortAppointmentTime={this.props.sortAppointmentTime}
+                      giveDate={this.props.giveDate}
+                      isAdmin={this.props.isAdmin}
+                      isAuthenticated={this.props.isAuthenticated}
+                      isUser={this.props.isUser}
+                      services={this.props.services}
+                      userAccess={this.props.userAccess}
+                      requestEditSubmit={this.props.requestEditSubmit}
                     />
                   ) : (
                     ""

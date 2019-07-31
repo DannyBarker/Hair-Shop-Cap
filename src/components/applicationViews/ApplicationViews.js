@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import API from "../apiManager/api";
 import "./ApplicationViews.css";
 import About from "../about/About";
-import Admin from "../admin/Admin";
+// import Admin from "../admin/Admin";
 import AdminAppointments from "../admin/appointments/Appointments";
 import AdminUsers from "../admin/users/Users";
 import AdminRequests from "../admin/requests/Requests";
@@ -14,7 +14,6 @@ import Login from "../login/Login";
 import Services from "../services/Services";
 import Profile from "../user/profile/Profile";
 import RequestAppointment from "../user/requestAppointment/RequestAppointment";
-import { functionTypeAnnotation } from "@babel/types";
 
 class ApplicationViews extends Component {
   state = {
@@ -127,15 +126,12 @@ class ApplicationViews extends Component {
       userId: resource.userId,
       serviceId: resource.serviceId,
       statusMessageId: 1,
-      day: resource.day,
-      time: resource.time,
+      dateTime: resource.dateTime,
       request_details: resource.request_details
     };
     if (
       window.confirm(
-        `Would you like to accept this request for ${resource.day} at ${
-          resource.time
-        }?`
+        `Would you like to accept this request for ${this.giveDate(resource)}?`
       )
     ) {
       API.put("requests", editRequest)
@@ -182,7 +178,7 @@ class ApplicationViews extends Component {
     let beginningDay = Date.parse(appDay)
     let endingDay = beginningDay + 86400000
 
-    if (beginningDay <= sortDay < endingDay) {
+    if (beginningDay <= sortDay <= endingDay) {
       result = "current"
     }
     if (sortDay < beginningDay) {
@@ -233,6 +229,8 @@ class ApplicationViews extends Component {
     let appointments = this.state.appointments.filter(appointment => {
       if (appointment.request.userId === userId) {
         return appointment;
+      } else {
+        return ""
       }
     });
 
@@ -242,6 +240,8 @@ class ApplicationViews extends Component {
     let requests = this.state.requests.filter(request => {
       if (request.userId === userId) {
         return request;
+      } else {
+        return ""
       }
     });
 
@@ -254,8 +254,7 @@ class ApplicationViews extends Component {
       userId: resource.userId,
       serviceId: resource.serviceId,
       statusMessageId: id,
-      day: resource.day,
-      time: resource.time,
+      dateTime: resource.dateTime,
       request_details: resource.request_details
     };
     API.put("requests", editRequest)
@@ -282,19 +281,47 @@ class ApplicationViews extends Component {
       alert("Please fill out all fields.")
     }
   }
+  requestEditSubmit = (obj) => {
+    let dateTimeEdit = document.getElementById("dayRequestEdit").value
+    let serviceEdit = document.getElementById("serviceIdRequestEdit").value
+    let detailsEdit = document.getElementById("request_detailsRequestEdit").value
+    if (dateTimeEdit && serviceEdit && detailsEdit) {
+      API.put("requests", obj)
+      .then(() => API.getAll("requests"))
+      .then(requests => {
+        let sortedRequests = this.sortRequests(requests);
+        this.setState({ requests: sortedRequests });
+        this.props.history.push("/user/profile")
+      })
+    } else {
+      alert("Please fill out all fields.")
+    }
+  }
 
   userCreate = obj => {
-    API.post("users", obj)
-      .then(() => API.getExpand("users", "accessType"))
-      .then(users => this.setState({ users: users }))
-      .then(() => {
-        this.state.users.forEach(user => {
-          if (user.email === obj.email) {
-            this.props.setUserId(user.accessType.accessType, user.id)
-            this.props.history.push("/user/profile")
-          }
+    let verify = true
+    this.state.users.forEach(user => {
+      if (user.email.toLowerCase() === obj.email.toLowerCase()) {
+        verify = false
+      } else {
+        return ""
+      }
+    })
+    if (verify) {
+      API.post("users", obj)
+        .then(() => API.getExpand("users", "accessType"))
+        .then(users => this.setState({ users: users }))
+        .then(() => {
+          this.state.users.forEach(user => {
+            if (user.email === obj.email) {
+              this.props.setUserId(user.accessType.accessType, user.id)
+              this.props.history.push("/user/profile")
+            }
+          })
         })
-      })
+    } else {
+      alert("Email already taken!")
+    }
   }
 
   verifyCreateFields = (fnctn) => {
@@ -411,6 +438,8 @@ class ApplicationViews extends Component {
                   denyRequests={this.denyRequests}
                   status={this.state.statusMessages}
                   giveDate={this.giveDate}
+                  sortAppointmentTime={this.sortAppointmentTime}
+                  requestEditSubmit={this.requestEditSubmit}
                 />
               );
             } else {
@@ -476,7 +505,9 @@ class ApplicationViews extends Component {
                   denyRequests={this.denyRequests}
                   status={this.state.statusMessages}
                   isAdmin={this.isAdmin}
+                  isUser={this.isUser}
                   giveDate={this.giveDate}
+                  sortAppointmentTime={this.sortAppointmentTime}
                 />
               );
             } else {
@@ -499,6 +530,7 @@ class ApplicationViews extends Component {
                   denyRequests={this.denyRequests}
                   isAdmin={this.isAdmin}
                   giveDate={this.giveDate}
+                  isUser={this.isUser}
                 />
               );
             } else {

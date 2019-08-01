@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import classnames from 'classnames';
 import "./UserNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -70,7 +72,7 @@ export default class NavBar extends Component {
 
   render() {
     return (
-      <header>
+      <header className="background-Nav">
         <nav>
           <ul className="nav">
             <li className="nav-item">
@@ -78,7 +80,7 @@ export default class NavBar extends Component {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item activeTab">
               <Link className="nav-link" to="/services">
                 Services
               </Link>

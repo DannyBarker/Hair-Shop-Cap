@@ -10,7 +10,7 @@ state = {
 
   render() {
     return (
-      <header>
+      <header className="background-Nav">
         <nav>
           <ul className="nav">
             <li className="nav-item">

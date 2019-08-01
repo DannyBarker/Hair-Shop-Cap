@@ -1,3 +1,39 @@
-p {
-  color: blue
+/* .background-Nav {
+  display: flex;
+  align-items: flex-end;
+  background-image: url(./testHeader.svg);
+  background-attachment: scroll;
+  background-position: center-top;
+  width: 100%;
+  height: 255px;
+  display: flex;
+  justify-content: center;
+  background-color:#ff8726;
+  background-size: auto;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+nav {
+  display: flex;
+  flex-direction: column;
+  background-color: #ff8726;
+  width: 100%;
+}
+
+nav > ul.nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+nav > ul.nav li a{
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  background-color: #b1cc3c;
+  border: 1px solid #9b4d44;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+} */

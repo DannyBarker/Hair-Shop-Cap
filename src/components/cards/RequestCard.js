@@ -13,6 +13,32 @@ export default class RequestCard extends Component {
       modal: !prevState.modal
     }));
   };
+
+  findStatusMessages = () => {
+    let strMessage = ""
+    this.props.statusMessages.forEach( message => {
+      if (message.id === this.props.request.statusMessageId) {
+        strMessage = message.message
+      } else {
+        return ""
+      }
+    })
+    return strMessage
+  }
+
+  createRemoveObj = () => {
+    let remObj = {
+      id: this.props.request.id,
+      userId: this.props.request.userId,
+      serviceId: this.props.request.serviceId,
+      statusMessageId: 7,
+      dateTime: this.props.request.dateTime,
+      request_details: this.props.request.request_details,
+      userCancel: true,
+      timestamp: this.props.request.timestamp
+    }
+    return remObj
+  }
   render() {
     return (
       <div key={this.props.request.id} className="request-card">
@@ -24,6 +50,11 @@ export default class RequestCard extends Component {
           Service: {" "}{this.props.getService(this.props.request.serviceId).type}
         </p>
         <p className="request-details">Details: {" "}{this.props.request.request_details}</p>
+        {
+          this.props.isUser() && this.props.request.statusMessageId > 2 ?
+          <p className="request-details">Deny Reason: {" "}{this.findStatusMessages()}</p>
+          : ""
+        }
         {
           this.props.isAdmin() ?
           <React.Fragment>
@@ -59,6 +90,7 @@ export default class RequestCard extends Component {
         }
         {
           this.props.isUser() && this.props.request.statusMessageId > 2 ?
+          <React.Fragment>
           <button
             id="userEditRequest-btn"
             className="editRequest-btn btn btn-warning"
@@ -78,6 +110,20 @@ export default class RequestCard extends Component {
             userAccess={this.props.userAccess}
             requestEditSubmit={this.props.requestEditSubmit}
           />
+          </button> {" "}
+          </React.Fragment>
+          : ""
+        }
+        {
+          this.props.isUser() && !this.props.request.userCancel ?
+          <button
+            id="userDelRequest-btn"
+            className="delRequest-btn btn btn-danger"
+            onClick={() => {
+              this.props.userRemoveRequest(this.createRemoveObj())
+            }}
+          >
+            Delete Request
           </button>
           : ""
         }

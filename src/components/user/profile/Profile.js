@@ -69,7 +69,7 @@ export default class Profile extends Component {
                 </h6>
                 {this.props.requests.map(request =>
                   request.statusMessageId === 2 &&
-                  request.userId === this.props.userAccess.userId ? (
+                  request.userId === this.props.userAccess.userId && !request.userCancel ? (
                     <RequestCard
                       key={request.id}
                       request={request}
@@ -86,6 +86,7 @@ export default class Profile extends Component {
                       services={this.props.services}
                       userAccess={this.props.userAccess}
                       requestEditSubmit={this.props.requestEditSubmit}
+                      userRemoveRequest={this.props.userRemoveRequest}
                     />
                   ) : (
                     ""
@@ -96,7 +97,7 @@ export default class Profile extends Component {
                 </h6>
                 {this.props.requests.map(request =>
                   request.statusMessageId > 2 &&
-                  request.userId === this.props.userAccess.userId ? (
+                  request.userId === this.props.userAccess.userId && !request.userCancel ? (
                     <RequestCard
                       key={request.id}
                       request={request}
@@ -113,6 +114,8 @@ export default class Profile extends Component {
                       services={this.props.services}
                       userAccess={this.props.userAccess}
                       requestEditSubmit={this.props.requestEditSubmit}
+                      userRemoveRequest={this.props.userRemoveRequest}
+                      statusMessages={this.props.statusMessages}
                     />
                   ) : (
                     ""

@@ -1,4 +1,4 @@
-/* .background-Nav {
+.background-Nav {
   display: flex;
   align-items: flex-end;
   background-image: url(./testHeader.svg);
@@ -36,4 +36,4 @@ nav > ul.nav li a{
   border: 1px solid #9b4d44;
   border-top-left-radius: .25rem;
   border-top-right-radius: .25rem;
-} */
+}

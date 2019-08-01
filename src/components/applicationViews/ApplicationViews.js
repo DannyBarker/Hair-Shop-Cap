@@ -374,7 +374,7 @@ class ApplicationViews extends Component {
           exact
           path="/services"
           render={props => {
-            return <Services />;
+            return <Services services={this.state.services} />;
           }}
         />
         <Route

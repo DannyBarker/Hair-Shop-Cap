@@ -1,3 +1,4 @@
-p {
-  color: yellow
+.servicesPage-div {
+  display: flex;
+  flex-direction: column;
 }

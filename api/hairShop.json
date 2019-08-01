@@ -65,61 +65,71 @@
       "id": 1,
       "type": "Haircuts (Women)",
       "price": "50.00",
-      "service_details": "Baic woman's haircut"
+      "service_details": "Baic woman's haircut",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
       "id": 2,
       "type": "Haircuts (Men)",
       "price": "40.00",
-      "service_details": "Basic man's haircut"
+      "service_details": "Basic man's haircut",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
       "id": 3,
       "type": "Wet Cut (Children under 12 years)",
       "price": "15.00",
-      "service_details": "Basic woman's haircut"
+      "service_details": "Basic child's haircut",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
       "id": 4,
       "type": "Blow-Out with Cut (Children under 12 years)",
       "price": "20.00",
-      "service_details": "Ask Shannon"
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
       "id": 5,
       "type": "One Color Highlight with Cut",
       "price": "130.00",
-      "service_details": "Ask Shannon"
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
       "id": 6,
       "type": "Two Color Highlights with Cut",
       "price": "140.00",
-      "service_details": "Ask Shannon"
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
       "id": 7,
       "type": "One Color Highlight with Base Color",
       "price": "150.00",
-      "service_details": "Ask Shannon"
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
       "id": 8,
       "type": "All Over Color, First Time, with Cut",
       "price": "130.00",
-      "service_details": "Ask Shannon"
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
       "id": 9,
       "type": "All Over Color, Touchup 1 in. or less, with Cut",
       "price": "90.00",
-      "service_details": "Ask Shannon"
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
       "id": 10,
       "type": "All Over Color, Touchup, over 1 in., with Cut",
       "price": "100.00",
-      "service_details": "Ask Shannon"
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     }
   ],
   "statusMessages": [

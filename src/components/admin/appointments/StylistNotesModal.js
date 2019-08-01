@@ -38,12 +38,6 @@ export default class StylistNotesModal extends Component {
                 this.props.addStylistNotes(this.props.appointment, `styleNotes-input-${this.props.appointment.id}`)
                 this.props.toggle()
               }}
-            //   style={{
-            //   display:
-            //     this.state.button
-            //       ? ""
-            //       : "none"
-            // }}
             >
               Add Notes
             </Button>{" "}

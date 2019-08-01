@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ServiceModule from "./ServiceModule";
-import { Card, CardBody, CardTitle } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 
 export default class ServiceCard extends Component {
   state = {
@@ -22,20 +22,17 @@ export default class ServiceCard extends Component {
       >
         <Card>
           <CardBody
-            style={{
-              backgroundImage: "url(../serviceIMG/defaultServicePic.jpg)",
+        style={{
+              backgroundImage: `url(${this.props.service.serviceImg})`,
               backgroundPosition: "center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat"
-            }}
-          >
-            <CardTitle>
+            }}>
               <ServiceModule
                 modal={this.state.modal}
                 toggle={this.toggle}
                 service={this.props.service}
               />
-            </CardTitle>
           </CardBody>
         </Card>
       </div>

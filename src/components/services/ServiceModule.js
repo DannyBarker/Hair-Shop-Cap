@@ -11,8 +11,8 @@ export default class ServiceModule extends Component {
 
   render() {
     return (
-      <div>
-          <p>{this.props.service.type}</p>
+      <div className="serviceType-modal">
+        <p>{this.props.service.type}</p>
         <Modal
           isOpen={this.props.modal}
           toggle={this.props.toggle}

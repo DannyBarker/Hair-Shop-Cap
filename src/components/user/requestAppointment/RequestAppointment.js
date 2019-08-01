@@ -28,6 +28,7 @@ export default class RequestAppointment extends Component {
       serviceId: +this.state.serviceIdRequest,
       statusMessageId: 2,
       dateTime: newDate,
+      userCancel: false,
       request_details: this.state.request_detailsRequest,
       timestamp: Date.now()
     };

@@ -85,6 +85,8 @@ export default class UserDetailModal extends Component {
                     isAdmin={this.props.isAdmin}
                     giveDate={this.props.giveDate}
                     isUser={this.props.isUser}
+                    userRemoveRequest={this.props.userRemoveRequest}
+                    statusMessages={this.props.statusMessages}
                   />
                 ) : (
                   ""

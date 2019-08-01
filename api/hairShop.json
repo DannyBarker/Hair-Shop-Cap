@@ -34,6 +34,13 @@
       "email": "barkerdanny17@yahoo.com",
       "password": "pass123",
       "id": 5
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Cowboy Boogie",
+      "email": "boogie@sweetheart.com",
+      "password": "pass123",
+      "id": 6
     }
   ],
   "accessTypes": [
@@ -142,6 +149,11 @@
     {
       "id": 7,
       "statusId": 3,
+      "message": "Request Canceled!"
+    },
+    {
+      "id": 8,
+      "statusId": 3,
       "message": "Other"
     }
   ],
@@ -167,6 +179,7 @@
       "statusMessageId": 1,
       "dateTime": "Fri Sep 13 2019 12:30:00 GMT-0500",
       "request_details": "Make me look pretty!",
+      "userCancel": false,
       "timestamp": 1564588630164
     },
     {
@@ -176,6 +189,7 @@
       "statusMessageId": 2,
       "dateTime": "Sun Oct 13 2019 12:30:00 GMT-0500",
       "request_details": "Give me the new Do!",
+      "userCancel": false,
       "timestamp": 1564584067320
     },
     {
@@ -185,6 +199,7 @@
       "statusMessageId": 2,
       "dateTime": "Wed Nov 13 2019 12:30:00 GMT-0600",
       "request_details": "Keep me lookin fire!",
+      "userCancel": false,
       "timestamp": 1564607432346
     },
     {
@@ -194,6 +209,7 @@
       "statusMessageId": 1,
       "dateTime": "Sat Sep 14 2019 12:30:00 GMT-0500",
       "request_details": "Need that cut!",
+      "userCancel": false,
       "timestamp": 1564586792056
     },
     {
@@ -203,6 +219,7 @@
       "statusMessageId": 2,
       "dateTime": "Mon Oct 14 2019 12:30:00 GMT-0500",
       "request_details": "It's me again!",
+      "userCancel": false,
       "timestamp": 1564584029584
     },
     {
@@ -212,6 +229,7 @@
       "statusMessageId": 4,
       "dateTime": "Thu Nov 14 2019 12:30:00 GMT-0600",
       "request_details": "Give me the new Do!",
+      "userCancel": false,
       "timestamp": 15645870392854
     },
     {
@@ -221,6 +239,7 @@
       "statusMessageId": 1,
       "dateTime": "Sun Sep 15 2019 12:30:00 GMT-0500",
       "request_details": "It's your fav daughter!",
+      "userCancel": false,
       "timestamp": 1564588092364
     },
     {
@@ -230,6 +249,7 @@
       "statusMessageId": 2,
       "dateTime": "Tue Oct 15 2019 12:30:00 GMT-0500",
       "request_details": "I'm starting my new job!",
+      "userCancel": false,
       "timestamp": 1564587039164
     },
     {
@@ -239,6 +259,7 @@
       "statusMessageId": 5,
       "dateTime": "Fri Nov 15 2019 12:30:00 GMT-0600",
       "request_details": "Give me the new Do!",
+      "userCancel": false,
       "timestamp": 1564586327483
     },
     {
@@ -248,6 +269,7 @@
       "statusMessageId": 2,
       "dateTime": "Mon Jan 13 2020 12:30:00 GMT-0600",
       "request_details": "Hair is too long!",
+      "userCancel": false,
       "timestamp": 1564587808484
     },
     {
@@ -256,7 +278,9 @@
       "serviceId": 2,
       "statusMessageId": 1,
       "dateTime": "Wed Jul 31 2019 13:30:00 GMT-0500",
-      "request_details": "Hair is too long"
+      "request_details": "Hair is too long",
+      "userCancel": false,
+      "timestamp": 1564587809484
     },
     {
       "id": 12,
@@ -264,7 +288,19 @@
       "serviceId": 2,
       "statusMessageId": 2,
       "dateTime": "Sun Sep 15 2019 12:00:00 GMT-0500",
-      "request_details": "Checkup"
+      "request_details": "Checkup",
+      "userCancel": false,
+      "timestamp": 1564587819484
+    },
+    {
+      "id": 13,
+      "userId": 6,
+      "serviceId": 2,
+      "statusMessageId": 2,
+      "dateTime": "Thu Aug 01 2019 15:30:00 GMT-0500",
+      "request_details": "My boogie is gettin less cowboyish",
+      "userCancel": false,
+      "timestamp": 1564629969612
     }
   ],
   "appointments": [

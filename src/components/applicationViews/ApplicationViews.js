@@ -127,7 +127,9 @@ class ApplicationViews extends Component {
       serviceId: resource.serviceId,
       statusMessageId: 1,
       dateTime: resource.dateTime,
-      request_details: resource.request_details
+      request_details: resource.request_details,
+      userCancel: false,
+      timestamp: resource.timestamp
     };
     if (
       window.confirm(
@@ -255,7 +257,9 @@ class ApplicationViews extends Component {
       serviceId: resource.serviceId,
       statusMessageId: id,
       dateTime: resource.dateTime,
-      request_details: resource.request_details
+      request_details: resource.request_details,
+      userCancel: false,
+      timestamp: resource.timestamp
     };
     API.put("requests", editRequest)
       .then(() => API.getAll("requests"))
@@ -268,8 +272,7 @@ class ApplicationViews extends Component {
   requestSubmit = (obj) => {
     let dateTime = document.getElementById("dayRequest").value
     let service = document.getElementById("serviceIdRequest").value
-    let details = document.getElementById("request_detailsRequest").value
-    if (dateTime && service && details) {
+    if (dateTime && service) {
       API.post("requests", obj)
       .then(() => API.getAll("requests"))
       .then(requests => {
@@ -278,7 +281,7 @@ class ApplicationViews extends Component {
         this.props.history.push("/user/profile")
       })
     } else {
-      alert("Please fill out all fields.")
+      alert("Please fill out first two fields!")
     }
   }
   requestEditSubmit = (obj) => {
@@ -297,6 +300,18 @@ class ApplicationViews extends Component {
       alert("Please fill out all fields.")
     }
   }
+
+  userRemoveRequest = obj => {
+    if (window.confirm(`This cannot be undone!`)) {
+      API.put("requests", obj)
+      .then(() => API.getAll("requests"))
+      .then(requests => {
+        let sortedRequests = this.sortRequests(requests);
+        this.setState({ requests: sortedRequests });
+        this.props.history.push("/user/profile")
+    })
+  }
+}
 
   userCreate = obj => {
     let verify = true
@@ -440,6 +455,8 @@ class ApplicationViews extends Component {
                   giveDate={this.giveDate}
                   sortAppointmentTime={this.sortAppointmentTime}
                   requestEditSubmit={this.requestEditSubmit}
+                  userRemoveRequest={this.userRemoveRequest}
+                  statusMessages={this.state.statusMessages}
                 />
               );
             } else {
@@ -508,6 +525,8 @@ class ApplicationViews extends Component {
                   isUser={this.isUser}
                   giveDate={this.giveDate}
                   sortAppointmentTime={this.sortAppointmentTime}
+                  userRemoveRequest={this.userRemoveRequest}
+                  statusMessages={this.state.statusMessages}
                 />
               );
             } else {
@@ -531,6 +550,8 @@ class ApplicationViews extends Component {
                   isAdmin={this.isAdmin}
                   giveDate={this.giveDate}
                   isUser={this.isUser}
+                  userRemoveRequest={this.props.userRemoveRequest}
+                  statusMessages={this.state.statusMessages}
                 />
               );
             } else {

@@ -39,7 +39,7 @@ export default class AppointmentCard extends Component {
               : "appointment-card"
           }
         >
-          {this.props.isAdmin() && this.props.sortAppointmentTime(this.props.appointment.request) === "current" ? (
+          {this.props.isAdmin() && this.props.sortAppointmentTime(this.props.appointment.request) !== "future" ? (
             <input
               style={{
                 display:

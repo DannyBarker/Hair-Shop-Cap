@@ -60,6 +60,7 @@ state = {
                   isUser={this.props.isUser}
                   sortAppointmentTime={this.props.sortAppointmentTime}
                   giveDate={this.props.giveDate}
+                  statusMessages={this.props.statusMessages}
                 />
               ) : (
                 ""
@@ -91,6 +92,7 @@ state = {
                   sortAppointmentTime={this.props.sortAppointmentTime}
                   giveDate={this.props.giveDate}
                   isUser={this.props.isUser}
+                  statusMessages={this.props.statusMessages}
                 />
               ) : (
                 ""

@@ -1,23 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Nav from "react-bootstrap/Nav"
 import "./UserNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class NavBar extends Component {
   state = {
-    saveDisabled: false
+    saveDisabled: false,
   };
+
   showUserProf = () => {
     if (
       this.props.userAccess.accessType === "user" &&
       this.props.userAccess.userId !== null
     ) {
       return (
-        <li className="nav-item">
-          <Link className="nav-link" to="/user/profile">
+        <Nav.Item>
+          <Link className={window.location.pathname === "/user/profile" ? "activeTab nav-link" : "nav-link"} to="/user/profile">
             Profile
           </Link>
-        </li>
+          </Nav.Item>
       );
     } else {
       return "";
@@ -29,9 +31,9 @@ export default class NavBar extends Component {
       this.props.userAccess.userId
     ) {
       return (
-        <li className="nav-item">
+        <Nav.Item>
           <Link
-            className="nav-link"
+          className="nav-link"
             onClick={() => {
               this.setState({ saveDisabled: true });
               this.props.logOut();
@@ -41,7 +43,7 @@ export default class NavBar extends Component {
           >
             Log Out
           </Link>
-        </li>
+          </Nav.Item>
       );
     } else {
       return "";
@@ -51,16 +53,16 @@ export default class NavBar extends Component {
     if (!this.props.userAccess.accessType && !this.props.userAccess.userId) {
       return (
         <React.Fragment>
-          <li className="nav-item">
-            <Link className="nav-link" to="/login">
+          <Nav.Item>
+            <Link className={window.location.pathname === "/login" ? "activeTab nav-link" : "nav-link"} to="/login">
               Login
             </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/create/user">
+            </Nav.Item>
+          <Nav.Item>
+            <Link className={window.location.pathname === "/create/user" ? "activeTab nav-link" : "nav-link"} to="/create/user">
               Create Profile
             </Link>
-          </li>
+            </Nav.Item>
         </React.Fragment>
       );
     } else {
@@ -70,40 +72,40 @@ export default class NavBar extends Component {
 
   render() {
     return (
-      <header>
-        <nav>
-          <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
+      <React.Fragment>
+      <header className="background-Nav">
+      </header>
+          <Nav fill variant="tabs" defaultActiveKey="/home">
+            <Nav.Item>
+              <Link className={window.location.pathname === "/" ? "activeTab nav-link" : "nav-link"} to="/">
                 Home
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/services">
+            </Nav.Item>
+            <Nav.Item>
+              <Link className={window.location.pathname === "/services" ? "activeTab nav-link" : "nav-link"} to="/services">
                 Services
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              </Nav.Item>
+            <Nav.Item>
+              <Link className={window.location.pathname === "/about" ? "activeTab nav-link" : "nav-link"} to="/about">
                 About
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">
+              </Nav.Item>
+            <Nav.Item>
+              <Link className={window.location.pathname === "/contact" ? "activeTab nav-link" : "nav-link"} to="/contact">
                 Contact
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/user/request/new">
+              </Nav.Item>
+            <Nav.Item>
+              <Link className={window.location.pathname === "/user/request/new" ? "activeTab nav-link" : "nav-link"} to="/user/request/new">
                 Request Appointment
               </Link>
-            </li>
+              </Nav.Item>
             {this.showNonUser()}
             {this.showUserProf()}
             {this.showLogOut()}
-          </ul>
-        </nav>
-      </header>
+        </Nav>
+      </React.Fragment>
     );
   }
 }

@@ -1,3 +1,61 @@
-p {
-  color: blue
+.background-Nav {
+  align-items: flex-end;
+  background-image: url(./testHeader.svg);
+  background-attachment: scroll;
+  width: 100%;
+  height: 255px;
+  display: flex;
+  justify-content: center;
+  background-color:#ff8726;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+div.nav.nav-tabs.nav-fill {
+  background-color:#ff8726;
+}
+
+.nav-tabs a.nav-link {
+  display: flex;
+  background-color: #b1cc3c;
+  border: .5px solid #F0F2F2;
+  border-bottom: none;
+  color: black;
+  padding: .60rem 15px .60rem 15px;
+  margin-right: -1rem;
+  margin-left: 2px;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  box-shadow: -5px -2px 7px -4px grey;
+}
+div.nav-item {
+  border-bottom: 1.5px solid #9b4d44;
+}
+.nav-tabs .nav-link:hover {
+  transform: scale(1.1);
+  background-color: #b1cc3c;
+  border: 1px solid #9b4d44;
+  border-bottom: none;
+  color: white;
+  box-shadow: -4px -3px 6px -3px grey;
+}
+.nav-tabs .nav-link:focus {
+  transform: scale(1.11);
+  margin-right: 0px;
+  background-color: #b1cc3c;
+  border: 1px solid #9b4d44;
+  border-bottom: none;
+  color: white;
+  box-shadow: -4px -3px 6px -4px grey;
+}
+
+
+div.nav-tabs .activeTab {
+  transform: scale(1.11);
+  margin-right: 0px;
+  background-color: #b1cc3c;
+  border: 1px solid #9b4d44;
+  border-bottom: none;
+  color: white;
+  box-shadow: -3px -5px 6px -5px grey;
 }

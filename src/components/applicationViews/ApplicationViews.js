@@ -272,8 +272,7 @@ class ApplicationViews extends Component {
   requestSubmit = (obj) => {
     let dateTime = document.getElementById("dayRequest").value
     let service = document.getElementById("serviceIdRequest").value
-    let details = document.getElementById("request_detailsRequest").value
-    if (dateTime && service && details) {
+    if (dateTime && service) {
       API.post("requests", obj)
       .then(() => API.getAll("requests"))
       .then(requests => {
@@ -282,7 +281,7 @@ class ApplicationViews extends Component {
         this.props.history.push("/user/profile")
       })
     } else {
-      alert("Please fill out all fields.")
+      alert("Please fill out first two fields!")
     }
   }
   requestEditSubmit = (obj) => {

@@ -31,7 +31,7 @@ export default class DenyModule extends Component {
           <select id="denyReason" className="denyReason-select" onChange={this.handleFieldChange}>
             <option value="">Select Reason for Decline</option>
             {
-              this.props.status.map( reason => reason.statusId !== 1 && reason.statusId !== 2 ? <option key={reason.id} value={reason.id}>{reason.message}</option> : "")
+              this.props.status.map( reason => reason.statusId !== 1 && reason.statusId !== 2 && reason.id !== 7 ? <option key={reason.id} value={reason.id}>{reason.message}</option> : "")
             }
           </select>
           </ModalBody>

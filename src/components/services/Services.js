@@ -1,11 +1,18 @@
-import React, {Component} from 'react';
-import './Services.css'
-import "bootstrap/dist/css/bootstrap.min.css"
+import React, { Component } from "react";
+import ServiceCard from "./ServiceCard";
+import "./Services.css";
 
 export default class Services extends Component {
   render() {
     return (
-      <p>Services</p>
-    )
+      <div className="servicesPage-div">
+        <h1>Services:</h1>
+        <div className="serviceType-parent">
+        {this.props.services.map(service => (
+          <ServiceCard key={service.id} service={service}/>
+        ))}
+        </div>
+      </div>
+    );
   }
 }

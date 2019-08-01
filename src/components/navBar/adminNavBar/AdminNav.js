@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Nav from "react-bootstrap/Nav"
 import "./AdminNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -10,30 +11,31 @@ state = {
 
   render() {
     return (
-      <header className="background-Nav">
-        <nav>
-          <ul className="nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/admin">
+      <React.Fragment>
+        <header className="background-Nav">
+        </header>
+        <Nav fill variant="tabs" defaultActiveKey="/admin">
+            <Nav.Item>
+              <Link className={window.location.pathname === "/admin" ? "activeTab nav-link" : "nav-link"} to="/admin">
                 Home
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/admin/appointments">
+            </Nav.Item>
+            <Nav.Item>
+              <Link className={window.location.pathname === "/admin/appointments" ? "activeTab nav-link" : "nav-link"} to="/admin/appointments">
                 Appointments
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/admin/users">
+            </Nav.Item>
+            <Nav.Item>
+              <Link className={window.location.pathname === "/admin/users" ? "activeTab nav-link" : "nav-link"} to="/admin/users">
                 Users
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/admin/requests">
+            </Nav.Item>
+            <Nav.Item>
+              <Link className={window.location.pathname === "/admin/requests" ? "activeTab nav-link" : "nav-link"} to="/admin/requests">
                 Requests
               </Link>
-            </li>
-            <li className="nav-item">
+            </Nav.Item>
+            <Nav.Item>
               <Link
                 className="nav-link"
                 onClick={() => {
@@ -45,10 +47,9 @@ state = {
               >
                 Log Out
               </Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
+            </Nav.Item>
+        </Nav>
+      </React.Fragment>
     );
   }
 }

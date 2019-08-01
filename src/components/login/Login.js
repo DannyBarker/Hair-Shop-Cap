@@ -36,7 +36,7 @@ export default class Login extends Component {
     if (findUser) {
       this.props.setUserId(type, findUser.id)
       if (findUser.accessType.accessType === "user") {
-        this.props.history.push("/")
+        this.props.history.push("/user/profile")
       } else {
         this.props.history.push("/admin")
       }
@@ -67,7 +67,7 @@ export default class Login extends Component {
             className="form-control"
             autoComplete="current-password"
           />
-          <button type="submit">Sign in</button>
+          <button className="btn btn-primary" type="submit">Sign in</button>
           {/* <label htmlFor="Remember Me">
             <input
               id="rememberMe"

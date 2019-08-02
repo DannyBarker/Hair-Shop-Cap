@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav"
 import "./UserNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "../newLogo.svg"
+import logo from "../shopLogo.png"
 
 export default class NavBar extends Component {
   state = {

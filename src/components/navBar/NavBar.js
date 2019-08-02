@@ -8,9 +8,9 @@ export default class NavBar extends Component {
 
 renderNav = () => {
   if (this.props.userAccess.accessType === "admin") {
-    return <AdminNav userAccess={this.props.userAccess} logOut={this.props.logOut} />
+    return <AdminNav userAccess={this.props.userAccess} logOut={this.props.logOut} {...this.props} />
   } else {
-    return <UserNav userAccess={this.props.userAccess} logOut={this.props.logOut} />
+    return <UserNav userAccess={this.props.userAccess} logOut={this.props.logOut} {...this.props} />
   }
 }
 

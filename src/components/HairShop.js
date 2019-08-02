@@ -30,7 +30,7 @@ class HairShop extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar userAccess={this.state} logOut={this.logOut} />
+        <NavBar userAccess={this.state} logOut={this.logOut} {...this.props} />
         <ApplicationViews userAccess={this.state} setUserId={this.setUserId} />
       </React.Fragment>
     )

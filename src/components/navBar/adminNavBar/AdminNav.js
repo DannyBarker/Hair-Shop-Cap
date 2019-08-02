@@ -3,18 +3,38 @@ import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav"
 import "./AdminNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import logo from "../shopLogo.png"
 
 export default class NavBar extends Component {
 state = {
   saveDisabled: false,
 }
 
+showAdminLogout = () => {
+  return (<Nav.Item>
+  <Link
+    className="nav-link"
+    onClick={() => {
+      this.setState({ saveDisabled: true });
+      this.props.logOut();
+    }}
+    disabled={this.state.saveDisabled}
+    to="/"
+  >
+    Log Out
+  </Link>
+</Nav.Item>)
+}
+
   render() {
     return (
       <React.Fragment>
-        <header className="background-Nav">
+        <header className="nav-header">
+        <div className="navImg-div">
+        <img className="imgLogo" src={logo} alt="Shop logo" onClick={() => {this.props.history.push("/")}} />
+        </div>
         </header>
-        <Nav fill variant="tabs" defaultActiveKey="/admin">
+        <Nav fill variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
               <Link className={window.location.pathname === "/admin" ? "activeTab nav-link" : "nav-link"} to="/admin">
                 Home
@@ -35,19 +55,7 @@ state = {
                 Requests
               </Link>
             </Nav.Item>
-            <Nav.Item>
-              <Link
-                className="nav-link"
-                onClick={() => {
-                  this.setState({ saveDisabled: true });
-                  this.props.logOut();
-                }}
-                disabled={this.state.saveDisabled}
-                to="/"
-              >
-                Log Out
-              </Link>
-            </Nav.Item>
+            {this.showAdminLogout()}
         </Nav>
       </React.Fragment>
     );

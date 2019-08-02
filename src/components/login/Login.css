@@ -1,3 +1,25 @@
-p {
-  color: blue
+div.loginPage-parentDiv {
+  display: flex;
+  justify-content: space-around;
+}
+
+div.loginPage-div {
+  display: flex;
+  flex-direction: column;
+}
+
+div.loginPage-div > h1 {
+  color: #9b4d44;
+}
+
+form.loginPage-Form {
+  display: flex;
+  flex-direction: column;
+}
+
+input.loginEmail-input, input.loginPass-input {
+  display: flex;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  background-color: #F2F7F7;
 }

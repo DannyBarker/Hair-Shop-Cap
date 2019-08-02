@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../User.css'
 
 export default class RequestAppointment extends Component {
   state = {
@@ -105,9 +106,9 @@ export default class RequestAppointment extends Component {
             </form>
           </div>
         ) : (
-          <p>
-            <button style={{background: "transparent", border: "none"}} onClick={() => this.props.history.push("/login")}>Log</button> In or{" "}
-            <button style={{background: "transparent", border: "none"}} onClick={() => this.props.history.push("/create/user")}>
+          <p className="reqApp-nonUsr">
+            <button style={{background: "transparent", border: "none", color: "blue", textDecoration: "underline"}} onClick={() => this.props.history.push("/login")}>Log In</button> or{" "}
+            <button style={{background: "transparent", border: "none", color: "blue", textDecoration: "underline"}} onClick={() => this.props.history.push("/create/user")}>
               Create a Profile
             </button>{" "}
             to request an appointment!

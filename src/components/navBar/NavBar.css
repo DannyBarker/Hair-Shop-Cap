@@ -1,18 +1,24 @@
-.background-Nav {
-  align-items: flex-end;
-  background-image: url(./testHeader.svg);
-  background-attachment: scroll;
-  width: 100%;
-  height: 255px;
-  display: flex;
-  justify-content: center;
-  background-color:#ff8726;
-  background-size: auto;
-  background-repeat: no-repeat;
-  background-position: center;
+header.nav-header {
+background-color: #ff8726;
 }
+
+div.navImg-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+img.imgLogo {
+  transform: rotate(-90deg);
+  margin: -5% -20%;
+
+}
+
 div.nav.nav-tabs.nav-fill {
   background-color:#ff8726;
+  margin-bottom: 7%;
+  position: sticky;
+    top: 0;
 }
 
 .nav-tabs a.nav-link {
@@ -26,7 +32,7 @@ div.nav.nav-tabs.nav-fill {
   margin-left: 2px;
   border-top-left-radius: .25rem;
   border-top-right-radius: .25rem;
-  box-shadow: -5px -2px 7px -4px grey;
+  box-shadow: -5px -4px 8px -3px grey;
 }
 div.nav-item {
   border-bottom: 1.5px solid #9b4d44;
@@ -57,5 +63,5 @@ div.nav-tabs .activeTab {
   border: 1px solid #9b4d44;
   border-bottom: none;
   color: white;
-  box-shadow: -3px -5px 6px -5px grey;
+  box-shadow: -9px -7px 14px -7px grey;
 }

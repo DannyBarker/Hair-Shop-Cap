@@ -48,15 +48,16 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="loginPage-parentDiv">
+      <div className="loginPage-div">
         <h1>Login</h1>
-        <form onSubmit={this.handleLogin}>
+        <form className="loginPage-Form" onSubmit={this.handleLogin}>
           <input
             onChange={this.handleFieldChange}
             type="email"
             id="email"
             placeholder="Email"
-            className="form-control"
+            className="form-control loginEmail-input"
             autoComplete="username"
           />
           <input
@@ -64,9 +65,9 @@ export default class Login extends Component {
             type="password"
             id="password"
             placeholder="Password"
-            className="form-control"
+            className="form-control loginPass-input"
             autoComplete="current-password"
-          />
+          /> 
           <button className="btn btn-primary" type="submit">Sign in</button>
           {/* <label htmlFor="Remember Me">
             <input
@@ -81,6 +82,7 @@ export default class Login extends Component {
             Remember Me
           </label> */}
         </form>
+      </div>
       </div>
     );
   }

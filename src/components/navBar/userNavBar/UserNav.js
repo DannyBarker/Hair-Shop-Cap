@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav"
 import "./UserNav.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import logo from "../newLogo.svg"
 
 export default class NavBar extends Component {
   state = {
@@ -69,11 +70,14 @@ export default class NavBar extends Component {
       return "";
     }
   };
-
+  // height="42" width="42"
   render() {
     return (
       <React.Fragment>
-      <header className="background-Nav">
+      <header className="nav-header">
+        <div className="navImg-div">
+        <img className="imgLogo" src={logo} alt="Shop logo" />
+        </div>
       </header>
           <Nav fill variant="tabs" defaultActiveKey="/home">
             <Nav.Item>

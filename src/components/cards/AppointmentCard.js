@@ -34,7 +34,7 @@ export default class AppointmentCard extends Component {
         <div
           key={this.props.appointment.id}
           className={
-            this.props.appointment.checked
+            this.props.appointment.checked && !this.props.appointment.completed
               ? "appointment-card strike"
               : "appointment-card"
           }

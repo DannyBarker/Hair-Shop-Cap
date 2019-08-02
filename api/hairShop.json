@@ -375,9 +375,9 @@
     {
       "id": 4,
       "requestId": 11,
-      "completed": false,
-      "checked": false,
-      "stylistNotes": ""
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "Helped that boy out!"
     },
     {
       "requestId": 16,

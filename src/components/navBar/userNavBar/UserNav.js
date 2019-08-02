@@ -76,7 +76,7 @@ export default class NavBar extends Component {
       <React.Fragment>
       <header className="nav-header">
         <div className="navImg-div">
-        <img className="imgLogo" src={logo} alt="Shop logo" />
+        <img className="imgLogo" src={logo} alt="Shop logo" onClick={() => {this.props.history.push("/")}} />
         </div>
       </header>
           <Nav fill variant="tabs" defaultActiveKey="/home">

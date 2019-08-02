@@ -31,7 +31,7 @@ showAdminLogout = () => {
       <React.Fragment>
         <header className="nav-header">
         <div className="navImg-div">
-        <img className="imgLogo" src={logo} alt="Shop logo" onClick={() => {this.props.history.push("/")}} />
+        <img className="imgLogo" src={logo} alt="Shop logo" onClick={() => {this.props.history.push("/admin")}} />
         </div>
         </header>
         <Nav fill variant="tabs" defaultActiveKey="/home">

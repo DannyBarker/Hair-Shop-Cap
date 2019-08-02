@@ -289,13 +289,16 @@ class ApplicationViews extends Component {
     let serviceEdit = document.getElementById("serviceIdRequestEdit").value
     let detailsEdit = document.getElementById("request_detailsRequestEdit").value
     if (dateTimeEdit && serviceEdit && detailsEdit) {
-      API.put("requests", obj)
-      .then(() => API.getAll("requests"))
-      .then(requests => {
-        let sortedRequests = this.sortRequests(requests);
-        this.setState({ requests: sortedRequests });
-        this.props.history.push("/user/profile")
-      })
+      if (window.confirm("This will create a new request.")) {
+        API.put("requests", obj)
+        .then(() => API.getAll("requests"))
+        .then(requests => {
+          let sortedRequests = this.sortRequests(requests);
+          this.setState({ requests: sortedRequests });
+          this.props.history.push("/user/profile")})
+      } else {
+        return ""
+      }
     } else {
       alert("Please fill out all fields.")
     }

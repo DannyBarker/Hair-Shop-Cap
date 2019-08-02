@@ -14,7 +14,7 @@ class Appointments extends Component {
   getPastAppointments = () => {
     let pastApps = this.props.appointments.filter(appointment => {
       if (
-        appointment.completed &&
+        appointment.completed ||
         this.props.sortAppointmentTime(appointment.request) === "past"
       ) {
         return appointment;
@@ -65,7 +65,9 @@ class Appointments extends Component {
   render() {
     return (
       <React.Fragment>
+      <div className="adminApp-div">
         <h1>Appointments:</h1>
+        <div className="adminAppFilter-btns">
         {!this.state.past || !this.state.all ? (
           <button
             className="adminPast-apps btn btn-primary"
@@ -133,17 +135,17 @@ class Appointments extends Component {
           >
             All Appointments
           </button>
-        )} {" "}
-        <ul className="adminApp-ul">
+        )}</div> {" "}
+        <div className="appointments-div">
+        {this.state.past ? (
+            <React.Fragment>
+              <h4>Past Appointments</h4>
+              <ul className="adminApp-ul">
           <li>Name:</li>
           <li>Time:</li>
           <li>Service</li>
           <li>Details:</li>
         </ul>
-        <div className="appointments-div">
-        {this.state.past ? (
-            <React.Fragment>
-              <h4>Past Appointments</h4>
               {this.checkPastTF() ? (
                 <p>No past appointments.</p>
               ) : (
@@ -175,6 +177,12 @@ class Appointments extends Component {
           {this.state.current ? (
             <React.Fragment>
               <h4>Today's Appointments</h4>
+              <ul className="adminApp-ul">
+          <li>Name:</li>
+          <li>Time:</li>
+          <li>Service</li>
+          <li>Details:</li>
+        </ul>
               {this.checkTF("current") ? (
                 <p>No appointments, today.</p>
               ) : (
@@ -206,11 +214,18 @@ class Appointments extends Component {
           {this.state.future ? (
             <React.Fragment>
               <h4>Upcoming Appointments</h4>
+              <ul className="adminApp-ul">
+          <li>Name:</li>
+          <li>Time:</li>
+          <li>Service</li>
+          <li>Details:</li>
+        </ul>
               {this.checkTF("future") ? (
                 <p>No upcoming appointments.</p>
               ) : (
                 ""
               )}
+                      <div className="appointmentCard-divParent">
               {this.getCertainAppointments("future")
                 ? this.getCertainAppointments("future").map(appointment => {
                     return (
@@ -230,10 +245,12 @@ class Appointments extends Component {
                     );
                   })
                 : ""}
+                      </div>
             </React.Fragment>
           ) : (
             ""
           )}
+        </div>
         </div>
       </React.Fragment>
     );

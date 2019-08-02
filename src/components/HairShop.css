@@ -1,0 +1,29 @@
+button.btn.btn-primary {
+  background-color: #0097c9;
+  border-color: #0097c9;
+  box-shadow: -4px -2px 8px -4px grey;
+  text-shadow: -2px 0px 13px black;
+  margin: 2px 2px;
+}
+
+button.btn.btn-success {
+  background-color: #9E5246;
+  border-color: #9E5246;
+  box-shadow: -4px -2px 8px -4px grey;
+  text-shadow: -2px 0px 13px black;
+  margin: 2px 2px;
+}
+button.btn.btn-warning {
+  background-color: #FFF000;
+  border-color: #FFF000;
+  box-shadow: -4px -2px 8px -4px grey;
+  text-shadow: -2px 0px 13px black;
+  margin: 2px 2px;
+}
+button.btn.btn-danger {
+  background-color: #BB3E45;
+  border-color: #BB3E45;
+  box-shadow: -4px -2px 8px -4px grey;
+  text-shadow: -2px 0px 13px black;
+  margin: 2px 2px;
+}

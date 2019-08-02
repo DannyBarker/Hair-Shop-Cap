@@ -65,6 +65,7 @@ class Appointments extends Component {
   render() {
     return (
       <React.Fragment>
+      <div className="adminApp-div">
         <h1>Appointments:</h1>
         {!this.state.past || !this.state.all ? (
           <button
@@ -234,6 +235,7 @@ class Appointments extends Component {
           ) : (
             ""
           )}
+        </div>
         </div>
       </React.Fragment>
     );

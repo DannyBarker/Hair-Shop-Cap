@@ -41,17 +41,17 @@ showAdminLogout = () => {
               </Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className={window.location.pathname === "/admin/appointments" ? "activeTab nav-link" : "nav-link"} to="/admin/appointments">
+              <Link className={window.location.pathname === "/admin/appointments" ? "activeTab nav-link" : "nav-link tab-2"} to="/admin/appointments">
                 Appointments
               </Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className={window.location.pathname === "/admin/users" ? "activeTab nav-link" : "nav-link"} to="/admin/users">
+              <Link className={window.location.pathname === "/admin/users" ? "activeTab nav-link" : "nav-link tab-3"} to="/admin/users">
                 Users
               </Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className={window.location.pathname === "/admin/requests" ? "activeTab nav-link" : "nav-link"} to="/admin/requests">
+              <Link className={window.location.pathname === "/admin/requests" ? "activeTab nav-link" : "nav-link tab-4"} to="/admin/requests">
                 Requests
               </Link>
             </Nav.Item>

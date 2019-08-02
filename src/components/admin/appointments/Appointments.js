@@ -14,7 +14,7 @@ class Appointments extends Component {
   getPastAppointments = () => {
     let pastApps = this.props.appointments.filter(appointment => {
       if (
-        appointment.completed &&
+        appointment.completed ||
         this.props.sortAppointmentTime(appointment.request) === "past"
       ) {
         return appointment;
@@ -225,6 +225,7 @@ class Appointments extends Component {
               ) : (
                 ""
               )}
+                      <div className="appointmentCard-divParent">
               {this.getCertainAppointments("future")
                 ? this.getCertainAppointments("future").map(appointment => {
                     return (
@@ -244,6 +245,7 @@ class Appointments extends Component {
                     );
                   })
                 : ""}
+                      </div>
             </React.Fragment>
           ) : (
             ""

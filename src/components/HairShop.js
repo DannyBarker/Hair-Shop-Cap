@@ -10,29 +10,28 @@ class HairShop extends Component {
     userId: +sessionStorage.getItem("userId"),
   }
 
-  componentDidMount() {
-    this.handleScroll()
-    window.addEventListener('scroll', this.handleScroll);
-  }
+  // componentDidMount() {
+  //   this.handleScroll()
+  //   window.addEventListener('scroll', this.handleScroll);
+  // }
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener('scroll', this.handleScroll);
+  // }
 
-  handleScroll = () => {
-    let scroll = window.scrollY
-    let navbar = document.getElementsByClassName("nav-tabs")[0]
-    let sticky = navbar.getBoundingClientRect()
-    let takeAway = sticky.bottom + scroll
-    let test = sticky.bottom - scroll
-    if (sticky.top <= 0) {
-      navbar.classList.add("sticky")
-    }
+  // handleScroll = () => {
+  //   let scroll = window.scrollY
+  //   let navbar = document.getElementsByClassName("nav-tabs")[0]
+  //   let sticky = navbar.getBoundingClientRect()
+  //   let test = sticky.bottom - scroll
+  //   if (sticky.top <= 0) {
+  //     navbar.classList.add("sticky")
+  //   }
 
-    if (test > 0) {
-      navbar.classList.remove("sticky")
-    }
-  };
+  //   if (test > 0) {
+  //     navbar.classList.remove("sticky")
+  //   }
+  // };
 
 
   setUserId = (accessType, id) => {

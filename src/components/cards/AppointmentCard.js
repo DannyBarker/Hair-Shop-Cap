@@ -39,6 +39,7 @@ export default class AppointmentCard extends Component {
               : "appointment-card"
           }
         >
+        <div className="appointmentCard-details">
           {this.props.isAdmin() && this.props.sortAppointmentTime(this.props.appointment.request) !== "future" ? (
             <input
               style={{
@@ -56,17 +57,20 @@ export default class AppointmentCard extends Component {
           ) : (
             ""
           )}
+          <div className="appDetails-childDiv">
           <section className="appointment-name">
             <p>{this.props.getUser(this.props.appointment.request.userId)}</p>
           </section>
-
+</div>
+<div className="appDetails-childDiv">
           <section className="appointment-time">
             <p>
               {this.props.appointment.completed ? "Date: " : ""}
               {this.props.giveDate(this.props.appointment.request)}
             </p>
           </section>
-
+</div>
+<div className="appDetails-childDiv">
           <section className="appointment-service">
             <p>
               {this.props.appointment.completed ? "Service: " : ""}
@@ -76,19 +80,25 @@ export default class AppointmentCard extends Component {
               }
             </p>
           </section>
+          </div>
+          <div className="appDetails-childDiv">
           <section className="appointment-detail">
             <p>
               {this.props.appointment.completed ? "Details: " : ""}
               {this.props.appointment.request.request_details}
             </p>
           </section>
+          </div>
           {this.props.appointment.stylistNotes ? (
+            <div className="appDetails-childDiv">
             <section className="appointment-stylistNotes">
               <p>Stylist's Notes: {this.props.appointment.stylistNotes}</p>
             </section>
+</div>
           ) : (
             ""
-          )}
+          )}</div>
+          <div className="appointmentCard-btn">
           {!this.props.appointment.stylistNotes &&
           this.props.appointment.checked &&
           this.props.isAdmin() ? (
@@ -173,6 +183,7 @@ export default class AppointmentCard extends Component {
           >
             Remove Appointment
           </button>
+          </div>
         </div>
       </React.Fragment>
     );

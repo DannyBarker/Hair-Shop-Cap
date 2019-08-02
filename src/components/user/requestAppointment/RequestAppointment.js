@@ -18,7 +18,6 @@ export default class RequestAppointment extends Component {
 
   createReqObj = () => {
     let reqDate = new Date(this.state.dayRequest);
-    // let splitDate = reqDate.split(" ")
     let strReqDate = String(reqDate);
     let splitDate = strReqDate.split(" ");
     let newDate = `${splitDate[0]} ${splitDate[1]} ${splitDate[2]} ${

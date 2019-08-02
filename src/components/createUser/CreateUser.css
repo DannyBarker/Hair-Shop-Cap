@@ -1,0 +1,23 @@
+div.createUserPage-parentDiv {
+  display: flex;
+  justify-content: space-around;
+  color: #9b4d44;
+}
+
+div.createUser-div {
+  display: flex;
+  flex-direction: column;
+  color: #9b4d44;
+}
+
+form.createUser-form {
+  display: flex;
+  flex-direction: column;
+}
+
+form.createUser-form input.form-control {
+  display: flex;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  background-color: #F2F7F7;
+}

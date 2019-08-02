@@ -97,7 +97,7 @@ div.nav-tabs .nav-link:hover {
 
 div.nav-tabs .activeTab {
   transform: scale(1.11);
-  margin-right: 5px;
+  margin-right: 7px;
   z-index: 10;
   background-color: #b1cc3c;
   border: 1px solid #9b4d44;

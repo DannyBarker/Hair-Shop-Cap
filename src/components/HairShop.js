@@ -24,7 +24,6 @@ class HairShop extends Component {
     let navbar = document.getElementsByClassName("nav-tabs")[0]
     let sticky = navbar.getBoundingClientRect()
     let takeAway = sticky.bottom + scroll
-    console.log(scroll);
     let test = sticky.bottom - scroll
     if (sticky.top <= 0) {
       navbar.classList.add("sticky")

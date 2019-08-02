@@ -107,8 +107,8 @@ export default class RequestAppointment extends Component {
           </div>
         ) : (
           <p className="reqApp-nonUsr">
-            <button style={{background: "transparent", border: "none", color: "blue", textDecoration: "underline"}} onClick={() => this.props.history.push("/login")}>Log In</button> or{" "}
-            <button style={{background: "transparent", border: "none", color: "blue", textDecoration: "underline"}} onClick={() => this.props.history.push("/create/user")}>
+            <button style={{background: "transparent", border: "none", color: "#0097c9", textDecoration: "underline"}} onClick={() => this.props.history.push("/login")}>Log In</button> or{" "}
+            <button style={{background: "transparent", border: "none", color: "#0097c9", textDecoration: "underline"}} onClick={() => this.props.history.push("/create/user")}>
               Create a Profile
             </button>{" "}
             to request an appointment!

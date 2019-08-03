@@ -101,13 +101,13 @@ export default class RequestAppointment extends Component {
                   cols={5}
                 />
               </div>
-              <button type="submit" className="submitReq-btn btn btn-primary">Submit Request</button>
+              <button type="submit" className="submitReq-btn btn btn-primary hvr-shrink">Submit Request</button>
             </form>
           </div>
         ) : (
           <p className="reqApp-nonUsr">
-            <button style={{background: "transparent", border: "none", color: "#0097c9", textDecoration: "underline"}} onClick={() => this.props.history.push("/login")}>Log In</button> or{" "}
-            <button style={{background: "transparent", border: "none", color: "#0097c9", textDecoration: "underline"}} onClick={() => this.props.history.push("/create/user")}>
+            <button className="hvr-underline-reveal" style={{background: "transparent", border: "none", color: "#0097c9"}} onClick={() => this.props.history.push("/login")}>Log In</button> or{" "}
+            <button className="hvr-underline-reveal" style={{background: "transparent", border: "none", color: "#0097c9"}} onClick={() => this.props.history.push("/create/user")}>
               Create a Profile
             </button>{" "}
             to request an appointment!

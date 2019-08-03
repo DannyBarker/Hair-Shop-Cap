@@ -77,7 +77,7 @@ export default class StylistNotesModal extends Component {
           toggle={this.props.toggle}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.props.toggle}>Stylist's Notes</ModalHeader>
+          <ModalHeader toggle={this.props.toggle}>Edit Appointment Request</ModalHeader>
           <ModalBody>
           {this.props.isAuthenticated() && this.props.isUser() ? (
           <div>

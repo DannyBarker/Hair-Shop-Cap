@@ -67,8 +67,8 @@ export default class Login extends Component {
             placeholder="Password"
             className="form-control loginPass-input"
             autoComplete="current-password"
-          /> 
-          <button className="btn btn-primary" type="submit">Sign in</button>
+          />
+          <button className="btn btn-primary hvr-icon-fade hvr-shrink" type="submit"><i className="hvr-icon" >Sign in</i></button>
           {/* <label htmlFor="Remember Me">
             <input
               id="rememberMe"

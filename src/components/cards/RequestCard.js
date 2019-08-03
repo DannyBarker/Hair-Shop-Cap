@@ -60,7 +60,7 @@ export default class RequestCard extends Component {
           <React.Fragment>
         <button
           id="acceptRequest-btn"
-          className="accRequest-btn btn btn-success"
+          className="accRequest-btn btn btn-success hvr-shrink"
           onClick={() => {
             !this.props.acceptRequest(this.props.request) ? this.setState({ saveDisabled: false }) : this.setState({ saveDisabled: true })
           }}
@@ -70,7 +70,7 @@ export default class RequestCard extends Component {
         </button>
         <button
             id="adminDenyRequest-btn"
-            className="denyRequest-btn btn btn-warning"
+            className="denyRequest-btn btn btn-warning hvr-shrink"
             onClick={() => {
               this.toggle();
             }}

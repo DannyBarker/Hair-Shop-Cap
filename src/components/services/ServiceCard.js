@@ -17,7 +17,7 @@ export default class ServiceCard extends Component {
     return (
       <div
         key={this.props.service.id}
-        className="serviceType-div"
+        className="serviceType-div hvr-shrink hvr-ripple-out"
         onClick={this.toggle}
       >
         <Card>

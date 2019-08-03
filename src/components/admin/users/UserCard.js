@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserDetailModal from "./UserDetailModal"
+import "./Users.css"
 
 export default class UserCard extends Component {
   state = {
@@ -20,9 +21,9 @@ export default class UserCard extends Component {
           onClick={() => {
             this.toggle()
           }}
-          className="btn btn-primary"
+          className="btn btn-primary hvr-shrink hvr-icon-fade"
         >
-          <UserDetailModal
+          <i className="hvr-icon" ><UserDetailModal
             modal={this.state.modal}
             toggle={this.toggle}
             user={this.props.user}
@@ -46,6 +47,7 @@ export default class UserCard extends Component {
             userRemoveRequest={this.props.userRemoveRequest}
             statusMessages={this.props.statusMessages}
           />
+          </i>
         </button>
       </div>
     );

@@ -48,6 +48,20 @@
       "email": "mo@email.com",
       "password": "pass123",
       "id": 7
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Liv Gamble",
+      "email": "Liv@gmail.com",
+      "password": "Peach",
+      "id": 8
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Matilda  Gamble",
+      "email": "matildagamble@my.unt.edu",
+      "password": "my1penny",
+      "id": 9
     }
   ],
   "accessTypes": [
@@ -348,6 +362,64 @@
       "request_details": "Woot",
       "userCancel": false,
       "timestamp": 1564669495227
+    },
+    {
+      "id": 17,
+      "userId": 8,
+      "serviceId": 4,
+      "statusMessageId": 1,
+      "dateTime": "Thu Aug 15 2019 16:25:00 GMT-0500",
+      "request_details": "I would love a blow out;)",
+      "userCancel": false,
+      "timestamp": 1564801626746
+    },
+    {
+      "id": 18,
+      "userId": 8,
+      "serviceId": 6,
+      "statusMessageId": 2,
+      "dateTime": "Wed Aug 14 2019 20:30:00 GMT-0500",
+      "request_details": "free then?",
+      "timestamp": 1564802008492
+    },
+    {
+      "id": 19,
+      "userId": 8,
+      "serviceId": 1,
+      "statusMessageId": 1,
+      "dateTime": "Wed Dec 25 2019 00:01:00 GMT-0600",
+      "request_details": "Love Jesus our savior",
+      "userCancel": false,
+      "timestamp": 1564801679360
+    },
+    {
+      "id": 20,
+      "userId": 9,
+      "serviceId": 5,
+      "statusMessageId": 1,
+      "dateTime": "Fri Aug 30 2019 01:00:00 GMT-0500",
+      "request_details": "isabeau pooped in the bonus room",
+      "userCancel": false,
+      "timestamp": 1564802406598
+    },
+    {
+      "id": 21,
+      "userId": 9,
+      "serviceId": 6,
+      "statusMessageId": 1,
+      "dateTime": "Thu Aug 02 2019 00:07:00 GMT-0500",
+      "request_details": "pooooop",
+      "userCancel": false,
+      "timestamp": 1564802469454
+    },
+    {
+      "id": 22,
+      "userId": 9,
+      "serviceId": 6,
+      "statusMessageId": 2,
+      "dateTime": "Sun Oct 20 2019 07:06:00 GMT-0500",
+      "request_details": "põópie",
+      "timestamp": 1564803135018
     }
   ],
   "appointments": [
@@ -385,6 +457,34 @@
       "completed": true,
       "checked": true,
       "stylistNotes": "Haircut Done."
+    },
+    {
+      "requestId": 17,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 6
+    },
+    {
+      "requestId": 19,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "She be lookin good after that cut",
+      "id": 7
+    },
+    {
+      "requestId": 20,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 8
+    },
+    {
+      "id": 9,
+      "requestId": 21,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "done"
     }
   ]
 }

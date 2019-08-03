@@ -70,7 +70,7 @@ class Appointments extends Component {
         <div className="adminAppFilter-btns">
         {!this.state.past || !this.state.all ? (
           <button
-            className="adminPast-apps btn btn-primary"
+            className="adminPast-apps btn btn-primary hvr-bubble-float-bottom hvr-shrink"
             onClick={() =>
               this.setState({
                 past: true,
@@ -80,14 +80,14 @@ class Appointments extends Component {
               })
             }
           >
-            Past Appointments
+          Past Appointments
           </button>
         ) : (
           ""
         )} {" "}
         {!this.state.current || !this.state.all ? (
           <button
-            className="adminCurrent-apps btn btn-primary"
+            className="adminCurrent-apps btn btn-primary hvr-bubble-float-bottom hvr-shrink"
             onClick={() =>
               this.setState({
                 past: false,
@@ -104,7 +104,7 @@ class Appointments extends Component {
         )} {" "}
         {!this.state.future || !this.state.all ? (
           <button
-            className="adminFuture-apps btn btn-primary"
+            className="adminFuture-apps btn btn-primary hvr-bubble-float-bottom hvr-shrink"
             onClick={() =>
               this.setState({
                 past: false,
@@ -123,7 +123,7 @@ class Appointments extends Component {
           ""
         ) : (
           <button
-            className="adminAll-apps btn btn-primary"
+            className="adminAll-apps btn btn-primary hvr-bubble-float-bottom hvr-shrink"
             onClick={() =>
               this.setState({
                 past: true,

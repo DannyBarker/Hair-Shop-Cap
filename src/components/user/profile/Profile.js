@@ -8,15 +8,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default class Profile extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="userProfile-div">
         {this.props.isAuthenticated() && this.props.isUser() ? (
           <React.Fragment>
+          <div className="userProfile-header">
             <h1>Profile</h1>
-            <div>
-              <div className={`userProfile-${this.props.userAccess.userId}`}>
+            </div>
+              <div className="userPastCuts-parentDiv">
                 <h6>
-                  <strong>Past Cuts: </strong>
+                  <strong>Past Cuts </strong>
                 </h6>
+                <div className="userPastCuts-div">
                 {this.props
                   .getAppointment(this.props.userAccess.userId)
                   .map(cut =>
@@ -34,13 +36,20 @@ export default class Profile extends Component {
                       ""
                     )
                   )}
+                  </div>
               </div>
               <div
-                className={`userAppointments-${this.props.userAccess.userId}`}
+                className="userAppointments-div"
               >
                 <h6>
-                  <strong>Appointments: </strong>
+                  <strong>Appointments </strong>
                 </h6>
+                <ul className="userApp-ul">
+          <li>Name</li>
+          <li>Time</li>
+          <li>Service</li>
+          <li>Details</li>
+        </ul>
                 {this.props
                   .getAppointment(this.props.userAccess.userId)
                   .map(cut =>
@@ -63,9 +72,9 @@ export default class Profile extends Component {
                     )
                   )}
               </div>
-              <div className={`userRequests-${this.props.userAccess.userId}`}>
+              <div className="userRequests-div">
                 <h6>
-                  <strong>Pending Requests: </strong>
+                  <strong>Pending Requests </strong>
                 </h6>
                 {this.props.requests.map(request =>
                   request.statusMessageId === 2 &&
@@ -92,8 +101,10 @@ export default class Profile extends Component {
                     ""
                   )
                 )}
+              </div>
+              <div className="userDeniedRequests-div" >
                 <h6>
-                  <strong>Denied Requests: </strong>
+                  <strong>Denied Requests </strong>
                 </h6>
                 {this.props.requests.map(request =>
                   request.statusMessageId > 2 &&
@@ -121,13 +132,12 @@ export default class Profile extends Component {
                     ""
                   )
                 )}
-              </div>
-            </div>
+                </div>
           </React.Fragment>
         ) : (
           ""
         )}
-      </React.Fragment>
+      </div>
     );
   }
 }

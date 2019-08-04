@@ -1,0 +1,71 @@
+div.userProfile-div {
+  display: flex;
+  flex-direction: column;
+  color: #9E5246;
+  padding: 10px;
+}
+div.userProfile-div div.userProfile-header {
+  margin-bottom: 25px;
+}
+
+div.userProfile-div div.userPastCuts-parentDiv {
+ display: flex;
+ flex-direction: column;
+  margin-bottom: 40px;
+}
+
+div.userProfile-div div.userPastCuts-parentDiv div.userPastCuts-div {
+ display: flex;
+ flex-direction: row;
+}
+
+div.haircut-card.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25%;
+  padding: 20px;
+  margin: 20px;
+  background-color: #F2F7F7;
+  box-shadow: -3px -2px 15px -5px black;
+}
+
+ul.userApp-ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  font-weight: bold;
+  box-shadow: inset 0 0 70px -47px #ff8726;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  border-bottom: #9b4d44 solid 5px;
+  border-top: #9b4d44 solid 5px;
+  padding: 5px 0px;
+}
+
+ul.userApp-ul li {
+  display: flex;
+  margin: 0px 10%;
+}
+
+div.userAppointments-div {
+  margin-bottom: 40px;
+}
+
+div.userRequests-div {
+  margin-bottom: 40px;
+}
+
+div.userRequests-div div.adminRequest-card {
+  padding: 20px;
+  margin: 15px;
+}
+
+div.userDeniedRequests-div {
+  margin-bottom: 40px;
+}
+
+div.userDeniedRequests-div div.adminRequest-card {
+  padding: 20px;
+  margin: 15px;
+}

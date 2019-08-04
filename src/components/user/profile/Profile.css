@@ -19,7 +19,7 @@ div.userProfile-div div.userPastCuts-parentDiv div.userPastCuts-div {
  flex-direction: row;
 }
 
-div.haircut-card.card {
+div.userPastCuts-div div.haircut-card.card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

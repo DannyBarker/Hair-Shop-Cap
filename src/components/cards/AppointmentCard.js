@@ -104,7 +104,7 @@ export default class AppointmentCard extends Component {
           this.props.isAdmin() ? (
             <button
               id={`appNotes-${this.props.appointment.id}`}
-              className="addStylistNotes-btn btn btn-success hvr-shrink"
+              className="addStylistNotes-btn btn btn-primary hvr-shrink"
               onClick={() => {
                 this.toggle();
               }}
@@ -124,7 +124,7 @@ export default class AppointmentCard extends Component {
           this.props.isAdmin() ? (
             <button
               id={`editNotes-${this.props.appointment.id}`}
-              className="editStylistNotes-btn btn btn-success hvr-shrink"
+              className="editStylistNotes-btn btn btn-primary hvr-shrink"
               onClick={() => {
                 this.toggle();
               }}
@@ -141,7 +141,7 @@ export default class AppointmentCard extends Component {
           )}
           <button
             id={`appCancel-${this.props.appointment.id}`}
-            className="btn btn-warning hvr-shrink"
+            className="btn btn-danger hvr-shrink"
             onClick={() => {
               this.disableButton();
               this.props.cancelAppointment(

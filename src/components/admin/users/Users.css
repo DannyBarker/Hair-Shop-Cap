@@ -49,6 +49,18 @@ div.userRequest-modal div.adminRequest-card.card {
   margin-bottom: 10px;
 }
 
+div.userPastCuts-modal {
+  display:flex;
+  flex-direction: column;
+}
+
+div.userPastCuts-modal div.haircut-card.card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
 div.user-card button.hvr-icon-fade {
   display: inline-block;
   vertical-align: middle;

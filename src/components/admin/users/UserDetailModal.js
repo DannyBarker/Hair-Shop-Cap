@@ -27,7 +27,7 @@ export default class UserDetailModal extends Component {
             </p>
           </ModalHeader>
           <ModalBody>
-            <div className={`userPastCuts-${this.props.user.id}`}>
+            <div className="userPastCuts-modal">
               <h6><strong>Past Cuts: </strong></h6>
               {this.props
                 .getAppointment(this.props.user.id)

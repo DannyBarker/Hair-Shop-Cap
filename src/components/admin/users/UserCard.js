@@ -21,7 +21,7 @@ export default class UserCard extends Component {
           onClick={() => {
             this.toggle()
           }}
-          className="btn btn-primary hvr-shrink hvr-icon-fade"
+          className="btn btn-success hvr-shrink hvr-icon-fade"
         >
           <i className="hvr-icon" ><UserDetailModal
             modal={this.state.modal}

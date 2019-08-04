@@ -86,7 +86,7 @@ export default class CreateUser extends Component {
               className="form-control"
               autoComplete="new-password"
             />
-            <button className="createUser-btn btn btn-success" type="submit">
+            <button className="createUser-btn btn btn-primary" type="submit">
               Create Profile
             </button>
           </form>

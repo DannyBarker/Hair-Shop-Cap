@@ -433,7 +433,7 @@
       "userId": 10,
       "serviceId": 5,
       "statusMessageId": 1,
-      "dateTime": "Sat Aug 03 2019 12:00:00 GMT-0600",
+      "dateTime": "Sat Aug 04 2019 12:00:00 GMT-0600",
       "request_details": "yoooooo",
       "userCancel": false,
       "timestamp": 1564858963414
@@ -506,9 +506,9 @@
     {
       "id": 10,
       "requestId": 23,
-      "completed": true,
-      "checked": true,
-      "stylistNotes": "done"
+      "completed": false,
+      "checked": false,
+      "stylistNotes": ""
     }
   ]
 }

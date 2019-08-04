@@ -1,4 +1,65 @@
+div.adminUsers-parentDiv {
+  display: flex;
+  flex-direction: column;
+  color: #9b4d44;
+}
 
+div.adminUsers-parentDiv header.adminUsers-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #9b4d44;
+  padding: 5px 5px;
+  margin-bottom: 25px;
+}
+div.adminUsers-parentDiv div.searchUsersInput-div {
+  display: flex;
+  flex-direction: column;
+}
+
+div.adminUsers-Div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+div.adminUser-card.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25%;
+  padding: 10px;
+  margin: 10px;
+  background-color: #F2F7F7;
+}
+
+div.adminUser-modal {
+  display: flex;
+  flex-direction: column;
+}
+div.userRequest-modal {
+  display: flex;
+  flex-direction: column;
+}
+div.userRequest-modal div.adminRequest-card.card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+div.userPastCuts-modal {
+  display:flex;
+  flex-direction: column;
+}
+
+div.userPastCuts-modal div.haircut-card.card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 10px;
+}
 
 div.user-card button.hvr-icon-fade {
   display: inline-block;
@@ -17,7 +78,7 @@ div.user-card button.hvr-icon-fade {
   transition-property: color;
 }
 
-.hvr-icon-fade:hover .hvr-icon, .hvr-icon-fade:focus .hvr-icon, .hvr-icon-fade:active .hvr-icon {
+.hvr-icon-fade:hover .hvr-icon {
   color: #ff8726;
 }
 
@@ -66,7 +127,22 @@ div.user-card button.hvr-icon-fade {
   transition-property: transform;
 }
 
-.hvr-shrink:focus, .hvr-shrink:active {
+.hvr-shrink:active {
   -webkit-transform: scale(0.9);
   transform: scale(0.9);
+}
+
+.hvr-glow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: -3px -2px 15px -5px black;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+}
+.hvr-glow:hover {
+  box-shadow: 0px 0px 20px 3px #ff8726
 }

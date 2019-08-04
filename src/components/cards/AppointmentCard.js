@@ -35,11 +35,11 @@ export default class AppointmentCard extends Component {
           key={this.props.appointment.id}
           className={
             this.props.appointment.checked && !this.props.appointment.completed
-              ? "appointment-card strike hvr-border-fade"
+              ? "appointment-card hvr-border-fade"
               : "appointment-card hvr-border-fade"
           }
         >
-        <div className="appointmentCard-details">
+        <div className={this.props.appointment.checked ? "appointmentCard-details strike" : "appointmentCard-details"}>
           {this.props.isAdmin() && this.props.sortAppointmentTime(this.props.appointment.request) !== "future" ? (
             <input
               style={{
@@ -104,7 +104,7 @@ export default class AppointmentCard extends Component {
           this.props.isAdmin() ? (
             <button
               id={`appNotes-${this.props.appointment.id}`}
-              className="addStylistNotes-btn btn btn-success hvr-shrink"
+              className="addStylistNotes-btn btn btn-primary hvr-shrink"
               onClick={() => {
                 this.toggle();
               }}
@@ -124,7 +124,7 @@ export default class AppointmentCard extends Component {
           this.props.isAdmin() ? (
             <button
               id={`editNotes-${this.props.appointment.id}`}
-              className="editStylistNotes-btn btn btn-success hvr-shrink"
+              className="editStylistNotes-btn btn btn-primary hvr-shrink"
               onClick={() => {
                 this.toggle();
               }}
@@ -141,7 +141,7 @@ export default class AppointmentCard extends Component {
           )}
           <button
             id={`appCancel-${this.props.appointment.id}`}
-            className="btn btn-warning hvr-shrink"
+            className="btn btn-danger hvr-shrink"
             onClick={() => {
               this.disableButton();
               this.props.cancelAppointment(

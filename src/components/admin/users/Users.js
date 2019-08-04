@@ -26,14 +26,18 @@ state = {
   render() {
     return (
       <React.Fragment>
+      <div className="adminUsers-parentDiv">
         <header className="adminUsers-header">
           <h1>Users</h1>
+          <div className="searchUsersInput-div">
+          <label htmlFor="searchUsers">Search For User</label>
           <input
             id="searchUsers"
+            className="form-control"
             type="text"
-            placeholder="Search Users"
+            placeholder="Name"
             onKeyPress={this.inputEvent}
-          />
+          /></div>
         </header>
         {!this.state.searchInput ? (
           <div className="adminUsers-Div">
@@ -68,7 +72,7 @@ state = {
             )}
           </div>
         ) : (
-          <div className="adminUsersSearch-Div">
+          <div className="adminUsers-Div">
             {this.state.userResults.map(user =>
               user.accessTypeId === 2 ? (
                 <UserCard
@@ -100,6 +104,7 @@ state = {
             )}
           </div>
         )}
+        </div>
       </React.Fragment>
     );
   }

@@ -25,14 +25,14 @@ export default class HaircutCard extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="haircut-card">
-          <p>Date: {this.props.giveDate(this.props.haircut.request)}</p>
+        <div className="haircut-card card">
+          <p><b>Date:</b> {this.props.giveDate(this.props.haircut.request)}</p>
           <p>
-            Service:{" "}
+            <b>Service:</b>{" "}
             {this.getService(this.props.haircut.request.serviceId).type}
           </p>
-          <p>Details: {this.props.haircut.request.request_details} </p>
-          <p>Stylist's Notes: {this.props.haircut.stylistNotes}</p>
+          <p><b>Details:</b> {this.props.haircut.request.request_details} </p>
+          <p><b>Stylist's Notes:</b> {this.props.haircut.stylistNotes}</p>
           {this.props.isAdmin() ? (
             <button
               id="editNotes"

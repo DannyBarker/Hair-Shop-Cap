@@ -55,10 +55,11 @@ export default class RequestAppointment extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="userRequestApp-parentDiv">
         {this.props.isAuthenticated() && this.props.isUser() ? (
-          <div>
+      <div className="userRequestApp-div">
             <h1>Request Appointment</h1>
+          <div className="userRequestApp-formDiv">
             <form
               onSubmit={evt => {
                 evt.preventDefault();
@@ -71,7 +72,6 @@ export default class RequestAppointment extends Component {
                   onChange={this.handleFieldChange}
                   type="datetime-local"
                   id="dayRequest"
-                  placeholder="Day for appointment"
                   className="form-control"
                 />
               </div>
@@ -104,6 +104,7 @@ export default class RequestAppointment extends Component {
               <button type="submit" className="submitReq-btn btn btn-primary hvr-shrink">Submit Request</button>
             </form>
           </div>
+      </div>
         ) : (
           <p className="reqApp-nonUsr">
             <button className="hvr-underline-reveal" style={{background: "transparent", border: "none", color: "#0097c9"}} onClick={() => this.props.history.push("/login")}>Log In</button> or{" "}
@@ -113,7 +114,7 @@ export default class RequestAppointment extends Component {
             to request an appointment!
           </p>
         )}
-      </React.Fragment>
+        </div>
     );
   }
 }

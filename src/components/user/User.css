@@ -1,3 +1,14 @@
+div.userRequestApp-parentDiv {
+  display: flex;
+  justify-content: space-around;
+  color: #9b4d44;
+}
+
+div.userRequestApp-div {
+  display: flex;
+  flex-direction: column;
+}
+
 p.reqApp-nonUsr {
   color: #9b4d44;
 }

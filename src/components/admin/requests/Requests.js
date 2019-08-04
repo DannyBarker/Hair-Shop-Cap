@@ -7,7 +7,10 @@ export default class Requests extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Requests:</h1>
+      <div className="adminReaust-parentDiv">
+      <div className="adminRequest-header">
+        <h1>Requests</h1>
+        </div>
         <div className="adminRequests-Div">
           {this.props.requests.map(request =>
             request.statusMessageId === 2 ? (
@@ -29,6 +32,7 @@ export default class Requests extends Component {
               ""
             )
           )}
+        </div>
         </div>
       </React.Fragment>
     );

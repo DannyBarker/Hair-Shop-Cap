@@ -41,26 +41,26 @@ export default class RequestCard extends Component {
   }
   render() {
     return (
-      <div key={this.props.request.id} className="request-card">
-        <p className="requestUser-Name">
-          {this.props.getUser(this.props.request.userId)}
-        </p>
-        <p className="request-dateTime">Date: {" "}{this.props.giveDate(this.props.request)}</p>
+      <div key={this.props.request.id} className="hvr-glow adminRequest-card card">
+        <h6 className="requestUser-Name" style={{textDecoration: "underline"}}>
+          <strong>{this.props.getUser(this.props.request.userId)}</strong>
+        </h6>
+        <p className="request-dateTime"><b>Date:</b> {" "}{this.props.giveDate(this.props.request)}</p>
         <p className="request-service">
-          Service: {" "}{this.props.getService(this.props.request.serviceId).type}
+          <b>Service:</b> {" "}{this.props.getService(this.props.request.serviceId).type}
         </p>
-        <p className="request-details">Details: {" "}{this.props.request.request_details}</p>
+        <p className="request-details"><b>Details:</b> {" "}{this.props.request.request_details}</p>
         {
           this.props.isUser() && this.props.request.statusMessageId > 2 ?
-          <p className="request-details">Deny Reason: {" "}{this.findStatusMessages()}</p>
+          <p className="request-details"><b>Deny Reason:</b> {" "}{this.findStatusMessages()}</p>
           : ""
         }
         {
           this.props.isAdmin() ?
-          <React.Fragment>
+          <div className="adminRequest-btn">
         <button
           id="acceptRequest-btn"
-          className="accRequest-btn btn btn-success hvr-shrink"
+          className="accRequest-btn btn btn-primary hvr-shrink"
           onClick={() => {
             !this.props.acceptRequest(this.props.request) ? this.setState({ saveDisabled: false }) : this.setState({ saveDisabled: true })
           }}
@@ -70,7 +70,7 @@ export default class RequestCard extends Component {
         </button>
         <button
             id="adminDenyRequest-btn"
-            className="denyRequest-btn btn btn-warning hvr-shrink"
+            className="denyRequest-btn btn btn-danger hvr-shrink"
             onClick={() => {
               this.toggle();
             }}
@@ -85,7 +85,7 @@ export default class RequestCard extends Component {
             requestEditSubmit={this.props.requestEditSubmit}
           />
           </button>
-          </React.Fragment>
+          </div>
           : ""
         }
         {

@@ -21,7 +21,7 @@ div.adminUsers-Div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-    justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 div.adminUser-card.card {
@@ -32,6 +32,21 @@ div.adminUser-card.card {
   padding: 10px;
   margin: 10px;
   background-color: #F2F7F7;
+}
+
+div.adminUser-modal {
+  display: flex;
+  flex-direction: column;
+}
+div.userRequest-modal {
+  display: flex;
+  flex-direction: column;
+}
+div.userRequest-modal div.adminRequest-card.card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-bottom: 10px;
 }
 
 div.user-card button.hvr-icon-fade {

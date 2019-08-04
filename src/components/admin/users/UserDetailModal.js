@@ -15,7 +15,7 @@ export default class UserDetailModal extends Component {
         <Modal
           isOpen={this.props.modal}
           toggle={this.props.toggle}
-          className={this.props.className}
+          className={`${this.props.className} adminUser-modal`}
           scrollable={this.state.scroll}
         >
           <ModalHeader toggle={this.props.toggle}>
@@ -70,7 +70,7 @@ export default class UserDetailModal extends Component {
                   )
                 )}
             </div>
-            <div className={`userRequests-${this.props.user.id}`}>
+            <div className="userRequest-modal">
               <h6><strong>Pending Requests: </strong></h6>
               {this.props.requests.map(request =>
                 request.statusMessageId === 2 && request.userId === this.props.user.id ? (

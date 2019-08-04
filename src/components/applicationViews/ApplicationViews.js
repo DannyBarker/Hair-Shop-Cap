@@ -366,6 +366,7 @@ class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
+      <div className="wholePage">
         <Route
           exact
           path="/"
@@ -562,6 +563,7 @@ class ApplicationViews extends Component {
             }
           }}
         />
+        </div>
       </React.Fragment>
     );
   }

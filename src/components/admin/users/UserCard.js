@@ -14,7 +14,7 @@ export default class UserCard extends Component {
   };
   render() {
     return (
-      <div key={this.props.user.id} className="user-card">
+      <div key={this.props.user.id} className="adminUser-card card hvr-glow">
         <h5 className="user-name">{this.props.user.name}</h5>
         <p className="user-email">{this.props.user.email}</p>
         <button

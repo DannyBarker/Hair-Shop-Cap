@@ -66,7 +66,7 @@ class Appointments extends Component {
     return (
       <React.Fragment>
       <div className="adminApp-div">
-        <h1>Appointments:</h1>
+        <h1>Appointments</h1>
         <div className="adminAppFilter-btns">
         {!this.state.past || !this.state.all ? (
           <button
@@ -141,10 +141,10 @@ class Appointments extends Component {
             <React.Fragment>
               <h4>Past Appointments</h4>
               <ul className="adminApp-ul">
-          <li>Name:</li>
-          <li>Time:</li>
+          <li>Name</li>
+          <li>Time</li>
           <li>Service</li>
-          <li>Details:</li>
+          <li>Details</li>
         </ul>
               {this.checkPastTF() ? (
                 <p>No past appointments.</p>
@@ -178,10 +178,10 @@ class Appointments extends Component {
             <React.Fragment>
               <h4>Today's Appointments</h4>
               <ul className="adminApp-ul">
-          <li>Name:</li>
-          <li>Time:</li>
+          <li>Name</li>
+          <li>Time</li>
           <li>Service</li>
-          <li>Details:</li>
+          <li>Details</li>
         </ul>
               {this.checkTF("current") ? (
                 <p>No appointments, today.</p>
@@ -215,10 +215,10 @@ class Appointments extends Component {
             <React.Fragment>
               <h4>Upcoming Appointments</h4>
               <ul className="adminApp-ul">
-          <li>Name:</li>
-          <li>Time:</li>
+          <li>Name</li>
+          <li>Time</li>
           <li>Service</li>
-          <li>Details:</li>
+          <li>Details</li>
         </ul>
               {this.checkTF("future") ? (
                 <p>No upcoming appointments.</p>

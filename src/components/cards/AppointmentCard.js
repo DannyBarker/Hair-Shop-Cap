@@ -35,11 +35,11 @@ export default class AppointmentCard extends Component {
           key={this.props.appointment.id}
           className={
             this.props.appointment.checked && !this.props.appointment.completed
-              ? "appointment-card strike hvr-border-fade"
+              ? "appointment-card hvr-border-fade"
               : "appointment-card hvr-border-fade"
           }
         >
-        <div className="appointmentCard-details">
+        <div className={this.props.appointment.checked ? "appointmentCard-details strike" : "appointmentCard-details"}>
           {this.props.isAdmin() && this.props.sortAppointmentTime(this.props.appointment.request) !== "future" ? (
             <input
               style={{

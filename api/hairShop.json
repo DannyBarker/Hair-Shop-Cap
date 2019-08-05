@@ -69,6 +69,13 @@
       "email": "reeceboyd@protonmail.com",
       "password": "coolstuff",
       "id": 10
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Krystal Gates",
+      "email": "krystal_sabrina@yahoo.com",
+      "password": "123",
+      "id": 11
     }
   ],
   "accessTypes": [
@@ -501,14 +508,14 @@
       "requestId": 21,
       "completed": true,
       "checked": true,
-      "stylistNotes": "done"
+      "stylistNotes": "done!"
     },
     {
       "id": 10,
       "requestId": 23,
-      "completed": false,
-      "checked": false,
-      "stylistNotes": ""
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "Boy lookin like a man, now."
     }
   ]
 }

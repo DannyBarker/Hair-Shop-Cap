@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import AppointmentCard from "../../cards/AppointmentCard";
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
 import "./Appointments.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class Appointments extends Component {
   state = {
+    calendarArr: [],
     past: false,
     current: true,
     future: false,
@@ -136,6 +141,11 @@ class Appointments extends Component {
             All Appointments
           </button>
         )}</div> {" "}
+          <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} events={[
+    { title: 'event 1', date: '2019-08-01' },
+    { title: 'event 2', date: '2019-08-02', allDay: false, }
+  ]}
+  />
         <div className="appointments-div">
         {this.state.past ? (
             <React.Fragment>

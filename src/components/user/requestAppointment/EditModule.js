@@ -61,7 +61,6 @@ export default class StylistNotesModal extends Component {
   createReqObj = () => {
     if (!this.state.pickedDay && !this.state.pickedTime) {
       if (window.confirm("This will create a new request.")) {
-        let newDate = `${this.state.pickedDay} ${this.state.pickedTime}`;
         let newReq = {
           id: this.props.request.id,
           userId: this.state.userIdRequestEdit,

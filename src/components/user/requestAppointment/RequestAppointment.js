@@ -20,7 +20,6 @@ export default class RequestAppointment extends Component {
   };
 
   onDateSelect = evt => {
-    console.log(evt);
     let wantedDate = Date.parse(evt._d);
     let currAppDate = Date.now()
     let dddd = wantedDate - currAppDate
@@ -102,9 +101,9 @@ export default class RequestAppointment extends Component {
               <div id="datePickerId" className="datePicker-div">
                 <Datetime input={false} timeFormat={false} onChange={this.onDateSelect} />
               </div>
-              <label htmlFor="timePickerId">Time: </label>
+              <label htmlFor="timePickerId">Time (Hours: 6 a.m - 8 p.m.): </label>
               <div id="timePickerId" className="timePicker-div">
-              <Datetime input={false} inputProps={{placeholder: "Time"}} dateFormat={false} onChange={this.onTimeSelect} />
+              <Datetime input={false} inputProps={{placeholder: "Time"}} dateFormat={false} onChange={this.onTimeSelect} timeConstraints={{hours: {min: 6, max: 20}}} defaultValue={new Date(Date.now())} />
               </div>
               <div className="form-group">
                 <label htmlFor="serviceIdRequest">Service: </label>

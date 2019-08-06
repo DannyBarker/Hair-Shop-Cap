@@ -361,11 +361,11 @@
       "id": 15,
       "userId": 7,
       "serviceId": 8,
-      "statusMessageId": 6,
-      "dateTime": "Fri Aug 02 2019 16:00:00 GMT-0500",
+      "statusMessageId": 5,
+      "dateTime": "Wed Aug 14 2019 15:00:00 GMT-0500",
       "request_details": "Purple hair! ",
       "userCancel": false,
-      "timestamp": 1564669448550
+      "timestamp": 1565100727353
     },
     {
       "id": 16,
@@ -444,6 +444,16 @@
       "request_details": "yoooooo",
       "userCancel": false,
       "timestamp": 1564858963414
+    },
+    {
+      "id": 24,
+      "userId": 7,
+      "serviceId": 4,
+      "statusMessageId": 1,
+      "dateTime": "Wed Aug 07 2019 09:45:44 GMT-0500",
+      "request_details": "Need a checkup",
+      "userCancel": false,
+      "timestamp": 1565102808031
     }
   ],
   "appointments": [
@@ -474,13 +484,6 @@
       "completed": true,
       "checked": true,
       "stylistNotes": "Helped that boy out!"
-    },
-    {
-      "id": 5,
-      "requestId": 15,
-      "completed": true,
-      "checked": true,
-      "stylistNotes": "Haircut Done."
     },
     {
       "requestId": 17,
@@ -516,6 +519,13 @@
       "completed": true,
       "checked": true,
       "stylistNotes": "Boy lookin like a man, now."
+    },
+    {
+      "requestId": 24,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 11
     }
   ]
 }

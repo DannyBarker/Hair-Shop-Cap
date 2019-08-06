@@ -36,9 +36,10 @@ p.reqApp-nonUsr {
   padding: 4px;
   margin-top: 1px;
   z-index: 99999 !important;
-  background: #fff;
+  background: #EDF0F0;
   box-shadow: 0 1px 3px rgba(0,0,0,.1);
   border: 1px solid #f9f9f9;
+  border-radius: 5%;
 }
 .rdtOpen .rdtPicker {
   display: block;

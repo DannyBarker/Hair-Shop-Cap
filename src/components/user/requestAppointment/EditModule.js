@@ -11,7 +11,7 @@ import Datetime from "react-datetime"
 export default class StylistNotesModal extends Component {
   state = {
     userIdRequestEdit: this.props.userAccess.userId,
-    serviceIdRequestEdit: "",
+    serviceIdRequestEdit: this.props.request.serviceId,
     pickedDay: "",
     pickedTime: "",
     request_detailsRequestEdit: this.props.request.request_details,
@@ -59,27 +59,46 @@ export default class StylistNotesModal extends Component {
   }
 
   createReqObj = () => {
-    if (this.state.pickedDay && this.state.pickedTime) {
-        if (window.confirm("This will create a new request.")) {
+    if (!this.state.pickedDay && !this.state.pickedTime) {
+      if (window.confirm("This will create a new request.")) {
         let newDate = `${this.state.pickedDay} ${this.state.pickedTime}`;
         let newReq = {
-          userId: this.props.request.id,
-          serviceId: this.state.serviceIdRequestEdit,
+          id: this.props.request.id,
+          userId: this.state.userIdRequestEdit,
+          serviceId: +this.state.serviceIdRequestEdit,
           statusMessageId: 2,
-          dateTime: newDate,
+          dateTime: this.props.request.dateTime,
           userCancel: false,
-          request_details: this.state.request_detailsRequest,
+          request_details: this.state.request_detailsRequestEdit,
           timestamp: Date.now()
         };
         console.log(newReq);
         this.props.requestEditSubmit(newReq)
+        this.props.toggle()
+    } else {
+      return ""
+    }} else if ((this.state.pickedDay && !this.state.pickedTime) || (!this.state.pickedDay && this.state.pickedTime)) {
+      alert("You must pick a new day and time.")
+    } else if (this.state.pickedDay && this.state.pickedTime) {
+        if (window.confirm("This will create a new request.")) {
+        let newDate = `${this.state.pickedDay} ${this.state.pickedTime}`;
+        let newReq = {
+          id: this.props.request.id,
+          userId: this.state.userIdRequestEdit,
+          serviceId: this.state.serviceIdRequestEdit,
+          statusMessageId: 2,
+          dateTime: newDate,
+          userCancel: false,
+          request_details: this.state.request_detailsRequestEdit,
+          timestamp: Date.now()
+        };
+        console.log(newReq);
+        this.props.requestEditSubmit(newReq)
+        this.props.toggle()
       } else {
         return ""
       }
-    } else {
-      alert("Please pick a valid date and time!")
-    }
-   };
+    }}
 
 
   // giveEditDate = () => {
@@ -124,7 +143,7 @@ export default class StylistNotesModal extends Component {
               </div>
               <label htmlFor="timePickerId">Time: </label>
               <div id="timePickerId" className="timePicker-div">
-              <Datetime input={false} inputProps={{placeholder: "Time"}} dateFormat={false} onChange={this.onTimeSelect} defaultValue={new Date(this.props.request.dateTime)} />
+              <Datetime input={false} inputProps={{placeholder: "Time"}} dateFormat={false} onChange={this.onTimeSelect} timeConstraints={{hours: {min: 6, max: 20}}} defaultValue={new Date(Date.now())} />
               </div>
               <div className="form-group">
                 <label htmlFor="serviceIdRequestEdit">Service: </label>
@@ -132,7 +151,7 @@ export default class StylistNotesModal extends Component {
                   id="serviceIdRequestEdit"
                   className="serviceIdRequest-select"
                   onChange={this.handleFieldChange}
-                  value={this.props.request.serviceId}
+                  value={this.state.serviceIdRequestEdit}
                 >
                   <option value="">Select Service</option>
                   {this.props.services.map(service => (
@@ -166,7 +185,6 @@ export default class StylistNotesModal extends Component {
               } btn btn-success`}
               onClick={() => {
                 this.createReqObj()
-                this.props.toggle()
               }}
             >
               Submit New Request

@@ -66,24 +66,6 @@ export default class RequestAppointment extends Component {
    }
   };
 
-  //<div style={{overflow: "hidden"}}>
-  //      <div className="form-group">
-  //       <div className="row">
-  //         <div className="col-md-8">
-  //         <div id="datetimepicker12" />
-  //     </div>
-  // </div>
-  //         </div>
-  //     </div>
-  //   <script type="text/javascript">
-  //   $(function (){" "}
-  //   {$("#datetimepicker12").datetimepicker({
-  //     inline: true,
-  //     sideBySide: true
-  //   })}
-  //   );
-  // </script>
-
   render() {
     return (
       <div className="userRequestApp-parentDiv">

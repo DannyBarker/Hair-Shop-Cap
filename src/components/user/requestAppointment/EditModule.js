@@ -99,29 +99,6 @@ export default class StylistNotesModal extends Component {
       }
     }}
 
-
-  // giveEditDate = () => {
-  //   let dayMonthYear = new Date(this.props.request.dateTime).toLocaleDateString()
-  //   let time = new Date(this.props.request.dateTime).toTimeString()
-  //   let splitTime = time.split(" ")
-  //   let splitDate = dayMonthYear.split("/")
-  //   let editDay = ""
-  //   let editMonth = ""
-  //   if (splitDate[1] < 10) {
-  //     editDay = `0${splitDate[1]}`
-  //   } else {
-  //     editDay = splitDate[1]
-  //   }
-  //   if (splitDate[0] < 10) {
-  //     editMonth = `0${splitDate[0]}`
-  //   } else {
-  //     editMonth = splitDate[0]
-  //   }
-  //   let inputDate = `${splitDate[2]}-${editMonth}-${editDay}`
-  //   let editDate = `${inputDate}T${splitTime[0]}`
-  //   return editDate
-  // }
-
   render() {
     return (
       <div>

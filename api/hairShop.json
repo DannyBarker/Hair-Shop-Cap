@@ -76,6 +76,13 @@
       "email": "krystal_sabrina@yahoo.com",
       "password": "123",
       "id": 11
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Andy Barker",
+      "email": "andy@email.com",
+      "password": "pass123",
+      "id": 12
     }
   ],
   "accessTypes": [
@@ -454,6 +461,26 @@
       "request_details": "Need a checkup",
       "userCancel": false,
       "timestamp": 1565102808031
+    },
+    {
+      "id": 25,
+      "userId": 12,
+      "serviceId": 2,
+      "statusMessageId": 3,
+      "dateTime": "Wed Sep 11 2019 09:30:37 GMT-0500",
+      "request_details": "I need a cut",
+      "userCancel": false,
+      "timestamp": 1565187955032
+    },
+    {
+      "id": 26,
+      "userId": 12,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Thu Aug 08 2019 09:30:58 GMT-0500",
+      "request_details": "BIG DATE!!",
+      "userCancel": false,
+      "timestamp": 1565187791960
     }
   ],
   "appointments": [
@@ -526,6 +553,13 @@
       "checked": false,
       "stylistNotes": "",
       "id": 11
+    },
+    {
+      "requestId": 26,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 12
     }
   ]
 }

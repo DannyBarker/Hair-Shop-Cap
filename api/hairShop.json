@@ -338,8 +338,8 @@
       "id": 12,
       "userId": 5,
       "serviceId": 2,
-      "statusMessageId": 2,
-      "dateTime": "Sun Sep 15 2019 12:00:00 GMT-0500",
+      "statusMessageId": 1,
+      "dateTime": "Sat Aug 09 2019 12:00:00 GMT-0500",
       "request_details": "Checkup",
       "userCancel": false,
       "timestamp": 1564587819484
@@ -408,7 +408,7 @@
       "userId": 8,
       "serviceId": 1,
       "statusMessageId": 1,
-      "dateTime": "Wed Dec 25 2019 00:01:00 GMT-0600",
+      "dateTime": "Wed Jul 25 2019 00:01:00 GMT-0600",
       "request_details": "Love Jesus our savior",
       "userCancel": false,
       "timestamp": 1564801679360
@@ -481,6 +481,26 @@
       "request_details": "BIG DATE!!",
       "userCancel": false,
       "timestamp": 1565187791960
+    },
+    {
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 2,
+      "dateTime": "Fri Aug 16 2019 09:30:17 GMT-0500",
+      "userCancel": false,
+      "request_details": "Presenting my front end capstone",
+      "timestamp": 1565358352953,
+      "id": 27
+    },
+    {
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 2,
+      "dateTime": "Fri Aug 16 2019 09:30:56 GMT-0500",
+      "userCancel": false,
+      "request_details": "Presenting my front end capstone",
+      "timestamp": 1565358375073,
+      "id": 28
     }
   ],
   "appointments": [
@@ -549,17 +569,24 @@
     },
     {
       "requestId": 24,
-      "completed": false,
-      "checked": false,
-      "stylistNotes": "",
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "Just finished Mo with a fresh look",
       "id": 11
     },
     {
       "requestId": 26,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "He gonna be gettin that after date kiss!",
+      "id": 12
+    },
+    {
+      "requestId": 12,
       "completed": false,
       "checked": false,
       "stylistNotes": "",
-      "id": 12
+      "id": 13
     }
   ]
 }

@@ -204,7 +204,8 @@ class ApplicationViews extends Component {
       time = `${splitTime[0]}:${splitTime[1]} p.m.`
     }
     if (+splitTime[0] < 12) {
-      time = `${splitTime[0]}:${splitTime[1]} a.m.`
+      let firstSplit = splitTime[0].split("")
+      time = `${firstSplit[1]}:${splitTime[1]} a.m.`
     }
     let newStr = `${splitDay[0]}, ${splitDay[1]} ${splitDay[2]}. At ${time} `
     return newStr

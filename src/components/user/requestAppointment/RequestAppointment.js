@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Datetime from "react-datetime"
 import '../User.css'
 
 export default class RequestAppointment extends Component {
@@ -7,7 +8,9 @@ export default class RequestAppointment extends Component {
     serviceIdRequest: "",
     statusMessageIdRequest: "",
     dayRequest: "",
-    request_detailsRequest: ""
+    request_detailsRequest: "",
+    pickedDay: "",
+    pickedTime: ""
   };
 
   handleFieldChange = evt => {
@@ -16,42 +19,52 @@ export default class RequestAppointment extends Component {
     this.setState(stateToChange);
   };
 
-  createReqObj = () => {
-    let reqDate = new Date(this.state.dayRequest);
-    let strReqDate = String(reqDate);
-    let splitDate = strReqDate.split(" ");
-    let newDate = `${splitDate[0]} ${splitDate[1]} ${splitDate[2]} ${
-      splitDate[3]
-    } ${splitDate[4]} ${splitDate[5]}`;
-    let newReq = {
-      userId: this.props.userAccess.userId,
-      serviceId: +this.state.serviceIdRequest,
-      statusMessageId: 2,
-      dateTime: newDate,
-      userCancel: false,
-      request_details: this.state.request_detailsRequest,
-      timestamp: Date.now()
-    };
-    return newReq;
-  };
+  onDateSelect = evt => {
+    let wantedDate = Date.parse(evt._d);
+    let currAppDate = Date.now()
+    let dddd = wantedDate - currAppDate
+    if (dddd > 0) {
+      let splitInput = String(evt._d).split(" ")
+      let strComb = splitInput.slice(0, 4)
+      let newDay = strComb.join(" ")
+      this.setState({pickedDay: newDay})
+    } else {
+      return ""
+    }
+  }
+  onTimeSelect = evt => {
+    let splitInput = String(evt._d).split(" ")
+    let splitTimePick = splitInput[4].split(":")
+    if (+splitTimePick[0] < 20 && +splitTimePick[0] > 6) {
+      let strComb = splitInput.slice(4, 6)
+      let newTime = strComb.join(" ")
+      this.setState({pickedTime: newTime})
+    } else {
+      return ""
+    }
+  }
 
-  //<div style={{overflow: "hidden"}}>
-  //      <div className="form-group">
-  //       <div className="row">
-  //         <div className="col-md-8">
-  //         <div id="datetimepicker12" />
-  //     </div>
-  // </div>
-  //         </div>
-  //     </div>
-  //   <script type="text/javascript">
-  //   $(function (){" "}
-  //   {$("#datetimepicker12").datetimepicker({
-  //     inline: true,
-  //     sideBySide: true
-  //   })}
-  //   );
-  // </script>
+  createReqObj = () => {
+   if (this.state.pickedDay && this.state.pickedTime) {
+     if (this.state.serviceIdRequest) {
+       let newDate = `${this.state.pickedDay} ${this.state.pickedTime}`;
+       let newReq = {
+         userId: this.props.userAccess.userId,
+         serviceId: +this.state.serviceIdRequest,
+         statusMessageId: 2,
+         dateTime: newDate,
+         userCancel: false,
+         request_details: this.state.request_detailsRequest,
+         timestamp: Date.now()
+       };
+       this.props.requestSubmit(newReq)
+     } else {
+      alert("Please fill out first two fields!")
+     }
+   } else {
+     alert("Please pick a valid date and time!")
+   }
+  };
 
   render() {
     return (
@@ -63,17 +76,16 @@ export default class RequestAppointment extends Component {
             <form
               onSubmit={evt => {
                 evt.preventDefault();
-                this.props.requestSubmit(this.createReqObj());
+                this.createReqObj();
               }}
             >
-              <div className="form-group">
-                <label htmlFor="dayRequest">Day and Time: </label>
-                <input
-                  onChange={this.handleFieldChange}
-                  type="datetime-local"
-                  id="dayRequest"
-                  className="form-control"
-                />
+                <label htmlFor="datePickerId">Day: </label>
+              <div id="datePickerId" className="datePicker-div">
+                <Datetime input={false} timeFormat={false} onChange={this.onDateSelect} />
+              </div>
+              <label htmlFor="timePickerId">Time (Hours: 6 a.m - 8 p.m.): </label>
+              <div id="timePickerId" className="timePicker-div">
+              <Datetime input={false} inputProps={{placeholder: "Time"}} dateFormat={false} onChange={this.onTimeSelect} timeConstraints={{hours: {min: 6, max: 20}}} defaultValue={new Date(Date.now())} />
               </div>
               <div className="form-group">
                 <label htmlFor="serviceIdRequest">Service: </label>

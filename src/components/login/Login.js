@@ -8,14 +8,12 @@ export default class Login extends Component {
     password: ""
   };
 
-  // Update state whenever an input field is edited
   handleFieldChange = evt => {
     const stateToChange = {};
     stateToChange[evt.target.id] = evt.target.value;
     this.setState(stateToChange);
   };
 
-  // Simplistic handler for login submit
   handleLogin = event => {
     event.preventDefault();
     let type = ""
@@ -69,18 +67,6 @@ export default class Login extends Component {
             autoComplete="current-password"
           />
           <button className="btn btn-primary hvr-icon-fade hvr-shrink" type="submit"><i className="hvr-icon" >Sign in</i></button>
-          {/* <label htmlFor="Remember Me">
-            <input
-              id="rememberMe"
-              name="rememberMe"
-              value="remember"
-              type="checkbox"
-              onClick={() => {
-                this.setState({ rememberMe: true });
-              }}
-            />
-            Remember Me
-          </label> */}
         </form>
       </div>
       </div>

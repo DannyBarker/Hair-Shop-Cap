@@ -204,7 +204,8 @@ class ApplicationViews extends Component {
       time = `${splitTime[0]}:${splitTime[1]} p.m.`
     }
     if (+splitTime[0] < 12) {
-      time = `${splitTime[0]}:${splitTime[1]} a.m.`
+      let firstSplit = splitTime[0].split("")
+      time = `${firstSplit[1]}:${splitTime[1]} a.m.`
     }
     let newStr = `${splitDay[0]}, ${splitDay[1]} ${splitDay[2]}. At ${time} `
     return newStr
@@ -270,9 +271,6 @@ class ApplicationViews extends Component {
   };
 
   requestSubmit = (obj) => {
-    let dateTime = document.getElementById("dayRequest").value
-    let service = document.getElementById("serviceIdRequest").value
-    if (dateTime && service) {
       API.post("requests", obj)
       .then(() => API.getAll("requests"))
       .then(requests => {
@@ -280,28 +278,15 @@ class ApplicationViews extends Component {
         this.setState({ requests: sortedRequests });
         this.props.history.push("/user/profile")
       })
-    } else {
-      alert("Please fill out first two fields!")
-    }
   }
   requestEditSubmit = (obj) => {
-    let dateTimeEdit = document.getElementById("dayRequestEdit").value
-    let serviceEdit = document.getElementById("serviceIdRequestEdit").value
-    let detailsEdit = document.getElementById("request_detailsRequestEdit").value
-    if (dateTimeEdit && serviceEdit && detailsEdit) {
-      if (window.confirm("This will create a new request.")) {
-        API.put("requests", obj)
-        .then(() => API.getAll("requests"))
-        .then(requests => {
-          let sortedRequests = this.sortRequests(requests);
-          this.setState({ requests: sortedRequests });
-          this.props.history.push("/user/profile")})
-      } else {
-        return ""
-      }
-    } else {
-      alert("Please fill out all fields.")
-    }
+  API.put("requests", obj)
+  .then(() => API.getAll("requests"))
+  .then(requests => {
+    let sortedRequests = this.sortRequests(requests);
+    this.setState({ requests: sortedRequests });
+    this.props.history.push("/user/profile")
+  })
   }
 
   userRemoveRequest = obj => {

@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import AppointmentCard from "../../cards/AppointmentCard";
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
 import "./Appointments.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -9,8 +13,9 @@ class Appointments extends Component {
     past: false,
     current: true,
     future: false,
-    all: true
+    all: true,
   };
+
   getPastAppointments = () => {
     let pastApps = this.props.appointments.filter(appointment => {
       if (
@@ -62,7 +67,21 @@ class Appointments extends Component {
     return result
   }
 
+  getCalendarEvents = appointment => {
+    let appDate = new Date(appointment.request.dateTime)
+    let strEventDate = `${appDate.getFullYear()}-${appDate.getMonth() < 10 ? `0${+appDate.getMonth() + 1}` : `${+appDate.getMonth() + 1}`}-${appDate.getDate() < 10 ? `0${appDate.getDate()}` : `${appDate.getDate()}`}`
+    let splitTime = appointment.request.dateTime.split(" ")
+    let finalString = `${strEventDate} ${splitTime[4]}`
+    let eventObj = {
+      title: this.props.getUser(appointment.request.userId),
+      date: finalString,
+      allDay: false,
+    }
+    return eventObj
+  }
+
   render() {
+    console.log(this.props.appointments.map(appointment => this.getCalendarEvents(appointment)));
     return (
       <React.Fragment>
       <div className="adminApp-div">
@@ -135,7 +154,8 @@ class Appointments extends Component {
           >
             All Appointments
           </button>
-        )}</div> {" "}
+        )}
+        </div> {" "}
         <div className="appointments-div">
         {this.state.past ? (
             <React.Fragment>
@@ -251,6 +271,8 @@ class Appointments extends Component {
             ""
           )}
         </div>
+        <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} events={this.props.appointments.map(appointment => this.getCalendarEvents(appointment))}
+  />
         </div>
       </React.Fragment>
     );

@@ -76,6 +76,13 @@
       "email": "krystal_sabrina@yahoo.com",
       "password": "123",
       "id": 11
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Andy Barker",
+      "email": "andy@email.com",
+      "password": "pass123",
+      "id": 12
     }
   ],
   "accessTypes": [
@@ -331,8 +338,8 @@
       "id": 12,
       "userId": 5,
       "serviceId": 2,
-      "statusMessageId": 2,
-      "dateTime": "Sun Sep 15 2019 12:00:00 GMT-0500",
+      "statusMessageId": 1,
+      "dateTime": "Sat Aug 09 2019 12:00:00 GMT-0500",
       "request_details": "Checkup",
       "userCancel": false,
       "timestamp": 1564587819484
@@ -361,11 +368,11 @@
       "id": 15,
       "userId": 7,
       "serviceId": 8,
-      "statusMessageId": 6,
-      "dateTime": "Fri Aug 02 2019 16:00:00 GMT-0500",
+      "statusMessageId": 5,
+      "dateTime": "Wed Aug 14 2019 15:00:00 GMT-0500",
       "request_details": "Purple hair! ",
       "userCancel": false,
-      "timestamp": 1564669448550
+      "timestamp": 1565100727353
     },
     {
       "id": 16,
@@ -401,7 +408,7 @@
       "userId": 8,
       "serviceId": 1,
       "statusMessageId": 1,
-      "dateTime": "Wed Dec 25 2019 00:01:00 GMT-0600",
+      "dateTime": "Wed Jul 25 2019 00:01:00 GMT-0600",
       "request_details": "Love Jesus our savior",
       "userCancel": false,
       "timestamp": 1564801679360
@@ -444,6 +451,56 @@
       "request_details": "yoooooo",
       "userCancel": false,
       "timestamp": 1564858963414
+    },
+    {
+      "id": 24,
+      "userId": 7,
+      "serviceId": 4,
+      "statusMessageId": 1,
+      "dateTime": "Wed Aug 07 2019 09:45:44 GMT-0500",
+      "request_details": "Need a checkup",
+      "userCancel": false,
+      "timestamp": 1565102808031
+    },
+    {
+      "id": 25,
+      "userId": 12,
+      "serviceId": 2,
+      "statusMessageId": 3,
+      "dateTime": "Wed Sep 11 2019 09:30:37 GMT-0500",
+      "request_details": "I need a cut",
+      "userCancel": false,
+      "timestamp": 1565187955032
+    },
+    {
+      "id": 26,
+      "userId": 12,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Thu Aug 08 2019 09:30:58 GMT-0500",
+      "request_details": "BIG DATE!!",
+      "userCancel": false,
+      "timestamp": 1565187791960
+    },
+    {
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 2,
+      "dateTime": "Fri Aug 16 2019 09:30:17 GMT-0500",
+      "userCancel": false,
+      "request_details": "Presenting my front end capstone",
+      "timestamp": 1565358352953,
+      "id": 27
+    },
+    {
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 2,
+      "dateTime": "Mon Sep 02 2019 09:30:56 GMT-0500",
+      "userCancel": false,
+      "request_details": "Presenting my front end capstone",
+      "timestamp": 1565358375073,
+      "id": 28
     }
   ],
   "appointments": [
@@ -474,13 +531,6 @@
       "completed": true,
       "checked": true,
       "stylistNotes": "Helped that boy out!"
-    },
-    {
-      "id": 5,
-      "requestId": 15,
-      "completed": true,
-      "checked": true,
-      "stylistNotes": "Haircut Done."
     },
     {
       "requestId": 17,
@@ -516,6 +566,27 @@
       "completed": true,
       "checked": true,
       "stylistNotes": "Boy lookin like a man, now."
+    },
+    {
+      "requestId": 24,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "Just finished Mo with a fresh look",
+      "id": 11
+    },
+    {
+      "requestId": 26,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "He gonna be gettin that after date kiss!",
+      "id": 12
+    },
+    {
+      "requestId": 12,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 13
     }
   ]
 }

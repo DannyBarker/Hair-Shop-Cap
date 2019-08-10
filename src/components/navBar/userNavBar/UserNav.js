@@ -70,7 +70,6 @@ export default class NavBar extends Component {
       return "";
     }
   };
-  // height="42" width="42"
   render() {
     return (
       <React.Fragment>

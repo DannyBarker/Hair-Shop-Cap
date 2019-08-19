@@ -73,9 +73,11 @@ class Appointments extends Component {
     let splitTime = appointment.request.dateTime.split(" ")
     let finalString = `${strEventDate} ${splitTime[4]}`
     let eventObj = {
+      id: `${appointment.id}`,
       title: this.props.getUser(appointment.request.userId),
       date: finalString,
       allDay: false,
+      textColor: "#F2F2F2"
     }
     return eventObj
   }

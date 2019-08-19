@@ -14,35 +14,11 @@ export default class Profile extends Component {
           <div className="userProfile-header">
             <h1>Profile</h1>
             </div>
-              <div className="userPastCuts-parentDiv">
-                <h6>
-                  <strong>Past Cuts </strong>
-                </h6>
-                <div className="userPastCuts-div">
-                {this.props
-                  .getAppointment(this.props.userAccess.userId)
-                  .map(cut =>
-                    cut.completed ? (
-                      <HaircutCard
-                        key={cut.id}
-                        haircut={cut}
-                        services={this.props.services}
-                        addStylistNotes={this.props.addStylistNotes}
-                        isAdmin={this.props.isAdmin}
-                        sortAppointmentTime={this.props.sortAppointmentTime}
-                        giveDate={this.props.giveDate}
-                      />
-                    ) : (
-                      ""
-                    )
-                  )}
-                  </div>
-              </div>
               <div
                 className="userAppointments-div"
               >
                 <h6>
-                  <strong>Appointments </strong>
+                  <strong>Upcoming Appointments </strong>
                 </h6>
                 <ul className="userApp-ul">
           <li>Name</li>
@@ -133,6 +109,30 @@ export default class Profile extends Component {
                   )
                 )}
                 </div>
+                <div className="userPastCuts-parentDiv">
+                <h6>
+                  <strong>Past Cuts </strong>
+                </h6>
+                <div className="userPastCuts-div">
+                {this.props
+                  .getAppointment(this.props.userAccess.userId)
+                  .map(cut =>
+                    cut.completed ? (
+                      <HaircutCard
+                        key={cut.id}
+                        haircut={cut}
+                        services={this.props.services}
+                        addStylistNotes={this.props.addStylistNotes}
+                        isAdmin={this.props.isAdmin}
+                        sortAppointmentTime={this.props.sortAppointmentTime}
+                        giveDate={this.props.giveDate}
+                      />
+                    ) : (
+                      ""
+                    )
+                  )}
+                  </div>
+              </div>
           </React.Fragment>
         ) : (
           ""

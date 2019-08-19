@@ -83,6 +83,13 @@
       "email": "andy@email.com",
       "password": "pass123",
       "id": 12
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Demo Profile",
+      "email": "demo@email.com",
+      "password": "pass123",
+      "id": 13
     }
   ],
   "accessTypes": [
@@ -100,7 +107,7 @@
       "id": 1,
       "type": "Haircuts (Women)",
       "price": "50.00",
-      "service_details": "Baic woman's haircut",
+      "service_details": "Basic woman's haircut",
       "serviceImg": "../serviceIMG/defaultServicePic.jpg"
     },
     {
@@ -349,7 +356,7 @@
       "userId": 6,
       "serviceId": 2,
       "statusMessageId": 2,
-      "dateTime": "Thu Aug 01 2019 15:30:00 GMT-0500",
+      "dateTime": "Tue Aug 27 2019 15:30:00 GMT-0500",
       "request_details": "My boogie is gettin less cowboyish",
       "userCancel": false,
       "timestamp": 1564629969612
@@ -399,8 +406,8 @@
       "userId": 8,
       "serviceId": 6,
       "statusMessageId": 2,
-      "dateTime": "Wed Aug 14 2019 20:30:00 GMT-0500",
-      "request_details": "free then?",
+      "dateTime": "Sat Sep 14 2019 20:30:00 GMT-0500",
+      "request_details": "I'm your daughter, you gotta say yes!",
       "timestamp": 1564802008492
     },
     {
@@ -418,7 +425,7 @@
       "userId": 9,
       "serviceId": 5,
       "statusMessageId": 1,
-      "dateTime": "Fri Aug 30 2019 01:00:00 GMT-0500",
+      "dateTime": "Fri Aug 30 2019 10:00:00 GMT-0500",
       "request_details": "isabeau pooped in the bonus room",
       "userCancel": false,
       "timestamp": 1564802406598
@@ -483,14 +490,14 @@
       "timestamp": 1565187791960
     },
     {
+      "id": 27,
       "userId": 5,
       "serviceId": 2,
-      "statusMessageId": 2,
-      "dateTime": "Fri Aug 16 2019 09:30:17 GMT-0500",
-      "userCancel": false,
+      "statusMessageId": 5,
+      "dateTime": "Sat Aug 17 2019 10:55:55 GMT-0500",
       "request_details": "Presenting my front end capstone",
-      "timestamp": 1565358352953,
-      "id": 27
+      "userCancel": false,
+      "timestamp": 1565409372581
     },
     {
       "userId": 5,
@@ -501,6 +508,56 @@
       "request_details": "Presenting my front end capstone",
       "timestamp": 1565358375073,
       "id": 28
+    },
+    {
+      "id": 29,
+      "userId": 13,
+      "serviceId": 2,
+      "statusMessageId": 3,
+      "dateTime": "Mon Nov 04 2019 09:30:00 GMT-0500",
+      "request_details": "Trying to apply jobs!",
+      "userCancel": false,
+      "timestamp": 1566225331307
+    },
+    {
+      "id": 30,
+      "userId": 13,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Fri Aug 02 2019 09:30:00 GMT-0500",
+      "request_details": "Presenting Capstone!",
+      "userCancel": false,
+      "timestamp": 1564802406599
+    },
+    {
+      "id": 31,
+      "userId": 13,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Tue Aug 20 2019 17:00:20 GMT-0500",
+      "request_details": "Need a checkup! I really liked how you did my last haircut!",
+      "userCancel": false,
+      "timestamp": 1566226920079
+    },
+    {
+      "id": 32,
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Fri Aug 30 2019 08:00:30 GMT-0500",
+      "request_details": "My last haircut looked great! Can you do that again?",
+      "userCancel": false,
+      "timestamp": 1566229325154
+    },
+    {
+      "userId": 13,
+      "serviceId": 2,
+      "statusMessageId": 2,
+      "dateTime": "Mon Sep 02 2019 18:00:28 GMT-0500",
+      "userCancel": false,
+      "request_details": "Just gettin a checkup! I would love if you could do it just like last time.",
+      "timestamp": 1566229628047,
+      "id": 33
     }
   ],
   "appointments": [
@@ -533,18 +590,18 @@
       "stylistNotes": "Helped that boy out!"
     },
     {
+      "id": 6,
       "requestId": 17,
-      "completed": false,
-      "checked": false,
-      "stylistNotes": "",
-      "id": 6
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "She is beautiful"
     },
     {
+      "id": 7,
       "requestId": 19,
       "completed": true,
       "checked": true,
-      "stylistNotes": "She be lookin good after that cut",
-      "id": 7
+      "stylistNotes": "She be lookin good after that cut!"
     },
     {
       "requestId": 20,
@@ -582,11 +639,32 @@
       "id": 12
     },
     {
+      "id": 13,
       "requestId": 12,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "Done"
+    },
+    {
+      "id": 14,
+      "requestId": 30,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "He's gonna do amazing in his presentation!"
+    },
+    {
+      "requestId": 31,
       "completed": false,
       "checked": false,
       "stylistNotes": "",
-      "id": 13
+      "id": 15
+    },
+    {
+      "requestId": 32,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 16
     }
   ]
 }

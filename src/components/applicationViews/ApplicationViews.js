@@ -207,7 +207,7 @@ class ApplicationViews extends Component {
       let firstSplit = splitTime[0].split("")
       time = `${firstSplit[1]}:${splitTime[1]} a.m.`
     }
-    let newStr = `${splitDay[0]}, ${splitDay[1]} ${splitDay[2]}. At ${time} `
+    let newStr = `${splitDay[0]}, ${splitDay[1]} ${splitDay[2]} ${splitDay[3]}. At ${time} `
     return newStr
 
   }

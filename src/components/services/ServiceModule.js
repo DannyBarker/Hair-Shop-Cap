@@ -21,7 +21,7 @@ export default class ServiceModule extends Component {
           <ModalHeader toggle={this.props.toggle}>{this.props.service.type}</ModalHeader>
           <ModalBody>
             <p>{this.props.service.service_details}</p>
-            <p>Cost: {`$ ${this.props.service.price}`}</p>
+            <p>Starting Cost: {`$ ${this.props.service.price}`}</p>
           </ModalBody>
           <ModalFooter>
             <Button

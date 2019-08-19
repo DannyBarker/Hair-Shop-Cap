@@ -119,7 +119,7 @@ export default class StylistNotesModal extends Component {
               </div>
               <label htmlFor="timePickerId">Time: </label>
               <div id="timePickerId" className="timePicker-div">
-              <Datetime input={false} inputProps={{placeholder: "Time"}} dateFormat={false} onChange={this.onTimeSelect} timeConstraints={{hours: {min: 6, max: 20}}} defaultValue={new Date(Date.now())} />
+              <Datetime input={false} inputProps={{placeholder: "Time"}} dateFormat={false} onChange={this.onTimeSelect} timeConstraints={{hours: {min: 6, max: 20}}} defaultValue={new Date(this.props.request.dateTime)} />
               </div>
               <div className="form-group">
                 <label htmlFor="serviceIdRequestEdit">Service: </label>

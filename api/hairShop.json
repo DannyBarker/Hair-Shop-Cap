@@ -1,0 +1,694 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "accessTypeId": 1,
+      "name": "Shannon Gamble",
+      "email": "admin@email.com",
+      "password": "password123"
+    },
+    {
+      "id": 2,
+      "accessTypeId": 2,
+      "name": "Olivia Gamble",
+      "email": "Olivia@email.com",
+      "password": "pass123"
+    },
+    {
+      "id": 3,
+      "accessTypeId": 2,
+      "name": "Is Gamble",
+      "email": "Is@email.com",
+      "password": "pass123"
+    },
+    {
+      "id": 4,
+      "accessTypeId": 2,
+      "name": "Mattie Gamble",
+      "email": "Mattie@email.com",
+      "password": "pass123"
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Danny Barker",
+      "email": "barkerdanny17@yahoo.com",
+      "password": "pass123",
+      "id": 5
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Cowboy Boogie",
+      "email": "boogie@sweetheart.com",
+      "password": "pass123",
+      "id": 6
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Mo Silvera",
+      "email": "mo@email.com",
+      "password": "pass123",
+      "id": 7
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Liv Gamble",
+      "email": "Liv@gmail.com",
+      "password": "Peach",
+      "id": 8
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Matilda  Gamble",
+      "email": "matildagamble@my.unt.edu",
+      "password": "my1penny",
+      "id": 9
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Reece Boyd",
+      "email": "reeceboyd@protonmail.com",
+      "password": "coolstuff",
+      "id": 10
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Krystal Gates",
+      "email": "krystal_sabrina@yahoo.com",
+      "password": "123",
+      "id": 11
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Andy Barker",
+      "email": "andy@email.com",
+      "password": "pass123",
+      "id": 12
+    },
+    {
+      "accessTypeId": 2,
+      "name": "Demo Profile",
+      "email": "demo@email.com",
+      "password": "pass123",
+      "id": 13
+    }
+  ],
+  "accessTypes": [
+    {
+      "id": 1,
+      "accessType": "admin"
+    },
+    {
+      "id": 2,
+      "accessType": "user"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "type": "Haircuts (Women)",
+      "price": "50.00",
+      "service_details": "Basic woman's haircut",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    },
+    {
+      "id": 2,
+      "type": "Haircuts (Men)",
+      "price": "40.00",
+      "service_details": "Basic man's haircut",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    },
+    {
+      "id": 3,
+      "type": "Wet Cut (Children under 12 years)",
+      "price": "15.00",
+      "service_details": "Basic child's haircut",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    },
+    {
+      "id": 4,
+      "type": "Blow-Out with Cut (Children under 12 years)",
+      "price": "20.00",
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    },
+    {
+      "id": 5,
+      "type": "One Color Highlight with Cut",
+      "price": "130.00",
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    },
+    {
+      "id": 6,
+      "type": "Two Color Highlights with Cut",
+      "price": "140.00",
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    },
+    {
+      "id": 7,
+      "type": "One Color Highlight with Base Color",
+      "price": "150.00",
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    },
+    {
+      "id": 8,
+      "type": "All Over Color, First Time, with Cut",
+      "price": "130.00",
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    },
+    {
+      "id": 9,
+      "type": "All Over Color, Touchup 1 in. or less, with Cut",
+      "price": "90.00",
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    },
+    {
+      "id": 10,
+      "type": "All Over Color, Touchup, over 1 in., with Cut",
+      "price": "100.00",
+      "service_details": "Ask Shannon",
+      "serviceImg": "../serviceIMG/defaultServicePic.jpg"
+    }
+  ],
+  "statusMessages": [
+    {
+      "id": 1,
+      "statusId": 1,
+      "message": ""
+    },
+    {
+      "id": 2,
+      "statusId": 2,
+      "message": ""
+    },
+    {
+      "id": 3,
+      "statusId": 3,
+      "message": "Closed that day."
+    },
+    {
+      "id": 4,
+      "statusId": 3,
+      "message": "Time slot taken"
+    },
+    {
+      "id": 5,
+      "statusId": 3,
+      "message": "Service not available"
+    },
+    {
+      "id": 6,
+      "statusId": 3,
+      "message": "I am on vacation!"
+    },
+    {
+      "id": 7,
+      "statusId": 3,
+      "message": "Request Canceled!"
+    },
+    {
+      "id": 8,
+      "statusId": 3,
+      "message": "Other"
+    }
+  ],
+  "statuss": [
+    {
+      "id": 1,
+      "statusType": "Accepted"
+    },
+    {
+      "id": 2,
+      "statusType": "Pending"
+    },
+    {
+      "id": 3,
+      "statusType": "Denied"
+    }
+  ],
+  "requests": [
+    {
+      "id": 1,
+      "userId": 2,
+      "serviceId": 1,
+      "statusMessageId": 1,
+      "dateTime": "Fri Sep 13 2019 12:30:00 GMT-0500",
+      "request_details": "Make me look pretty!",
+      "userCancel": false,
+      "timestamp": 1564588630164
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "serviceId": 10,
+      "statusMessageId": 2,
+      "dateTime": "Sun Oct 13 2019 12:30:00 GMT-0500",
+      "request_details": "Give me the new Do!",
+      "userCancel": false,
+      "timestamp": 1564584067320
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "serviceId": 10,
+      "statusMessageId": 2,
+      "dateTime": "Wed Nov 13 2019 12:30:00 GMT-0600",
+      "request_details": "Keep me lookin fire!",
+      "userCancel": false,
+      "timestamp": 1564607432346
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "serviceId": 6,
+      "statusMessageId": 1,
+      "dateTime": "Sat Sep 14 2019 12:30:00 GMT-0500",
+      "request_details": "Need that cut!",
+      "userCancel": false,
+      "timestamp": 1564586792056
+    },
+    {
+      "id": 5,
+      "userId": 3,
+      "serviceId": 8,
+      "statusMessageId": 2,
+      "dateTime": "Mon Oct 14 2019 12:30:00 GMT-0500",
+      "request_details": "It's me again!",
+      "userCancel": false,
+      "timestamp": 1564584029584
+    },
+    {
+      "id": 6,
+      "userId": 3,
+      "serviceId": 1,
+      "statusMessageId": 4,
+      "dateTime": "Thu Nov 14 2019 12:30:00 GMT-0600",
+      "request_details": "Give me the new Do!",
+      "userCancel": false,
+      "timestamp": 15645870392854
+    },
+    {
+      "id": 7,
+      "userId": 4,
+      "serviceId": 1,
+      "statusMessageId": 1,
+      "dateTime": "Sun Sep 15 2019 12:30:00 GMT-0500",
+      "request_details": "It's your fav daughter!",
+      "userCancel": false,
+      "timestamp": 1564588092364
+    },
+    {
+      "id": 8,
+      "userId": 4,
+      "serviceId": 9,
+      "statusMessageId": 2,
+      "dateTime": "Tue Oct 15 2019 12:30:00 GMT-0500",
+      "request_details": "I'm starting my new job!",
+      "userCancel": false,
+      "timestamp": 1564587039164
+    },
+    {
+      "id": 9,
+      "userId": 4,
+      "serviceId": 10,
+      "statusMessageId": 5,
+      "dateTime": "Fri Nov 15 2019 12:30:00 GMT-0600",
+      "request_details": "Give me the new Do!",
+      "userCancel": false,
+      "timestamp": 1564586327483
+    },
+    {
+      "id": 10,
+      "userId": 2,
+      "serviceId": 9,
+      "statusMessageId": 2,
+      "dateTime": "Mon Jan 13 2020 12:30:00 GMT-0600",
+      "request_details": "Hair is too long!",
+      "userCancel": false,
+      "timestamp": 1564587808484
+    },
+    {
+      "id": 11,
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Wed Aug 1 2019 13:30:00 GMT-0500",
+      "request_details": "Hair is too long",
+      "userCancel": false,
+      "timestamp": 1564587809484
+    },
+    {
+      "id": 12,
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Sat Aug 09 2019 12:00:00 GMT-0500",
+      "request_details": "Checkup",
+      "userCancel": false,
+      "timestamp": 1564587819484
+    },
+    {
+      "id": 13,
+      "userId": 6,
+      "serviceId": 2,
+      "statusMessageId": 2,
+      "dateTime": "Tue Aug 27 2019 15:30:00 GMT-0500",
+      "request_details": "My boogie is gettin less cowboyish",
+      "userCancel": false,
+      "timestamp": 1564629969612
+    },
+    {
+      "id": 14,
+      "userId": 7,
+      "serviceId": 10,
+      "statusMessageId": 7,
+      "dateTime": "Fri Aug 02 2019 15:00:00 GMT-0500",
+      "request_details": "",
+      "userCancel": true,
+      "timestamp": 1564669406076
+    },
+    {
+      "id": 15,
+      "userId": 7,
+      "serviceId": 8,
+      "statusMessageId": 5,
+      "dateTime": "Wed Aug 14 2019 15:00:00 GMT-0500",
+      "request_details": "Purple hair! ",
+      "userCancel": false,
+      "timestamp": 1565100727353
+    },
+    {
+      "id": 16,
+      "userId": 7,
+      "serviceId": 6,
+      "statusMessageId": 1,
+      "dateTime": "Fri Aug 23 2019 09:00:00 GMT-0500",
+      "request_details": "Woot",
+      "userCancel": false,
+      "timestamp": 1564669495227
+    },
+    {
+      "id": 17,
+      "userId": 8,
+      "serviceId": 4,
+      "statusMessageId": 1,
+      "dateTime": "Thu Aug 15 2019 16:25:00 GMT-0500",
+      "request_details": "I would love a blow out;)",
+      "userCancel": false,
+      "timestamp": 1564801626746
+    },
+    {
+      "id": 18,
+      "userId": 8,
+      "serviceId": 6,
+      "statusMessageId": 2,
+      "dateTime": "Sat Sep 14 2019 20:30:00 GMT-0500",
+      "request_details": "I'm your daughter, you gotta say yes!",
+      "timestamp": 1564802008492
+    },
+    {
+      "id": 19,
+      "userId": 8,
+      "serviceId": 1,
+      "statusMessageId": 1,
+      "dateTime": "Wed Jul 25 2019 00:01:00 GMT-0600",
+      "request_details": "Love Jesus our savior",
+      "userCancel": false,
+      "timestamp": 1564801679360
+    },
+    {
+      "id": 20,
+      "userId": 9,
+      "serviceId": 5,
+      "statusMessageId": 1,
+      "dateTime": "Fri Aug 30 2019 10:00:00 GMT-0500",
+      "request_details": "isabeau pooped in the bonus room",
+      "userCancel": false,
+      "timestamp": 1564802406598
+    },
+    {
+      "id": 21,
+      "userId": 9,
+      "serviceId": 6,
+      "statusMessageId": 1,
+      "dateTime": "Thu Aug 02 2019 00:07:00 GMT-0500",
+      "request_details": "pooooop",
+      "userCancel": false,
+      "timestamp": 1564802469454
+    },
+    {
+      "id": 22,
+      "userId": 9,
+      "serviceId": 6,
+      "statusMessageId": 2,
+      "dateTime": "Sun Oct 20 2019 07:06:00 GMT-0500",
+      "request_details": "põópie",
+      "timestamp": 1564803135018
+    },
+    {
+      "id": 23,
+      "userId": 10,
+      "serviceId": 5,
+      "statusMessageId": 1,
+      "dateTime": "Sat Aug 04 2019 12:00:00 GMT-0600",
+      "request_details": "yoooooo",
+      "userCancel": false,
+      "timestamp": 1564858963414
+    },
+    {
+      "id": 24,
+      "userId": 7,
+      "serviceId": 4,
+      "statusMessageId": 1,
+      "dateTime": "Wed Aug 07 2019 09:45:44 GMT-0500",
+      "request_details": "Need a checkup",
+      "userCancel": false,
+      "timestamp": 1565102808031
+    },
+    {
+      "id": 25,
+      "userId": 12,
+      "serviceId": 2,
+      "statusMessageId": 3,
+      "dateTime": "Wed Sep 11 2019 09:30:37 GMT-0500",
+      "request_details": "I need a cut",
+      "userCancel": false,
+      "timestamp": 1565187955032
+    },
+    {
+      "id": 26,
+      "userId": 12,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Thu Aug 08 2019 09:30:58 GMT-0500",
+      "request_details": "BIG DATE!!",
+      "userCancel": false,
+      "timestamp": 1565187791960
+    },
+    {
+      "id": 27,
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 5,
+      "dateTime": "Sat Aug 17 2019 10:55:55 GMT-0500",
+      "request_details": "Presenting my front end capstone",
+      "userCancel": false,
+      "timestamp": 1565409372581
+    },
+    {
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 2,
+      "dateTime": "Mon Sep 02 2019 09:30:56 GMT-0500",
+      "userCancel": false,
+      "request_details": "Presenting my front end capstone",
+      "timestamp": 1565358375073,
+      "id": 28
+    },
+    {
+      "id": 29,
+      "userId": 13,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Tue Nov 05 2019 09:30:00 GMT-0600",
+      "request_details": "Trying to apply jobs!",
+      "userCancel": false,
+      "timestamp": 1567088029140
+    },
+    {
+      "id": 30,
+      "userId": 13,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Fri Aug 02 2019 09:30:00 GMT-0500",
+      "request_details": "Presenting Capstone!",
+      "userCancel": false,
+      "timestamp": 1564802406599
+    },
+    {
+      "id": 31,
+      "userId": 13,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Tue Aug 29 2019 17:00:20 GMT-0500",
+      "request_details": "Need a checkup! I really liked how you did my last haircut!",
+      "userCancel": false,
+      "timestamp": 1566226920079
+    },
+    {
+      "id": 32,
+      "userId": 5,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Fri Aug 30 2019 08:00:30 GMT-0500",
+      "request_details": "My last haircut looked great! Can you do that again?",
+      "userCancel": false,
+      "timestamp": 1566229325154
+    },
+    {
+      "id": 33,
+      "userId": 13,
+      "serviceId": 2,
+      "statusMessageId": 1,
+      "dateTime": "Mon Sep 02 2019 18:00:28 GMT-0500",
+      "request_details": "Just gettin a checkup! I would love if you could do it just like last time.",
+      "userCancel": false,
+      "timestamp": 1566229628047
+    },
+    {
+      "id": 34,
+      "userId": 13,
+      "serviceId": 2,
+      "statusMessageId": 7,
+      "dateTime": "Fri Aug 30 2019 09:15:04 GMT-0500",
+      "request_details": "PResentation!",
+      "userCancel": true,
+      "timestamp": 1567088001177
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "requestId": 7,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": ""
+    },
+    {
+      "id": 2,
+      "requestId": 1,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": ""
+    },
+    {
+      "id": 3,
+      "requestId": 4,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": ""
+    },
+    {
+      "id": 4,
+      "requestId": 11,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "Helped that boy out!"
+    },
+    {
+      "id": 6,
+      "requestId": 17,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "She is beautiful"
+    },
+    {
+      "id": 7,
+      "requestId": 19,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "She be lookin good after that cut!"
+    },
+    {
+      "requestId": 20,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 8
+    },
+    {
+      "id": 9,
+      "requestId": 21,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "done!"
+    },
+    {
+      "id": 10,
+      "requestId": 23,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "Boy lookin like a man, now."
+    },
+    {
+      "requestId": 24,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "Just finished Mo with a fresh look",
+      "id": 11
+    },
+    {
+      "requestId": 26,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "He gonna be gettin that after date kiss!",
+      "id": 12
+    },
+    {
+      "id": 13,
+      "requestId": 12,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "Done"
+    },
+    {
+      "id": 14,
+      "requestId": 30,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "He's gonna do amazing in his presentation!"
+    },
+    {
+      "id": 15,
+      "requestId": 31,
+      "completed": true,
+      "checked": true,
+      "stylistNotes": "finished"
+    },
+    {
+      "requestId": 32,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 16
+    },
+    {
+      "requestId": 29,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 17
+    },
+    {
+      "requestId": 33,
+      "completed": false,
+      "checked": false,
+      "stylistNotes": "",
+      "id": 18
+    }
+  ]
+}

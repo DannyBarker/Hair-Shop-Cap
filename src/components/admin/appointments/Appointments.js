@@ -159,22 +159,23 @@ class Appointments extends Component {
         )}
         </div> {" "}
         <div className="appointments-div">
-        {this.state.past ? (
+        {this.state.future ? (
             <React.Fragment>
-              <h4>Past Appointments</h4>
+              <h4>Upcoming Appointments</h4>
               <ul className="adminApp-ul">
           <li>Name</li>
           <li>Time</li>
           <li>Service</li>
           <li>Details</li>
         </ul>
-              {this.checkPastTF() ? (
-                <p>No past appointments.</p>
+              {this.checkTF("future") ? (
+                <p>No upcoming appointments.</p>
               ) : (
                 ""
               )}
-              {this.getPastAppointments()
-                ? this.getPastAppointments().map(appointment => {
+                      <div className="appointmentCard-divParent">
+              {this.getCertainAppointments("future")
+                ? this.getCertainAppointments("future").map(appointment => {
                     return (
                       <AppointmentCard
                         key={appointment.id}
@@ -192,11 +193,11 @@ class Appointments extends Component {
                     );
                   })
                 : ""}
+                      </div>
             </React.Fragment>
           ) : (
             ""
-          )}
-          {this.state.current ? (
+          )}{this.state.current ? (
             <React.Fragment>
               <h4>Today's Appointments</h4>
               <ul className="adminApp-ul">
@@ -233,23 +234,22 @@ class Appointments extends Component {
           ) : (
             ""
           )}
-          {this.state.future ? (
+          {this.state.past ? (
             <React.Fragment>
-              <h4>Upcoming Appointments</h4>
+              <h4>Past Appointments</h4>
               <ul className="adminApp-ul">
           <li>Name</li>
           <li>Time</li>
           <li>Service</li>
           <li>Details</li>
         </ul>
-              {this.checkTF("future") ? (
-                <p>No upcoming appointments.</p>
+              {this.checkPastTF() ? (
+                <p>No past appointments.</p>
               ) : (
                 ""
               )}
-                      <div className="appointmentCard-divParent">
-              {this.getCertainAppointments("future")
-                ? this.getCertainAppointments("future").map(appointment => {
+              {this.getPastAppointments()
+                ? this.getPastAppointments().map(appointment => {
                     return (
                       <AppointmentCard
                         key={appointment.id}
@@ -267,7 +267,6 @@ class Appointments extends Component {
                     );
                   })
                 : ""}
-                      </div>
             </React.Fragment>
           ) : (
             ""
